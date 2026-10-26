@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en" class="antialiased selection:bg-amber-700 selection:text-white">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Architecture & Engineering | THE SOLAIRE DUBAI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            sand: { 50: '#FDFCFA', 100: '#F8F6F0', 200: '#F3EFEA', 300: '#E8E2D8', 400: '#D5CDC0', 500: '#B8ADA0' },
+            bronze: { light: '#DFCFB7', DEFAULT: '#C5A880', dark: '#9A784E', deep: '#695133' },
+            graphite: { 50: '#F5F5F4', 100: '#E7E6E4', 300: '#B0AEA9', 500: '#73706A', 700: '#3D3B37', 800: '#242321', 900: '#141413', 950: '#0A0A09' }
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Playfair Display', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-sand-100 text-graphite-900 font-sans overflow-x-hidden">
+
+  <!-- HEADER -->
+  <header class="fixed top-0 left-0 right-0 z-50 py-5 bg-graphite-950/90 backdrop-blur-xl border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between">
+      <a href="index.html" class="flex flex-col tracking-widest text-left group">
+        <span class="font-serif text-xl md:text-2xl font-light tracking-[0.25em] text-sand-50 group-hover:text-bronze-light transition-colors">THE SOLAIRE</span>
+        <span class="text-[9px] uppercase tracking-[0.35em] text-bronze font-medium -mt-1 opacity-90">DUBAI WATERFRONT</span>
+      </a>
+
+      <nav class="hidden lg:flex items-center space-x-7">
+        <a href="index.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1">Overview</a>
+        <a href="residences.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1">Residences</a>
+        <a href="interiors.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1">Interiors</a>
+        <a href="floor-plans.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1">Floor Plans</a>
+        <a href="amenities.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1">Amenities</a>
+        <a href="architecture.html" class="text-[11px] uppercase tracking-[0.25em] text-bronze font-semibold py-1 border-b border-bronze">Architecture</a>
+        <a href="contact.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1">Contact</a>
+      </nav>
+
+      <div class="hidden sm:flex items-center space-x-4">
+        <button class="ambient-sound-toggle p-2.5 rounded-full border border-white/15 text-sand-300 hover:text-white hover:border-bronze transition-all backdrop-blur-sm">
+          <i data-lucide="volume-x" class="w-4 h-4 opacity-60"></i>
+        </button>
+        <button data-open-booking="The Sky Penthouse Crown" class="px-5 py-2.5 rounded-full border border-bronze/60 bg-bronze/10 hover:bg-bronze text-white text-[11px] uppercase tracking-[0.2em] font-medium transition-all shadow-[0_0_15px_rgba(197,168,128,0.2)] hover:text-graphite-950 flex items-center space-x-2">
+          <i data-lucide="calendar" class="w-3.5 h-3.5 text-bronze-light"></i>
+          <span>Schedule Tour</span>
+        </button>
+      </div>
+
+      <button id="mobile-menu-toggle" class="lg:hidden p-2 text-sand-100 hover:text-bronze">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- MOBILE DRAWER -->
+  <div id="mobile-drawer" class="fixed inset-0 z-40 bg-graphite-950/95 backdrop-blur-2xl transition-all duration-500 lg:hidden flex flex-col justify-between p-8 pt-28 opacity-0 pointer-events-none -translate-y-4">
+    <div class="flex flex-col space-y-5">
+      <a href="index.html" class="font-serif text-3xl text-sand-100">Overview</a>
+      <a href="residences.html" class="font-serif text-3xl text-sand-100">Residences</a>
+      <a href="interiors.html" class="font-serif text-3xl text-sand-100">Interiors</a>
+      <a href="floor-plans.html" class="font-serif text-3xl text-sand-100">Floor Plans</a>
+      <a href="amenities.html" class="font-serif text-3xl text-sand-100">Amenities</a>
+      <a href="architecture.html" class="font-serif text-3xl text-bronze">Architecture</a>
+      <a href="contact.html" class="font-serif text-3xl text-sand-100">Contact</a>
+    </div>
+  </div>
+
+  <main class="pt-32">
+    <!-- PAGE TITLE -->
+    <div class="max-w-7xl mx-auto px-6 md:px-12 py-12 border-b border-sand-300">
+      <div class="flex items-center space-x-2 text-[10px] uppercase font-mono tracking-[0.3em] text-bronze-dark mb-3">
+        <i data-lucide="sparkles" class="w-3.5 h-3.5 text-bronze-dark"></i>
+        <span>FOSTER & PARTNERS ARCHITECTURAL MONOGRAPH</span>
+      </div>
+      <h1 class="font-serif text-5xl sm:text-7xl md:text-8xl font-light text-graphite-950 tracking-tight leading-[0.95]">
+        ENGINEERED FOR <br>
+        <span class="italic font-normal">PERMANENCE</span>
+      </h1>
+      <p class="max-w-2xl text-graphite-700 text-sm md:text-base font-light mt-4 leading-relaxed">
+        The Solaire represents a landmark feat of marine structural engineering. Designed to withstand coastal elements while providing pure uninterrupted transparency to the sea.
+      </p>
+    </div>
+
+    <!-- TOWER HERO IMAGE -->
+    <section class="max-w-7xl mx-auto px-6 md:px-12 py-16">
+      <div class="relative h-[480px] md:h-[600px] rounded-3xl overflow-hidden border border-sand-300 shadow-2xl">
+        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=2400&q=90" alt="Tower Architecture" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-graphite-950/80 via-transparent to-transparent"></div>
+        <div class="absolute bottom-10 left-10 right-10 flex flex-col md:flex-row md:items-end justify-between text-sand-50">
+          <div>
+            <span class="text-[10px] uppercase font-mono tracking-widest text-bronze">Architectural Form</span>
+            <h2 class="font-serif text-3xl md:text-5xl font-light mt-1">Cantilevered Horizontal Planes</h2>
+          </div>
+          <div class="mt-4 md:mt-0 font-mono text-xs text-sand-300">HEIGHT: 185M • STOREYS: 48 • LEED PLATINUM</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STRUCTURAL INNOVATION -->
+    <section class="py-24 bg-sand-200/50 border-t border-sand-300">
+      <div class="max-w-7xl mx-auto px-6 md:px-12">
+        <div class="max-w-2xl mb-16">
+          <span class="text-[10px] uppercase font-mono tracking-[0.3em] text-bronze-dark">ENGINEERING PILLARS</span>
+          <h2 class="font-serif text-3xl sm:text-5xl font-light text-graphite-950 mt-2">Pioneering Marine Structural Design</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="bg-white rounded-3xl p-8 md:p-10 border border-sand-300 shadow-sm flex flex-col justify-between">
+            <div>
+              <span class="font-mono text-3xl text-bronze-dark font-light">01</span>
+              <h3 class="font-serif text-2xl font-light text-graphite-950 mt-3">Cantilevered Terraces</h3>
+              <p class="text-sm text-graphite-600 font-light mt-3 leading-relaxed">Engineered with ultra-high strength post-tensioned slabs allowing expansive column-free outdoor living.</p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-sand-200 flex items-center space-x-2 text-xs text-bronze-dark font-mono">
+              <i data-lucide="check" class="w-4 h-4"></i><span>Tested to 100-Year Storm Criteria</span>
+            </div>
+          </div>
+          <div class="bg-white rounded-3xl p-8 md:p-10 border border-sand-300 shadow-sm flex flex-col justify-between">
+            <div>
+              <span class="font-mono text-3xl text-bronze-dark font-light">02</span>
+              <h3 class="font-serif text-2xl font-light text-graphite-950 mt-3">Acoustic Triple Glazing</h3>
+              <p class="text-sm text-graphite-600 font-light mt-3 leading-relaxed">Specially formulated low-emissivity glass delivering complete pin-drop serenity and solar thermal control.</p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-sand-200 flex items-center space-x-2 text-xs text-bronze-dark font-mono">
+              <i data-lucide="check" class="w-4 h-4"></i><span>38dB Ambient Noise Attenuation</span>
+            </div>
+          </div>
+          <div class="bg-white rounded-3xl p-8 md:p-10 border border-sand-300 shadow-sm flex flex-col justify-between">
+            <div>
+              <span class="font-mono text-3xl text-bronze-dark font-light">03</span>
+              <h3 class="font-serif text-2xl font-light text-graphite-950 mt-3">LEED Platinum Certified</h3>
+              <p class="text-sm text-graphite-600 font-light mt-3 leading-relaxed">Geothermal ocean-cooling loops, rooftop solar kinetic pergolas, and graywater recycling gardens.</p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-sand-200 flex items-center space-x-2 text-xs text-bronze-dark font-mono">
+              <i data-lucide="check" class="w-4 h-4"></i><span>Zero Direct Carbon Emissions</span>
+            </div>
+          </div>
+          <div class="bg-white rounded-3xl p-8 md:p-10 border border-sand-300 shadow-sm flex flex-col justify-between">
+            <div>
+              <span class="font-mono text-3xl text-bronze-dark font-light">04</span>
+              <h3 class="font-serif text-2xl font-light text-graphite-950 mt-3">Biometric Private Elevators</h3>
+              <p class="text-sm text-graphite-600 font-light mt-3 leading-relaxed">Biometric high-speed private lifts with direct foyer access opening solely into your residence.</p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-sand-200 flex items-center space-x-2 text-xs text-bronze-dark font-mono">
+              <i data-lucide="check" class="w-4 h-4"></i><span>Direct Vestibule Arrival</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONSTRUCTION TIMELINE -->
+    <section class="py-24 max-w-7xl mx-auto px-6 md:px-12">
+      <div class="max-w-2xl mb-16">
+        <span class="text-[10px] uppercase font-mono tracking-[0.3em] text-bronze-dark">CONSTRUCTION TIMELINE</span>
+        <h2 class="font-serif text-3xl sm:text-5xl font-light text-graphite-950 mt-2">Delivery Milestones to Q4 2027</h2>
+      </div>
+
+      <div class="space-y-4">
+        <div class="p-6 md:p-8 rounded-2xl bg-white border border-sand-300 flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div class="md:w-1/4"><span class="font-mono text-xs uppercase text-bronze-dark">Q1 2024</span><h4 class="font-serif text-2xl font-light">Marine Foundation</h4></div>
+          <div class="md:w-1/2"><p class="text-xs text-graphite-600">128 deep friction piles driven 45 meters into seabed bedrock.</p></div>
+          <div><span class="px-4 py-1.5 rounded-full text-[10px] font-mono uppercase bg-emerald-100 text-emerald-800 font-semibold">Completed</span></div>
+        </div>
+        <div class="p-6 md:p-8 rounded-2xl bg-white border border-sand-300 flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div class="md:w-1/4"><span class="font-mono text-xs uppercase text-bronze-dark">Q3 2026</span><h4 class="font-serif text-2xl font-light">Level 48 Pinnacle</h4></div>
+          <div class="md:w-1/2"><p class="text-xs text-graphite-600">Structural completion of the cantilevered sky penthouses and rooftop helipad.</p></div>
+          <div><span class="px-4 py-1.5 rounded-full text-[10px] font-mono uppercase bg-amber-100 text-amber-800 font-semibold animate-pulse">In Progress</span></div>
+        </div>
+        <div class="p-6 md:p-8 rounded-2xl bg-white border border-sand-300 flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div class="md:w-1/4"><span class="font-mono text-xs uppercase text-bronze-dark">Q4 2027</span><h4 class="font-serif text-2xl font-light">Key Handover</h4></div>
+          <div class="md:w-1/2"><p class="text-xs text-graphite-600">Full resident possession with St. Regis white-glove estate service initiation.</p></div>
+          <div><span class="px-4 py-1.5 rounded-full text-[10px] font-mono uppercase bg-sand-200 text-graphite-700 font-semibold">Guaranteed</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="relative bg-graphite-950 text-sand-50 pt-20 pb-12 border-t border-white/10 text-center">
+    <p class="font-serif text-2xl font-light tracking-widest text-sand-50">THE SOLAIRE RESIDENCES</p>
+    <p class="text-xs uppercase font-mono tracking-widest text-bronze mt-1">Jumeirah Bay Island, Dubai</p>
+    <p class="text-[11px] text-sand-500 mt-8">© 2027 The Solaire Residences LLC.</p>
+  </footer>
+
+  <!-- UNIVERSAL VIP MODAL -->
+  <div id="vip-booking-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto hidden">
+    <div class="fixed inset-0 bg-graphite-950/85 backdrop-blur-xl close-booking-modal"></div>
+    <div class="relative w-full max-w-2xl bg-[#141312] border border-bronze/30 rounded-3xl shadow-2xl overflow-hidden z-10 text-sand-50 p-8">
+      <div class="flex justify-between items-center mb-6"><h3 class="font-serif text-2xl">VIP Private Appointment</h3><button class="close-booking-modal p-2 rounded-full bg-white/5"><i data-lucide="x" class="w-5 h-5"></i></button></div>
+      <form id="vip-booking-form" class="space-y-4">
+        <input type="text" required placeholder="Full Name" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sand-100 text-xs">
+        <input type="email" required placeholder="Direct Email" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sand-100 text-xs">
+        <input type="tel" required placeholder="Phone Number" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sand-100 text-xs">
+        <button type="submit" class="w-full py-4 rounded-full bg-bronze text-black font-semibold text-xs uppercase tracking-wider">Confirm VIP Reservation</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
+

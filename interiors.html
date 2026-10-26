@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" class="antialiased selection:bg-amber-700 selection:text-white">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interiors & Walkthrough | THE SOLAIRE DUBAI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            sand: { 50: '#FDFCFA', 100: '#F8F6F0', 200: '#F3EFEA', 300: '#E8E2D8', 400: '#D5CDC0', 500: '#B8ADA0' },
+            bronze: { light: '#DFCFB7', DEFAULT: '#C5A880', dark: '#9A784E', deep: '#695133' },
+            graphite: { 50: '#F5F5F4', 100: '#E7E6E4', 300: '#B0AEA9', 500: '#73706A', 700: '#3D3B37', 800: '#242321', 900: '#141413', 950: '#0A0A09' }
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Playfair Display', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-sand-100 text-graphite-900 font-sans overflow-x-hidden">
+
+  <!-- HEADER -->
+  <header class="fixed top-0 left-0 right-0 z-50 py-5 bg-graphite-950/90 backdrop-blur-xl border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between">
+      <a href="index.html" class="flex flex-col tracking-widest text-left group">
+        <span class="font-serif text-xl md:text-2xl font-light tracking-[0.25em] text-sand-50 group-hover:text-bronze-light transition-colors">THE SOLAIRE</span>
+        <span class="text-[9px] uppercase tracking-[0.35em] text-bronze font-medium -mt-1 opacity-90">DUBAI WATERFRONT</span>
+      </a>
+
+      <nav class="hidden lg:flex items-center space-x-7">
+        <a href="index.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1">Overview</a>
+        <a href="residences.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1">Residences</a>
+        <a href="interiors.html" class="text-[11px] uppercase tracking-[0.25em] text-bronze font-semibold py-1 border-b border-bronze">Interiors</a>
+        <a href="floor-plans.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1">Floor Plans</a>
+        <a href="amenities.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1">Amenities</a>
+        <a href="architecture.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1">Architecture</a>
+        <a href="contact.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1">Contact</a>
+      </nav>
+
+      <div class="hidden sm:flex items-center space-x-4">
+        <button class="ambient-sound-toggle p-2.5 rounded-full border border-white/15 text-sand-300 hover:text-white hover:border-bronze transition-all backdrop-blur-sm">
+          <i data-lucide="volume-x" class="w-4 h-4 opacity-60"></i>
+        </button>
+        <button data-open-booking="The Sky Penthouse Crown" class="px-5 py-2.5 rounded-full border border-bronze/60 bg-bronze/10 hover:bg-bronze text-white text-[11px] uppercase tracking-[0.2em] font-medium transition-all shadow-[0_0_15px_rgba(197,168,128,0.2)] hover:text-graphite-950 flex items-center space-x-2">
+          <i data-lucide="calendar" class="w-3.5 h-3.5 text-bronze-light"></i>
+          <span>Schedule Tour</span>
+        </button>
+      </div>
+
+      <button id="mobile-menu-toggle" class="lg:hidden p-2 text-sand-100 hover:text-bronze">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- MOBILE DRAWER -->
+  <div id="mobile-drawer" class="fixed inset-0 z-40 bg-graphite-950/95 backdrop-blur-2xl transition-all duration-500 lg:hidden flex flex-col justify-between p-8 pt-28 opacity-0 pointer-events-none -translate-y-4">
+    <div class="flex flex-col space-y-5">
+      <p class="text-[10px] tracking-[0.3em] uppercase text-bronze font-semibold">Directory</p>
+      <a href="index.html" class="font-serif text-3xl text-sand-100 hover:text-bronze">Overview</a>
+      <a href="residences.html" class="font-serif text-3xl text-sand-100 hover:text-bronze">Residences</a>
+      <a href="interiors.html" class="font-serif text-3xl text-bronze">Interiors</a>
+      <a href="floor-plans.html" class="font-serif text-3xl text-sand-100 hover:text-bronze">Floor Plans</a>
+      <a href="amenities.html" class="font-serif text-3xl text-sand-100 hover:text-bronze">Amenities</a>
+      <a href="architecture.html" class="font-serif text-3xl text-sand-100 hover:text-bronze">Architecture</a>
+      <a href="contact.html" class="font-serif text-3xl text-sand-100 hover:text-bronze">Contact</a>
+    </div>
+  </div>
+
+  <main class="pt-32">
+    <!-- PAGE TITLE -->
+    <div class="max-w-7xl mx-auto px-6 md:px-12 py-12 border-b border-sand-300">
+      <div class="flex items-center space-x-2 text-[10px] uppercase font-mono tracking-[0.3em] text-bronze-dark mb-3">
+        <i data-lucide="sparkles" class="w-3.5 h-3.5 text-bronze-dark"></i>
+        <span>INTERIOR CURATION BY STUDIO LIAIGRE</span>
+      </div>
+      <h1 class="font-serif text-5xl sm:text-7xl md:text-8xl font-light text-graphite-950 tracking-tight leading-[0.95]">
+        Step inside <br>
+        <span class="italic font-normal">the everyday.</span>
+      </h1>
+      <p class="max-w-2xl text-graphite-700 text-sm md:text-base font-light mt-4 leading-relaxed">
+        Light, raw stone, and expansive volumes composed in harmonious balance. Every surface is tailored with honest materials that age with grace.
+      </p>
+    </div>
+
+    <!-- ROOM TABS -->
+    <div class="max-w-7xl mx-auto px-6 md:px-12 pt-12">
+      <div class="flex items-center justify-center space-x-2 md:space-x-4 mb-10 overflow-x-auto pb-4">
+        <button data-interior-room data-img="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=85" data-title="Grand Living Salon" data-subtitle="Air, Light & Architectural Rhythm" data-desc="Floor-to-ceiling motorized Schuco sliding glass walls merge the indoor travertine halls with the expansive terrace." data-accent="7.2m Glazed Exposure" class="px-5 py-2.5 rounded-full text-xs uppercase tracking-[0.2em] font-medium bg-graphite-950 text-sand-50 shadow-lg whitespace-nowrap">Grand Living Salon</button>
+        <button data-interior-room data-img="https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1800&q=85" data-title="The Principal Master Suite" data-subtitle="A Sanctuary Suspended in Calm" data-desc="Waking up elevated above the gulf waters. The master bedroom features bespoke fluted walnut wall paneling." data-accent="Morning Sunrise Aspect" class="px-5 py-2.5 rounded-full text-xs uppercase tracking-[0.2em] font-medium bg-sand-200/60 text-graphite-700 whitespace-nowrap">Master Suite</button>
+        <button data-interior-room data-img="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1800&q=85" data-title="Freestanding Marble Spa" data-subtitle="Elemental Purification" data-desc="Monolithic vanity carved from single-block Calacatta Michelangelo marble with Dornbracht fittings." data-accent="Rain Sky Sensory Shower" class="px-5 py-2.5 rounded-full text-xs uppercase tracking-[0.2em] font-medium bg-sand-200/60 text-graphite-700 whitespace-nowrap">Marble Spa</button>
+        <button data-interior-room data-img="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1800&q=85" data-title="The Culinary Workshop" data-subtitle="Precision Engineering & Tactile Stones" data-desc="Custom Boffi cabinetry with invisible channels, honed Taj Mahal quartzite countertops, Gaggenau 400." data-accent="Chef's Hidden Scullery" class="px-5 py-2.5 rounded-full text-xs uppercase tracking-[0.2em] font-medium bg-sand-200/60 text-graphite-700 whitespace-nowrap">Culinary Workshop</button>
+        <button data-interior-room data-img="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1800&q=85" data-title="Cantilevered Sky Terrace" data-subtitle="Uninterrupted Gulf Horizons" data-desc="Extending 3.4 meters outward into the open air with frameless structural glass balustrades." data-accent="Frameless Balustrades" class="px-5 py-2.5 rounded-full text-xs uppercase tracking-[0.2em] font-medium bg-sand-200/60 text-graphite-700 whitespace-nowrap">Sky Terrace</button>
+      </div>
+
+      <!-- MAIN SPLIT SCREEN INTERACTIVE SCRUBBING -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch pb-24">
+        <!-- Left Editorial Details -->
+        <div class="lg:col-span-5 bg-sand-200/50 p-8 md:p-12 rounded-3xl border border-sand-300 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-[10px] font-mono uppercase tracking-widest text-bronze-dark">Space Presentation</span>
+              <span id="interior-room-accent" class="px-3 py-1 rounded-full bg-bronze/15 text-bronze-deep text-[10px] uppercase font-mono">7.2m Glazed Exposure</span>
+            </div>
+            <h3 id="interior-room-title" class="font-serif text-3xl md:text-5xl font-light text-graphite-950">Grand Living Salon</h3>
+            <p id="interior-room-subtitle" class="text-sm font-medium text-bronze-dark mt-1 font-serif italic">Air, Light & Architectural Rhythm</p>
+            <p id="interior-room-desc" class="text-graphite-700 text-sm md:text-base font-light leading-relaxed mt-6">
+              Floor-to-ceiling motorized Schuco sliding glass walls merge the indoor travertine halls with the expansive terrace. Custom curated bespoke furniture by Studio Liaigre.
+            </p>
+            <div class="mt-8 border-t border-sand-300/80 pt-6 space-y-2.5 text-xs text-graphite-800">
+              <div class="flex items-center space-x-2"><div class="w-1.5 h-1.5 rounded-full bg-bronze"></div><span>Honed Arabescato Orobico marble</span></div>
+              <div class="flex items-center space-x-2"><div class="w-1.5 h-1.5 rounded-full bg-bronze"></div><span>Integrated perimeter acoustic baffles</span></div>
+              <div class="flex items-center space-x-2"><div class="w-1.5 h-1.5 rounded-full bg-bronze"></div><span>Concealed linear ventilation diffusers</span></div>
+            </div>
+          </div>
+
+          <div class="mt-8 pt-6 border-t border-sand-300/80 flex items-center justify-between">
+            <div>
+              <p class="text-[9px] uppercase tracking-widest text-graphite-500 font-mono mb-2">Lighting Atmosphere</p>
+              <div class="flex items-center space-x-1.5 bg-sand-300/50 p-1 rounded-full">
+                <button data-lighting-mode="day" class="p-1.5 rounded-full text-amber-600 hover:text-black" title="Midday Sun"><i data-lucide="sun" class="w-4 h-4"></i></button>
+                <button data-lighting-mode="sunset" class="p-1.5 rounded-full bg-white shadow text-amber-700" title="Sunset"><i data-lucide="sunset" class="w-4 h-4"></i></button>
+                <button data-lighting-mode="night" class="p-1.5 rounded-full text-indigo-700 hover:text-black" title="Twilight"><i data-lucide="moon" class="w-4 h-4"></i></button>
+              </div>
+            </div>
+            <button data-open-booking="Grand Living Salon Walkthrough" class="px-5 py-2.5 rounded-full bg-graphite-950 text-sand-50 text-xs uppercase font-mono tracking-wider">Book Viewing</button>
+          </div>
+        </div>
+
+        <!-- Right Pan Scrubber Canvas -->
+        <div id="interior-scrub-viewport" class="lg:col-span-7 relative h-[480px] md:h-[620px] rounded-3xl overflow-hidden cursor-ew-resize border border-sand-300 shadow-xl group select-none" data-cursor="drag" data-cursor-text="PAN">
+          <div id="interior-scrub-image" class="absolute inset-0 w-full h-full bg-cover transition-transform duration-200 ease-out origin-center" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=85'); transform: scale(1.15) translateX(0%); filter: sepia(0.2) saturate(1.25);"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-graphite-950/70 via-transparent to-graphite-950/20 pointer-events-none"></div>
+
+          <div class="absolute bottom-6 left-6 right-6 flex items-center justify-between pointer-events-none">
+            <div class="bg-black/50 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 text-white flex items-center space-x-2">
+              <span class="w-2 h-2 rounded-full bg-bronze animate-pulse"></span>
+              <span class="text-[10px] uppercase font-mono tracking-widest">Drag Horizontally to Pan Interior</span>
+            </div>
+            <div id="interior-scrub-percent" class="bg-black/50 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 text-white font-mono text-xs">50% Pan</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MATERIAL PALETTE -->
+    <section class="py-24 bg-sand-200/50 border-t border-sand-300">
+      <div class="max-w-7xl mx-auto px-6 md:px-12">
+        <div class="max-w-2xl mb-16">
+          <span class="text-[10px] uppercase font-mono tracking-[0.3em] text-bronze-dark">NOBLE MATERIALS</span>
+          <h2 class="font-serif text-3xl sm:text-5xl font-light text-graphite-950 mt-2">The Tactile Material Library</h2>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div class="bg-white rounded-3xl p-6 border border-sand-300 shadow-sm">
+            <div class="h-44 rounded-2xl overflow-hidden mb-4"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover"></div>
+            <span class="text-[9px] uppercase font-mono text-bronze-dark">Bergamo, Northern Italy</span>
+            <h4 class="font-serif text-xl font-light mt-1">Arabescato Orobico Marble</h4>
+            <p class="text-xs text-graphite-600 mt-2 font-light">Characterized by sweeping pewter and dove veins honed to a satin finish.</p>
+          </div>
+          <div class="bg-white rounded-3xl p-6 border border-sand-300 shadow-sm">
+            <div class="h-44 rounded-2xl overflow-hidden mb-4"><img src="https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover"></div>
+            <span class="text-[9px] uppercase font-mono text-bronze-dark">Dordogne, France</span>
+            <h4 class="font-serif text-xl font-light mt-1">French Fluted Walnut</h4>
+            <p class="text-xs text-graphite-600 mt-2 font-light">Hand-waxed with organic beeswax to yield a deep, acoustic softening grain.</p>
+          </div>
+          <div class="bg-white rounded-3xl p-6 border border-sand-300 shadow-sm">
+            <div class="h-44 rounded-2xl overflow-hidden mb-4"><img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover"></div>
+            <span class="text-[9px] uppercase font-mono text-bronze-dark">Iserlohn, Germany</span>
+            <h4 class="font-serif text-xl font-light mt-1">Brushed Champagne Brass</h4>
+            <p class="text-xs text-graphite-600 mt-2 font-light">Custom PVD coated brassware engineered with microscopic nano-finishes.</p>
+          </div>
+          <div class="bg-white rounded-3xl p-6 border border-sand-300 shadow-sm">
+            <div class="h-44 rounded-2xl overflow-hidden mb-4"><img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover"></div>
+            <span class="text-[9px] uppercase font-mono text-bronze-dark">Ceará, Brazil</span>
+            <h4 class="font-serif text-xl font-light mt-1">Taj Mahal Quartzite</h4>
+            <p class="text-xs text-graphite-600 mt-2 font-light">Ultra-dense translucent ivory crystal matrix resistant to heat and acids.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="relative bg-graphite-950 text-sand-50 pt-20 pb-12 border-t border-white/10 text-center">
+    <p class="font-serif text-2xl font-light tracking-widest text-sand-50">THE SOLAIRE RESIDENCES</p>
+    <p class="text-xs uppercase font-mono tracking-widest text-bronze mt-1">Jumeirah Bay Island, Dubai</p>
+    <p class="text-[11px] text-sand-500 mt-8">© 2027 The Solaire Residences LLC.</p>
+  </footer>
+
+  <!-- UNIVERSAL VIP MODAL -->
+  <div id="vip-booking-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto hidden">
+    <div class="fixed inset-0 bg-graphite-950/85 backdrop-blur-xl close-booking-modal"></div>
+    <div class="relative w-full max-w-2xl bg-[#141312] border border-bronze/30 rounded-3xl shadow-2xl overflow-hidden z-10 text-sand-50 p-8">
+      <div class="flex justify-between items-center mb-6"><h3 class="font-serif text-2xl">VIP Private Appointment</h3><button class="close-booking-modal p-2 rounded-full bg-white/5"><i data-lucide="x" class="w-5 h-5"></i></button></div>
+      <form id="vip-booking-form" class="space-y-4">
+        <input type="text" required placeholder="Full Name" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sand-100 text-xs">
+        <input type="email" required placeholder="Direct Email" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sand-100 text-xs">
+        <input type="tel" required placeholder="Phone Number" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sand-100 text-xs">
+        <button type="submit" class="w-full py-4 rounded-full bg-bronze text-black font-semibold text-xs uppercase tracking-wider">Confirm VIP Reservation</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/interior-scrubber.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.initInteriorScrubber) {
+        window.initInteriorScrubber();
+      }
+    });
+  </script>
+</body>
+</html>
+
