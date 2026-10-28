@@ -3,7 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Private Sales Gallery & VIP Booking | THE SOLAIRE DUBAI</title>
+  <title>Private Sales Gallery &amp; Sovereign Client Advisory | STACKLY &bull; THE SOLAIRE DUBAI</title>
+  <!-- Luxury Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo-icon.svg">
+  <link rel="alternate icon" type="image/png" href="assets/images/logo-icon.png">
+  <link rel="apple-touch-icon" href="assets/images/logo-icon.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -23,38 +27,75 @@
       }
     }
   </script>
+  <!-- GSAP & ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <!-- Lenis Momentum Scrolling -->
   <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+  <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="bg-sand-100 text-graphite-900 font-sans overflow-x-hidden">
+<body class="bg-graphite-950 text-sand-50 font-sans overflow-x-hidden overflow-hidden">
 
-  <!-- HEADER -->
-  <header class="fixed top-0 left-0 right-0 z-50 py-5 bg-graphite-950/90 backdrop-blur-xl border-b border-white/10">
+  <!-- GLOBAL SCROLL PROGRESS INDICATOR -->
+  <div id="global-scroll-progress"></div>
+
+  <!-- LUXURY EDITORIAL PRELOADER -->
+  <div id="luxury-preloader">
+    <div class="flex flex-col items-center text-center px-6">
+      <img src="assets/images/logo-icon.png" alt="Stackly Emblem" class="w-14 h-14 object-contain mb-4 animate-pulse drop-shadow-[0_0_20px_rgba(197,168,128,0.5)]">
+      <span class="text-[10px] uppercase font-mono tracking-[0.4em] text-bronze mb-2">PRIVATE SOVEREIGN CLIENT ADVISORY</span>
+      <h2 class="font-serif text-5xl sm:text-7xl font-light text-sand-50 tracking-widest">SALES GALLERY</h2>
+      <p class="text-[9px] uppercase tracking-[0.35em] text-sand-400 font-mono mt-1">STACKLY &bull; THE SOLAIRE &bull; DUBAI</p>
+      <div class="preloader-line">
+        <div id="preloader-progress" class="preloader-progress"></div>
+      </div>
+      <div class="mt-4 font-mono text-xs text-sand-400">
+        <span id="preloader-count">0</span>%
+      </div>
+    </div>
+  </div>
+
+  <!-- FIXED NAVIGATION HEADER -->
+  <header class="fixed top-0 left-0 right-0 z-50 py-5 bg-gradient-to-b from-graphite-950/85 via-graphite-950/30 to-transparent transition-all duration-500" id="main-header">
     <div class="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between">
-      <a href="index.html" class="flex flex-col tracking-widest text-left group">
-        <span class="font-serif text-xl md:text-2xl font-light tracking-[0.25em] text-sand-50 group-hover:text-bronze-light transition-colors">THE SOLAIRE</span>
-        <span class="text-[9px] uppercase tracking-[0.35em] text-bronze font-medium -mt-1 opacity-90">DUBAI WATERFRONT</span>
+      <a href="index.html" class="flex items-center space-x-3.5 tracking-widest text-left group" data-cursor="pointer">
+        <img src="assets/images/logo-icon.png" alt="Stackly Emblem" class="w-9 h-9 object-contain drop-shadow-[0_2px_12px_rgba(197,168,128,0.4)] group-hover:scale-105 transition-transform duration-300">
+        <div class="flex flex-col">
+          <span class="font-serif text-xl md:text-2xl font-light tracking-[0.25em] text-sand-50 group-hover:text-bronze-light transition-colors leading-tight">STACKLY</span>
+          <span class="text-[9px] uppercase tracking-[0.35em] text-bronze font-medium opacity-90 -mt-0.5">THE SOLAIRE &bull; DUBAI</span>
+        </div>
       </a>
 
+      <!-- Desktop Nav -->
       <nav class="hidden lg:flex items-center space-x-7">
-        <a href="index.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1">Overview</a>
-        <a href="residences.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1">Residences</a>
-        <a href="interiors.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1">Interiors</a>
-        <a href="floor-plans.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1">Floor Plans</a>
-        <a href="amenities.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1">Amenities</a>
-        <a href="architecture.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1">Architecture</a>
-        <a href="contact.html" class="text-[11px] uppercase tracking-[0.25em] text-bronze font-semibold py-1 border-b border-bronze">Contact</a>
+        <a href="index.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1" data-cursor="pointer">Overview</a>
+        <a href="residences.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1" data-cursor="pointer">Residences</a>
+        <a href="interiors.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1" data-cursor="pointer">Interiors</a>
+        <a href="floor-plans.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1" data-cursor="pointer">Floor Plans</a>
+        <a href="amenities.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1" data-cursor="pointer">Amenities</a>
+        <a href="architecture.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1" data-cursor="pointer">Architecture</a>
+        <a href="contact.html" class="text-[11px] uppercase tracking-[0.25em] text-bronze font-semibold py-1 border-b border-bronze" data-cursor="pointer">Contact</a>
       </nav>
 
-      <div class="hidden sm:flex items-center space-x-4">
-        <button class="ambient-sound-toggle p-2.5 rounded-full border border-white/15 text-sand-300 hover:text-white hover:border-bronze transition-all backdrop-blur-sm">
+      <!-- Action Controls -->
+      <div class="hidden sm:flex items-center space-x-3">
+        <!-- Live Meridian Telemetry -->
+        <div class="live-dubai-clock hidden xl:inline-flex items-center space-x-2 text-[9px] font-mono uppercase tracking-[0.22em] text-bronze-light bg-black/60 px-3.5 py-1.5 rounded-full border border-white/10 shadow-lg">
+          DUBAI (GMT+4) • 12:45 PM • 28°C SUNNY
+        </div>
+        <button class="ambient-sound-toggle p-2.5 rounded-full border border-white/15 text-sand-300 hover:text-white hover:border-bronze transition-all backdrop-blur-sm" data-magnetic title="Toggle coastal ambient sound">
           <i data-lucide="volume-x" class="w-4 h-4 opacity-60"></i>
         </button>
-        <button data-open-booking="The Sky Penthouse Crown" class="px-5 py-2.5 rounded-full border border-bronze/60 bg-bronze/10 hover:bg-bronze text-white text-[11px] uppercase tracking-[0.2em] font-medium transition-all shadow-[0_0_15px_rgba(197,168,128,0.2)] hover:text-graphite-950 flex items-center space-x-2">
+        <button data-open-booking="Private Sales Gallery Appointment" data-magnetic class="px-4 py-2.5 rounded-full border border-bronze/60 bg-bronze/10 hover:bg-bronze text-white text-[11px] uppercase tracking-[0.2em] font-medium transition-all shadow-[0_0_15px_rgba(197,168,128,0.2)] hover:text-graphite-950 flex items-center space-x-2" data-cursor="pointer">
           <i data-lucide="calendar" class="w-3.5 h-3.5 text-bronze-light"></i>
           <span>Schedule Tour</span>
         </button>
+        <a href="login.html" class="portal-auth-btn px-4 py-2.5 rounded-full border border-white/20 bg-white/5 hover:border-bronze hover:text-bronze text-sand-200 text-[11px] uppercase tracking-[0.18em] font-medium transition-all flex items-center space-x-2" data-magnetic data-cursor="pointer">
+          <i data-lucide="key" class="w-3.5 h-3.5 text-bronze"></i>
+          <span class="portal-user-text">Resident Portal</span>
+        </a>
       </div>
 
       <button id="mobile-menu-toggle" class="lg:hidden p-2 text-sand-100 hover:text-bronze">
@@ -66,156 +107,617 @@
   <!-- MOBILE DRAWER -->
   <div id="mobile-drawer" class="fixed inset-0 z-40 bg-graphite-950/95 backdrop-blur-2xl transition-all duration-500 lg:hidden flex flex-col justify-between p-8 pt-28 opacity-0 pointer-events-none -translate-y-4">
     <div class="flex flex-col space-y-5">
-      <a href="index.html" class="font-serif text-3xl text-sand-100">Overview</a>
-      <a href="residences.html" class="font-serif text-3xl text-sand-100">Residences</a>
-      <a href="interiors.html" class="font-serif text-3xl text-sand-100">Interiors</a>
-      <a href="floor-plans.html" class="font-serif text-3xl text-sand-100">Floor Plans</a>
-      <a href="amenities.html" class="font-serif text-3xl text-sand-100">Amenities</a>
-      <a href="architecture.html" class="font-serif text-3xl text-sand-100">Architecture</a>
+      <p class="text-[10px] tracking-[0.3em] uppercase text-bronze font-semibold">Directory</p>
+      <a href="index.html" class="font-serif text-3xl text-sand-100 hover:text-bronze">Overview</a>
+      <a href="residences.html" class="font-serif text-3xl text-sand-100 hover:text-bronze">Residences</a>
+      <a href="interiors.html" class="font-serif text-3xl text-sand-100 hover:text-bronze">Interiors</a>
+      <a href="floor-plans.html" class="font-serif text-3xl text-sand-100 hover:text-bronze">Floor Plans</a>
+      <a href="amenities.html" class="font-serif text-3xl text-sand-100 hover:text-bronze">Amenities</a>
+      <a href="architecture.html" class="font-serif text-3xl text-sand-100 hover:text-bronze">Architecture</a>
       <a href="contact.html" class="font-serif text-3xl text-bronze">Contact</a>
+      <div class="pt-4 border-t border-white/10 flex flex-col space-y-2">
+        <a href="login.html" class="portal-auth-btn font-serif text-2xl text-bronze flex items-center space-x-2">
+          <i data-lucide="key" class="w-5 h-5"></i>
+          <span class="portal-user-text">Resident Portal / Login</span>
+        </a>
+        <a href="signup.html" class="text-xs uppercase font-mono tracking-widest text-sand-400">Apply for Resident Key &rarr;</a>
+      </div>
     </div>
   </div>
 
-  <main class="pt-32">
-    <!-- PAGE TITLE -->
-    <div class="max-w-7xl mx-auto px-6 md:px-12 py-12 border-b border-sand-300">
-      <div class="flex items-center space-x-2 text-[10px] uppercase font-mono tracking-[0.3em] text-bronze-dark mb-3">
-        <i data-lucide="sparkles" class="w-3.5 h-3.5 text-bronze-dark"></i>
-        <span>BY INVITATION ONLY</span>
-      </div>
-      <h1 class="font-serif text-5xl sm:text-7xl md:text-8xl font-light text-graphite-950 tracking-tight leading-[0.95]">
-        PRIVATE SALES <br>
-        <span class="italic font-normal">GALLERY</span>
-      </h1>
-      <p class="max-w-2xl text-graphite-700 text-sm md:text-base font-light mt-4 leading-relaxed">
-        The Solaire Private Sales Gallery is located on Jumeirah Bay Island. We welcome prospective residents and family office representatives for confidential, one-on-one architectural presentations.
-      </p>
-    </div>
+  <main>
+    <!-- HERO HEADER WITH FULL-BLEED 1080P CINEMATIC BACKGROUND VIDEO -->
+    <section class="relative min-h-[580px] lg:min-h-[660px] flex items-center pt-36 pb-20 border-b border-white/10 overflow-hidden select-none">
+      
+      <!-- Full-Bleed 1080p Ambient Video Loop -->
+      <div class="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
+        <video id="contact-hero-video" autoplay loop muted playsinline class="w-full h-full object-cover filter brightness-[0.82] contrast-[1.12] saturate-[1.1] scale-105 transition-transform duration-1000" poster="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=2400&q=85">
+          <source src="assets/videos/dubai-skyline-loop.mp4" type="video/mp4">
+          <source src="assets/videos/dubai-skyline.webm" type="video/webm">
+        </video>
 
-    <!-- MAIN CONTACT SECTION -->
-    <section class="py-20 max-w-7xl mx-auto px-6 md:px-12">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-        <!-- Booking Form Container -->
-        <div class="lg:col-span-7 bg-graphite-950 text-sand-50 p-8 md:p-12 rounded-3xl border border-bronze/30 shadow-2xl">
-          <div class="mb-8">
-            <span class="text-[10px] uppercase font-mono tracking-[0.3em] text-bronze">RESERVATION PORTAL</span>
-            <h2 class="font-serif text-3xl md:text-4xl font-light text-sand-50 mt-1">Schedule Private Viewing</h2>
-            <p class="text-xs text-sand-400 mt-2 font-light">Our Senior Client Director will confirm your reservation within 2 business hours.</p>
+        <!-- Balanced Luxury Vignette (Keeps Video Clearly Visible while Protecting Text Readability) -->
+        <div class="absolute inset-0 bg-gradient-to-t from-graphite-950 via-graphite-950/40 to-graphite-950/50"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-graphite-950/75 via-graphite-950/30 to-transparent"></div>
+        <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(circle at 30% 60%, rgba(197, 168, 128, 0.12) 0%, transparent 60%);"></div>
+        <div class="absolute inset-0 pointer-events-none" style="box-shadow: inset 0 0 100px rgba(0,0,0,0.6);"></div>
+      </div>
+
+      <!-- Foreground Content Container -->
+      <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full">
+        <!-- Telemetry Row -->
+        <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+          <div class="inline-flex items-center space-x-2 text-[10px] uppercase font-mono tracking-[0.3em] text-bronze-light bg-black/60 backdrop-blur-md px-4 py-1.5 rounded-full border border-bronze/40 shadow-xl">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+            <span>BY APPOINTMENT &bull; PRIVATE CLIENT ADVISORY</span>
           </div>
 
-          <form id="contact-page-form" class="space-y-6">
+          <!-- Telemetry Badges & Video Control -->
+          <div class="flex items-center space-x-3 text-xs font-mono text-sand-300">
+            <span class="flex items-center space-x-1.5 bg-black/60 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/15 shadow-xl">
+              <i data-lucide="compass" class="w-3.5 h-3.5 text-bronze"></i>
+              <span>25°12'09.4"N 55°14'26.8"E</span>
+            </span>
+            <span class="hidden sm:inline-flex items-center space-x-1.5 bg-black/60 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/15 text-emerald-300 shadow-xl">
+              <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+              <span>PAVILION OPEN TODAY</span>
+            </span>
+            <!-- Live Background Video Control Button -->
+            <button onclick="toggleContactHeroVideo()" id="video-toggle-btn" class="hidden md:inline-flex items-center space-x-1.5 bg-black/60 backdrop-blur-md hover:bg-black/80 px-3 py-1.5 rounded-full border border-white/15 text-[10px] text-sand-300 hover:text-white transition-all pointer-events-auto cursor-pointer" title="Pause / Resume Background Video">
+              <i data-lucide="pause" class="w-3 h-3 text-bronze"></i>
+              <span>MOTION ON</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
+          <div>
+            <h1 class="font-serif text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-light text-sand-50 tracking-tight leading-[0.95] drop-shadow-2xl">
+              PRIVATE SALES <br>
+              <span class="italic font-normal text-gold-gradient">GALLERY</span>
+            </h1>
+            <p class="max-w-2xl text-sand-200 text-sm md:text-base lg:text-lg font-light mt-6 leading-relaxed drop-shadow-md">
+              The Solaire Private Pavilion is located along the water's edge on Jumeirah Bay Island. We welcome prospective homeowners, family office advisors, and institutional principals for confidential, one-on-one architectural presentations.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-3">
+            <button onclick="scrollToSection('booking-section')" class="px-8 py-4 rounded-full bg-bronze hover:bg-bronze-light text-graphite-950 font-bold text-xs uppercase tracking-[0.2em] transition-all shadow-[0_10px_30px_rgba(197,168,128,0.3)] flex items-center space-x-2" data-cursor="pointer">
+              <i data-lucide="calendar" class="w-4 h-4"></i>
+              <span>Reserve Viewing</span>
+            </button>
+            <a href="tel:+971480076524" class="px-7 py-4 rounded-full border border-white/25 hover:border-bronze bg-black/40 hover:bg-black/60 backdrop-blur-md text-sand-100 font-mono text-xs uppercase tracking-wider transition-all flex items-center space-x-2 shadow-lg" data-cursor="pointer">
+              <i data-lucide="phone" class="w-4 h-4 text-bronze"></i>
+              <span>+971 4 800 SOLAIRE</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 1: INTERACTIVE VIP CONSULTATION EXPERIENCE SELECTOR & FORM -->
+    <section class="py-16 md:py-20 max-w-7xl mx-auto px-6 md:px-12" id="booking-section">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        
+        <!-- Left 7 Cols: Customized Experience Form -->
+        <div class="lg:col-span-7 bg-[#141312] text-sand-50 p-8 md:p-12 rounded-3xl border border-bronze/30 shadow-2xl space-y-8 relative overflow-hidden">
+          <!-- Background Ambient Glow -->
+          <div class="absolute top-0 right-0 w-80 h-80 rounded-full bg-amber-500/10 filter blur-[100px] pointer-events-none"></div>
+
+          <div>
+            <span class="text-[10px] uppercase font-mono tracking-[0.3em] text-bronze">STEP 01 OF 02</span>
+            <h2 class="font-serif text-3xl sm:text-4xl font-light text-sand-50 mt-1">Design Your Viewing Itinerary</h2>
+            <p class="text-xs text-sand-400 mt-2 font-light">Select your preferred viewing format and chauffeur transfer preferences.</p>
+          </div>
+
+          <!-- Format Choice Selector -->
+          <div>
+            <label class="block text-[10px] uppercase font-mono tracking-wider text-sand-400 mb-2.5">Preferred Consultation Format</label>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="format-picker">
+              <button type="button" onclick="selectConsultationFormat('pavilion', this)" class="format-card text-left p-4 rounded-2xl border border-bronze bg-gradient-to-r from-bronze/20 to-white/5 transition-all text-sand-100 shadow-md">
+                <div class="flex items-center space-x-2 text-bronze text-xs font-mono font-bold">
+                  <i data-lucide="building" class="w-4 h-4"></i>
+                  <span>Jumeirah Bay Pavilion</span>
+                </div>
+                <p class="text-[11px] text-sand-300 mt-1 font-light">In-person physical presentation with architectural scale models &amp; finishes lounge.</p>
+              </button>
+
+              <button type="button" onclick="selectConsultationFormat('yacht', this)" class="format-card text-left p-4 rounded-2xl border border-white/10 bg-white/[0.03] hover:border-bronze/40 transition-all text-sand-100">
+                <div class="flex items-center space-x-2 text-cyan-300 text-xs font-mono font-bold">
+                  <i data-lucide="anchor" class="w-4 h-4"></i>
+                  <span>Private Yacht Sunset Cruise</span>
+                </div>
+                <p class="text-[11px] text-sand-300 mt-1 font-light">45m superyacht cruise around Jumeirah Bay with champagne reception.</p>
+              </button>
+
+              <button type="button" onclick="selectConsultationFormat('virtual', this)" class="format-card text-left p-4 rounded-2xl border border-white/10 bg-white/[0.03] hover:border-bronze/40 transition-all text-sand-100">
+                <div class="flex items-center space-x-2 text-amber-300 text-xs font-mono font-bold">
+                  <i data-lucide="video" class="w-4 h-4"></i>
+                  <span>Virtual 3D Holo-Briefing</span>
+                </div>
+                <p class="text-[11px] text-sand-300 mt-1 font-light">Encrypted 4K stream with senior director across London, NY, Geneva or SG timezones.</p>
+              </button>
+
+              <button type="button" onclick="selectConsultationFormat('family_office', this)" class="format-card text-left p-4 rounded-2xl border border-white/10 bg-white/[0.03] hover:border-bronze/40 transition-all text-sand-100">
+                <div class="flex items-center space-x-2 text-sand-300 text-xs font-mono font-bold">
+                  <i data-lucide="briefcase" class="w-4 h-4 text-bronze"></i>
+                  <span>Private Office Briefing</span>
+                </div>
+                <p class="text-[11px] text-sand-300 mt-1 font-light">Senior director presentation at client's private residence or corporate office.</p>
+              </button>
+            </div>
+          </div>
+
+          <!-- Main Form -->
+          <form id="contact-page-form" class="space-y-6 pt-4 border-t border-white/10">
             <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
               <div class="sm:col-span-1">
                 <label class="block text-[10px] uppercase font-mono tracking-wider text-sand-400 mb-1.5">Salutation</label>
-                <select class="w-full px-3 py-3 rounded-xl bg-white/5 border border-white/10 text-sand-100 text-xs focus:outline-none focus:border-bronze">
-                  <option value="Mr." class="bg-graphite-900">Mr.</option>
-                  <option value="Ms." class="bg-graphite-900">Ms.</option>
-                  <option value="Dr." class="bg-graphite-900">Dr.</option>
+                <select id="contact-salutation" class="w-full px-3 py-3 rounded-xl bg-white/5 border border-white/15 text-sand-100 text-xs focus:outline-none focus:border-bronze font-mono">
+                  <option value="Lord" class="bg-graphite-900">Lord</option>
+                  <option value="Lady" class="bg-graphite-900">Lady</option>
                   <option value="H.E." class="bg-graphite-900">H.E.</option>
+                  <option value="Dr." class="bg-graphite-900">Dr.</option>
+                  <option value="Mr." class="bg-graphite-900" selected>Mr.</option>
+                  <option value="Ms." class="bg-graphite-900">Ms.</option>
                 </select>
               </div>
               <div class="sm:col-span-3">
                 <label class="block text-[10px] uppercase font-mono tracking-wider text-sand-400 mb-1.5">Full Legal Name</label>
-                <input type="text" required placeholder="Lord Alexander Sterling" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sand-100 text-xs focus:outline-none focus:border-bronze">
+                <input type="text" id="contact-name" required placeholder="Alexander Sterling" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-sand-100 text-xs focus:outline-none focus:border-bronze font-sans">
               </div>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label class="block text-[10px] uppercase font-mono tracking-wider text-sand-400 mb-1.5">Direct Email</label>
-                <input type="email" required placeholder="alexander@familyoffice.ae" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sand-100 text-xs focus:outline-none focus:border-bronze">
+                <label class="block text-[10px] uppercase font-mono tracking-wider text-sand-400 mb-1.5">Direct Confidential Email</label>
+                <input type="email" id="contact-email" required placeholder="alexander@familyoffice.ae" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-sand-100 text-xs focus:outline-none focus:border-bronze font-mono">
               </div>
               <div>
-                <label class="block text-[10px] uppercase font-mono tracking-wider text-sand-400 mb-1.5">International Telephone</label>
-                <input type="tel" required placeholder="+971 50 000 0000" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sand-100 text-xs focus:outline-none focus:border-bronze">
+                <label class="block text-[10px] uppercase font-mono tracking-wider text-sand-400 mb-1.5">International Mobile / WhatsApp</label>
+                <input type="tel" id="contact-phone" required placeholder="+971 50 123 4567" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-sand-100 text-xs focus:outline-none focus:border-bronze font-mono">
               </div>
-            </div>
-
-            <div>
-              <label class="block text-[10px] uppercase font-mono tracking-wider text-sand-400 mb-1.5">Residence Tier of Interest</label>
-              <select class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sand-100 text-xs focus:outline-none focus:border-bronze">
-                <option value="The Sky Penthouse Crown" class="bg-graphite-900">The Sky Penthouse Crown (Duplex 8,450 sq ft - AED 52M)</option>
-                <option value="The Horizon Residences" class="bg-graphite-900">The Horizon Residences (3-Bed 3,940 sq ft - AED 21.5M)</option>
-                <option value="Signature Waterfront Suites" class="bg-graphite-900">Signature Waterfront Suites (2-Bed 2,280 sq ft - AED 12.2M)</option>
-                <option value="The Atelier Suite" class="bg-graphite-900">The Atelier Suite (1-Bed 1,420 sq ft - AED 8.9M)</option>
-              </select>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label class="block text-[10px] uppercase font-mono tracking-wider text-sand-400 mb-1.5">Viewing Date</label>
-                <input type="date" required value="2027-02-15" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sand-100 text-xs focus:outline-none focus:border-bronze">
+                <label class="block text-[10px] uppercase font-mono tracking-wider text-sand-400 mb-1.5">Residence Tier of Interest</label>
+                <select id="contact-tier" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-sand-100 text-xs focus:outline-none focus:border-bronze">
+                  <option value="The Sky Penthouse Crown" class="bg-graphite-900">The Sky Penthouse Crown (L44-48 • AED 52M)</option>
+                  <option value="The Celestial Residence" class="bg-graphite-900">The Celestial Panorama (L38 • AED 24M)</option>
+                  <option value="The Horizon Residences" class="bg-graphite-900">The Horizon Residences (L28-42 • AED 21.5M)</option>
+                  <option value="Signature Waterfront Suites" class="bg-graphite-900">Signature Waterfront Suites (L05-16 • AED 12.2M)</option>
+                  <option value="Garden Beach Villa" class="bg-graphite-900">Garden Beach Villa (Marina Slip • AED 16.8M)</option>
+                </select>
               </div>
+
               <div>
-                <label class="block text-[10px] uppercase font-mono tracking-wider text-sand-400 mb-1.5">Viewing Window</label>
-                <select class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sand-100 text-xs focus:outline-none focus:border-bronze">
-                  <option value="10:00 AM" class="bg-graphite-900">10:00 AM (Morning Light & Harbor)</option>
-                  <option value="02:00 PM" class="bg-graphite-900">02:00 PM (Midday Architectural Tour)</option>
-                  <option value="05:30 PM" class="bg-graphite-900">05:30 PM (Golden Hour Sunset)</option>
-                  <option value="08:00 PM" class="bg-graphite-900">08:00 PM (Twilight Starlight Champagne)</option>
+                <label class="block text-[10px] uppercase font-mono tracking-wider text-sand-400 mb-1.5">Primary Investment Motivation</label>
+                <select id="contact-motivation" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-sand-100 text-xs focus:outline-none focus:border-bronze">
+                  <option value="Primary Family Residence" class="bg-graphite-900">Primary Family Residence</option>
+                  <option value="Sovereign Trophy Asset Holding" class="bg-graphite-900">Sovereign Trophy Asset Holding</option>
+                  <option value="High-Yield Rental Portfolio (8.4%)" class="bg-graphite-900">High-Yield Rental Portfolio (8.4%)</option>
+                  <option value="UAE Golden Visa Acquisition" class="bg-graphite-900">UAE 10-Year Golden Visa Acquisition</option>
                 </select>
               </div>
             </div>
 
-            <div class="p-4 rounded-xl bg-white/[0.03] border border-white/10 flex items-center justify-between">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <p class="text-xs font-medium text-sand-100">Rolls-Royce Courtesy Chauffeur</p>
-                <p class="text-[10px] text-sand-400">Door-to-door transfer from any address in Dubai</p>
+                <label class="block text-[10px] uppercase font-mono tracking-wider text-sand-400 mb-1.5">Preferred Date</label>
+                <input type="date" id="contact-date" required value="2027-02-20" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-sand-100 text-xs focus:outline-none focus:border-bronze font-mono">
               </div>
-              <input type="checkbox" checked class="w-4 h-4 text-bronze">
+              <div>
+                <label class="block text-[10px] uppercase font-mono tracking-wider text-sand-400 mb-1.5">Atmospheric Viewing Window</label>
+                <select id="contact-window" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-sand-100 text-xs focus:outline-none focus:border-bronze">
+                  <option value="10:00 AM (Morning Sea Glare & Harbor)" class="bg-graphite-900">10:00 AM (Morning Natural Light &amp; Harbor)</option>
+                  <option value="02:00 PM (Midday Architectural Tour)" class="bg-graphite-900">02:00 PM (Midday Materiality &amp; Stone Tour)</option>
+                  <option value="05:30 PM (Golden Hour Sunset Reception)" class="bg-graphite-900" selected>05:30 PM (Golden Hour Sunset Champagne)</option>
+                  <option value="08:00 PM (Dubai Marina Twilight Panoramas)" class="bg-graphite-900">08:00 PM (Dubai Marina Twilight Skyline)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Complimentary Chauffeur & VIP Transfer Toggles -->
+            <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/10 space-y-3">
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-xs font-medium text-sand-100">Rolls-Royce Courtesy Chauffeur</p>
+                  <p class="text-[10px] text-sand-400">Door-to-door VIP transfer from any UAE residence, hotel, or DXB VIP terminal</p>
+                </div>
+                <input type="checkbox" id="chauffeur-toggle" checked class="w-4 h-4 text-bronze accent-amber-600 cursor-pointer">
+              </div>
+
+              <div class="pt-2 border-t border-white/10 flex items-center justify-between">
+                <div>
+                  <p class="text-xs font-medium text-sand-100">Arrival by Private Superyacht</p>
+                  <p class="text-[10px] text-sand-400">Berthing reserve at Slipway #14 for vessels up to 45m</p>
+                </div>
+                <input type="checkbox" id="yacht-toggle" class="w-4 h-4 text-bronze accent-amber-600 cursor-pointer">
+              </div>
             </div>
 
             <div class="flex flex-col sm:flex-row gap-3 pt-2">
-              <button type="submit" class="flex-1 py-4 rounded-full bg-bronze hover:bg-bronze-light text-graphite-950 font-semibold text-xs uppercase tracking-[0.2em] shadow-lg transition-all">Confirm Private Reservation</button>
-              <button type="button" onclick="window.open('https://wa.me/971501234567?text=Hello%20The%20Solaire%20Concierge', '_blank')" class="px-6 py-4 rounded-full border border-emerald-500/40 bg-emerald-500/10 text-emerald-300 font-semibold text-xs uppercase tracking-[0.15em] flex items-center justify-center space-x-2">
-                <i data-lucide="message-square" class="w-4 h-4 text-emerald-400"></i><span>WhatsApp</span>
+              <button type="submit" data-magnetic class="flex-1 py-4 rounded-full bg-bronze hover:bg-bronze-light text-graphite-950 font-bold text-xs uppercase tracking-[0.2em] shadow-lg transition-all" data-cursor="pointer">
+                Confirm Private Viewing Itinerary
+              </button>
+              <button type="button" data-magnetic onclick="openWhatsAppInquiry()" class="px-6 py-4 rounded-full border border-emerald-500/40 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 font-bold text-xs uppercase tracking-[0.15em] flex items-center justify-center space-x-2 transition-colors" data-cursor="pointer">
+                <i data-lucide="message-square" class="w-4 h-4 text-emerald-400"></i>
+                <span>WhatsApp</span>
               </button>
             </div>
           </form>
 
-          <div id="contact-success-msg" class="p-8 text-center hidden">
-            <div class="w-16 h-16 rounded-full bg-bronze/20 border border-bronze flex items-center justify-center mx-auto text-bronze mb-4"><i data-lucide="check" class="w-8 h-8"></i></div>
-            <h4 class="font-serif text-3xl font-light text-sand-50">Reservation Confirmed</h4>
-            <p class="text-xs text-sand-300 mt-2">Reference Code: <strong class="text-bronze font-mono">SLR-984120</strong></p>
+          <!-- Success Message View -->
+          <div id="contact-success-msg" class="p-8 text-center hidden space-y-4">
+            <div class="w-16 h-16 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center mx-auto text-emerald-300 mb-4">
+              <i data-lucide="check" class="w-8 h-8"></i>
+            </div>
+            <span class="text-[10px] uppercase font-mono tracking-widest text-bronze">RESERVATION CONFIRMED</span>
+            <h3 class="font-serif text-3xl font-light text-sand-50">Private Viewing Registered</h3>
+            <p class="text-xs text-sand-300 max-w-md mx-auto leading-relaxed">
+              Your confidential appointment has been reserved with our Senior Client Director. A customized security itinerary and digital gate pass have been dispatched to your email.
+            </p>
+            <div class="p-4 rounded-xl bg-black/60 border border-white/10 max-w-sm mx-auto text-xs font-mono space-y-1">
+              <div class="flex justify-between text-sand-400">
+                <span>Reference Code:</span>
+                <span id="display-ref-code" class="text-bronze font-bold">SLR-984120</span>
+              </div>
+              <div class="flex justify-between text-sand-400">
+                <span>Assigned Director:</span>
+                <span class="text-sand-200">Tariq Al-Mansoor</span>
+              </div>
+              <div class="flex justify-between text-sand-400">
+                <span>Chauffeur Status:</span>
+                <span id="display-chauffeur-status" class="text-emerald-300">Rolls-Royce Confirmed</span>
+              </div>
+            </div>
+            <div class="pt-4 flex justify-center space-x-3">
+              <button onclick="downloadCalendarInvite()" class="px-5 py-2.5 rounded-full border border-white/20 hover:border-bronze text-sand-200 font-mono text-xs uppercase tracking-wider flex items-center space-x-2 transition-all">
+                <i data-lucide="calendar-plus" class="w-4 h-4 text-bronze"></i>
+                <span>Add to Calendar (.ics)</span>
+              </button>
+              <button onclick="openWhatsAppInquiry()" class="px-5 py-2.5 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-mono text-xs uppercase tracking-wider flex items-center space-x-2 transition-all">
+                <i data-lucide="message-circle" class="w-4 h-4"></i>
+                <span>Chat on WhatsApp</span>
+              </button>
+            </div>
           </div>
         </div>
 
-        <!-- Right Gallery Details & Map -->
-        <div class="lg:col-span-5 space-y-8">
-          <div class="bg-white p-8 md:p-10 rounded-3xl border border-sand-300 shadow-sm space-y-6">
-            <span class="text-[10px] uppercase font-mono tracking-widest text-bronze-dark">SALES GALLERY DETAILS</span>
-            <h3 class="font-serif text-3xl font-light text-graphite-950">The Solaire Pavilion</h3>
+        <!-- Right 5 Cols: Pavilion Details, Video Stream & Access Matrix -->
+        <div class="lg:col-span-5 space-y-6">
+          
+          <!-- Pavilion Location Card -->
+          <div class="p-8 rounded-3xl bg-[#141312] border border-white/15 shadow-2xl space-y-6">
+            <div class="flex items-center justify-between border-b border-white/10 pb-4">
+              <div>
+                <span class="text-[10px] uppercase font-mono tracking-widest text-bronze">FLAGSHIP PAVILION</span>
+                <h3 class="font-serif text-2xl font-light text-sand-50 mt-0.5">The Solaire Pavilion</h3>
+              </div>
+              <span class="text-[9px] font-mono px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 font-bold uppercase">Open Daily</span>
+            </div>
 
-            <div class="space-y-4 text-xs text-graphite-700 font-light">
+            <div class="space-y-4 text-xs text-sand-300 font-light">
               <div class="flex items-start space-x-3">
-                <i data-lucide="map-pin" class="w-4 h-4 text-bronze-dark shrink-0 mt-0.5"></i>
+                <i data-lucide="map-pin" class="w-4 h-4 text-bronze shrink-0 mt-0.5"></i>
                 <div>
-                  <p class="font-medium text-graphite-900">Jumeirah Bay Island Pavilion</p>
-                  <p>Waterfront Promenade Suite #01, Dubai, UAE</p>
-                  <p class="font-mono text-[11px] text-bronze-dark mt-1">GPS: 25°12'09.4"N 55°14'26.8"E</p>
+                  <p class="font-medium text-sand-100">Jumeirah Bay Island Pavilion</p>
+                  <p>Waterfront Promenade Suite #01, Jumeirah Bay, Dubai, UAE</p>
+                  <p class="font-mono text-[11px] text-bronze mt-1">GPS: 25°12'09.4"N 55°14'26.8"E</p>
                 </div>
               </div>
+              
               <div class="flex items-center space-x-3">
-                <i data-lucide="phone" class="w-4 h-4 text-bronze-dark shrink-0"></i>
-                <p class="font-mono text-graphite-900 font-medium">+971 4 800 SOLAIRE (76524)</p>
+                <i data-lucide="phone" class="w-4 h-4 text-bronze shrink-0"></i>
+                <p class="font-mono text-sand-100 font-medium">+971 4 800 SOLAIRE (76524)</p>
               </div>
+
               <div class="flex items-center space-x-3">
-                <i data-lucide="mail" class="w-4 h-4 text-bronze-dark shrink-0"></i>
-                <p class="font-mono text-graphite-900 font-medium">concierge@thesolaire-dubai.ae</p>
+                <i data-lucide="mail" class="w-4 h-4 text-bronze shrink-0"></i>
+                <p class="font-mono text-sand-100 font-medium">concierge@thesolaire-dubai.ae</p>
               </div>
             </div>
 
-            <div class="pt-6 border-t border-sand-200">
-              <p class="text-[10px] uppercase font-mono text-graphite-500 tracking-wider">Private Visiting Hours</p>
-              <p class="text-xs text-graphite-800 mt-1">Monday – Sunday: 09:00 to 21:00 (Prior invitation only)</p>
+            <div class="pt-4 border-t border-white/10 text-xs">
+              <p class="text-[10px] uppercase font-mono text-sand-400 tracking-wider">Visiting Hours &bull; Prior RSVP Only</p>
+              <p class="text-sand-200 mt-1">Monday – Sunday: 09:00 to 21:00 GST</p>
+              <p class="text-[11px] text-sand-400 mt-0.5">Private helicopter landing &amp; yacht mooring coordination available 24/7.</p>
+            </div>
+
+            <!-- Social Media Channels (Links to 404) -->
+            <div class="pt-4 border-t border-white/10">
+              <span class="text-[10px] uppercase font-mono text-bronze tracking-wider block mb-2.5">Official Broadcast Channels</span>
+              <div class="flex items-center space-x-2">
+                <a href="404.html" class="w-8 h-8 rounded-full border border-white/20 bg-white/5 hover:border-bronze hover:bg-bronze/10 text-sand-200 hover:text-bronze flex items-center justify-center transition-all shadow-sm group" title="Instagram">
+                  <svg class="w-3.5 h-3.5 fill-none stroke-current" viewBox="0 0 24 24" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                  </svg>
+                </a>
+                <a href="404.html" class="w-8 h-8 rounded-full border border-white/20 bg-white/5 hover:border-bronze hover:bg-bronze/10 text-sand-200 hover:text-bronze flex items-center justify-center transition-all shadow-sm group" title="LinkedIn">
+                  <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9h2.79v8.37H6.46v-8.37M7.86 6.88a1.63 1.63 0 1 0 0 3.25 1.63 1.63 0 0 0 0-3.25z"/>
+                  </svg>
+                </a>
+                <a href="404.html" class="w-8 h-8 rounded-full border border-white/20 bg-white/5 hover:border-bronze hover:bg-bronze/10 text-sand-200 hover:text-bronze flex items-center justify-center transition-all shadow-sm group" title="YouTube">
+                  <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                  </svg>
+                </a>
+                <a href="404.html" class="w-8 h-8 rounded-full border border-white/20 bg-white/5 hover:border-bronze hover:bg-bronze/10 text-sand-200 hover:text-bronze flex items-center justify-center transition-all shadow-sm group" title="Twitter / X">
+                  <svg class="w-3 h-3 fill-current" viewBox="0 0 24 24">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                  </svg>
+                </a>
+                <a href="404.html" class="w-8 h-8 rounded-full border border-white/20 bg-white/5 hover:border-bronze hover:bg-bronze/10 text-sand-200 hover:text-bronze flex items-center justify-center transition-all shadow-sm group" title="Facebook">
+                  <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
 
-          <div class="relative h-64 rounded-3xl overflow-hidden border border-sand-300 shadow-sm bg-sand-200 flex items-center justify-center">
-            <div class="absolute inset-0 bg-cover bg-center filter saturate-50 contrast-125 opacity-70" style="background-image: url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=80');"></div>
-            <div class="relative z-10 bg-graphite-950/85 backdrop-blur-md px-6 py-3 rounded-full border border-bronze/40 text-sand-50 text-xs font-mono flex items-center space-x-3 shadow-2xl">
-              <i data-lucide="compass" class="w-4 h-4 text-bronze animate-spin" style="animation-duration: 10s;"></i>
-              <span>Jumeirah Bay Archipelago Slipway #14</span>
+          <!-- Video Stream Box of Coastal Slipway -->
+          <div class="relative h-64 rounded-3xl overflow-hidden border border-bronze/40 shadow-2xl flex items-center justify-center group">
+            <video id="contact-slipway-video" autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover filter brightness-[0.88] contrast-[1.1] saturate-[1.1]" poster="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1200&q=80">
+              <source src="assets/videos/amenity-pool-loop.mp4" type="video/mp4">
+              <source src="assets/videos/pool-drone.webm" type="video/webm">
+            </video>
+            <div class="absolute inset-0 bg-gradient-to-t from-graphite-950/70 via-transparent to-graphite-950/30"></div>
+            
+            <div class="relative z-10 text-center px-4">
+              <div class="inline-flex items-center space-x-2 bg-black/75 backdrop-blur-md px-4 py-2 rounded-full border border-bronze/40 text-sand-50 text-xs font-mono shadow-2xl mb-2">
+                <i data-lucide="compass" class="w-4 h-4 text-cyan-300 animate-spin" style="animation-duration: 15s;"></i>
+                <span>Jumeirah Bay Archipelago Slipway #14</span>
+              </div>
+              <p class="text-[10px] font-mono text-sand-300">Live Slipway &bull; Private Berth #14</p>
+            </div>
+          </div>
+
+          <!-- Multi-Modal Access & Transport Matrix -->
+          <div class="p-6 rounded-3xl bg-[#141312] border border-white/15 space-y-4">
+            <span class="text-[10px] uppercase font-mono tracking-widest text-bronze">ARRIVAL MODALITIES</span>
+            <div class="grid grid-cols-3 gap-3 text-center text-xs">
+              <div class="p-3 rounded-xl bg-white/[0.03] border border-white/10">
+                <i data-lucide="car" class="w-4 h-4 text-bronze mx-auto mb-1"></i>
+                <span class="text-[10px] font-mono text-sand-400 block uppercase">ROAD</span>
+                <span class="text-sand-100 font-bold text-[11px]">12 Mins</span>
+                <span class="text-[9px] text-sand-400 block">Downtown / DIFC</span>
+              </div>
+              <div class="p-3 rounded-xl bg-white/[0.03] border border-white/10">
+                <i data-lucide="anchor" class="w-4 h-4 text-cyan-300 mx-auto mb-1"></i>
+                <span class="text-[10px] font-mono text-cyan-400 block uppercase">YACHT</span>
+                <span class="text-sand-100 font-bold text-[11px]">Berth 14</span>
+                <span class="text-[9px] text-sand-400 block">Up to 45m LOA</span>
+              </div>
+              <div class="p-3 rounded-xl bg-white/[0.03] border border-white/10">
+                <i data-lucide="plane" class="w-4 h-4 text-amber-300 mx-auto mb-1"></i>
+                <span class="text-[10px] font-mono text-amber-400 block uppercase">AIR</span>
+                <span class="text-sand-100 font-bold text-[11px]">OMJB-01</span>
+                <span class="text-[9px] text-sand-400 block">Helipad Transfer</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: GLOBAL CLIENT ADVISORY DESKS (WORLDWIDE REPRESENTATION) -->
+    <section class="py-20 bg-graphite-900/60 border-t border-white/10">
+      <div class="max-w-7xl mx-auto px-6 md:px-12">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+          <div>
+            <span class="text-[10px] uppercase font-mono tracking-[0.3em] text-bronze">GLOBAL REPRESENTATION</span>
+            <h2 class="font-serif text-3xl sm:text-5xl font-light text-sand-50 mt-1">Worldwide Private Client Desks</h2>
+            <p class="text-sand-300 text-sm mt-2 max-w-xl font-light">
+              For confidential acquisitions, family office consultations, and private viewings outside the UAE, connect directly with our international senior directors.
+            </p>
+          </div>
+          <div class="mt-4 md:mt-0 font-mono text-xs text-sand-400">
+            5 GLOBAL HUBS • CONFIDENTIAL ADVISORY
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-5">
+          <!-- Desk 1: Dubai -->
+          <div class="p-5 rounded-2xl bg-white/[0.02] border border-bronze/40 hover:border-bronze hover:bg-white/[0.05] transition-all flex flex-col justify-between">
+            <div>
+              <span class="text-[10px] font-mono text-bronze uppercase font-bold">DUBAI HQ</span>
+              <h3 class="font-serif text-lg text-sand-50 mt-1">Jumeirah Bay Island</h3>
+              <p class="text-[11px] text-sand-400 mt-1 font-light">Waterfront Suite 01</p>
+            </div>
+            <div class="mt-6 pt-3 border-t border-white/10 text-xs font-mono space-y-1">
+              <a href="tel:+971480076524" class="text-sand-200 hover:text-bronze block">+971 4 800 76524</a>
+              <span class="text-[10px] text-emerald-300 block">GST (UTC+4)</span>
+            </div>
+          </div>
+
+          <!-- Desk 2: London -->
+          <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-bronze hover:bg-white/[0.05] transition-all flex flex-col justify-between">
+            <div>
+              <span class="text-[10px] font-mono text-sand-400 uppercase font-bold">LONDON MAYFAIR</span>
+              <h3 class="font-serif text-lg text-sand-50 mt-1">Berkeley Square, W1</h3>
+              <p class="text-[11px] text-sand-400 mt-1 font-light">Private Family Office Suite</p>
+            </div>
+            <div class="mt-6 pt-3 border-t border-white/10 text-xs font-mono space-y-1">
+              <a href="tel:+442079460912" class="text-sand-200 hover:text-bronze block">+44 20 7946 0912</a>
+              <span class="text-[10px] text-sand-400 block">GMT (UTC+0)</span>
+            </div>
+          </div>
+
+          <!-- Desk 3: Geneva -->
+          <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-bronze hover:bg-white/[0.05] transition-all flex flex-col justify-between">
+            <div>
+              <span class="text-[10px] font-mono text-sand-400 uppercase font-bold">SWITZERLAND</span>
+              <h3 class="font-serif text-lg text-sand-50 mt-1">Rue du Rhône, Geneva</h3>
+              <p class="text-[11px] text-sand-400 mt-1 font-light">Banque Privée Partner Suite</p>
+            </div>
+            <div class="mt-6 pt-3 border-t border-white/10 text-xs font-mono space-y-1">
+              <a href="tel:+41228193400" class="text-sand-200 hover:text-bronze block">+41 22 819 3400</a>
+              <span class="text-[10px] text-sand-400 block">CET (UTC+1)</span>
+            </div>
+          </div>
+
+          <!-- Desk 4: Singapore -->
+          <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-bronze hover:bg-white/[0.05] transition-all flex flex-col justify-between">
+            <div>
+              <span class="text-[10px] font-mono text-sand-400 uppercase font-bold">SINGAPORE</span>
+              <h3 class="font-serif text-lg text-sand-50 mt-1">Marina Bay Financial</h3>
+              <p class="text-[11px] text-sand-400 mt-1 font-light">Tower 2, Level 42</p>
+            </div>
+            <div class="mt-6 pt-3 border-t border-white/10 text-xs font-mono space-y-1">
+              <a href="tel:+6567128800" class="text-sand-200 hover:text-bronze block">+65 6712 8800</a>
+              <span class="text-[10px] text-sand-400 block">SGT (UTC+8)</span>
+            </div>
+          </div>
+
+          <!-- Desk 5: Riyadh -->
+          <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-bronze hover:bg-white/[0.05] transition-all flex flex-col justify-between">
+            <div>
+              <span class="text-[10px] font-mono text-sand-400 uppercase font-bold">RIYADH</span>
+              <h3 class="font-serif text-lg text-sand-50 mt-1">King Fahd Road</h3>
+              <p class="text-[11px] text-sand-400 mt-1 font-light">Al Olaya Financial District</p>
+            </div>
+            <div class="mt-6 pt-3 border-t border-white/10 text-xs font-mono space-y-1">
+              <a href="tel:+966114829100" class="text-sand-200 hover:text-bronze block">+966 11 482 9100</a>
+              <span class="text-[10px] text-sand-400 block">AST (UTC+3)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: SENIOR CLIENT DIRECTORS ROSTER -->
+    <section class="py-20 max-w-7xl mx-auto px-6 md:px-12">
+      <div class="max-w-2xl mb-12">
+        <span class="text-[10px] uppercase font-mono tracking-[0.3em] text-bronze">DISCREET LEADERSHIP</span>
+        <h2 class="font-serif text-3xl sm:text-5xl font-light text-sand-50 mt-1">Private Client Directors</h2>
+        <p class="text-sand-300 text-sm mt-3 font-light leading-relaxed">
+          Each prospective resident is assigned a Senior Client Director dedicated to custom spatial layouts, private wealth escrow coordination, and residency concierge services.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Director 1 -->
+        <div class="p-6 rounded-2xl bg-[#141312] border border-white/10 hover:border-bronze/40 transition-all flex flex-col justify-between group">
+          <div class="flex items-center space-x-4 mb-4">
+            <div class="w-16 h-16 rounded-full overflow-hidden border border-bronze/40 shrink-0">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80" alt="Tariq Al-Mansoor" class="w-full h-full object-cover">
+            </div>
+            <div>
+              <h3 class="font-serif text-xl text-sand-50 group-hover:text-bronze-light">Tariq Al-Mansoor</h3>
+              <p class="text-[11px] font-mono text-bronze">Managing Director &bull; Sovereign Accounts</p>
+              <p class="text-[10px] text-sand-400 mt-0.5">Middle East &amp; Gulf Family Offices</p>
+            </div>
+          </div>
+          <p class="text-xs text-sand-300 font-light leading-relaxed">
+            Specializing in multi-unit acquisitions, duplex customization, and sovereign investment structures under UAE law.
+          </p>
+          <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono">
+            <span class="text-sand-400">Direct Line:</span>
+            <a href="tel:+971501234567" class="text-bronze hover:underline font-bold">+971 50 123 4567</a>
+          </div>
+        </div>
+
+        <!-- Director 2 -->
+        <div class="p-6 rounded-2xl bg-[#141312] border border-white/10 hover:border-bronze/40 transition-all flex flex-col justify-between group">
+          <div class="flex items-center space-x-4 mb-4">
+            <div class="w-16 h-16 rounded-full overflow-hidden border border-bronze/40 shrink-0">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80" alt="Lady Camilla Vance" class="w-full h-full object-cover">
+            </div>
+            <div>
+              <h3 class="font-serif text-xl text-sand-50 group-hover:text-bronze-light">Lady Camilla Vance</h3>
+              <p class="text-[11px] font-mono text-bronze">Head of European Acquisitions</p>
+              <p class="text-[10px] text-sand-400 mt-0.5">London, Monaco &amp; Swiss Private Banking</p>
+            </div>
+          </div>
+          <p class="text-xs text-sand-300 font-light leading-relaxed">
+            15 years managing UHNW cross-border real estate portfolios between London, Geneva, and the UAE with zero-tax structuring.
+          </p>
+          <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono">
+            <span class="text-sand-400">Direct Line:</span>
+            <a href="tel:+442079460912" class="text-bronze hover:underline font-bold">+44 20 7946 0912</a>
+          </div>
+        </div>
+
+        <!-- Director 3 -->
+        <div class="p-6 rounded-2xl bg-[#141312] border border-white/10 hover:border-bronze/40 transition-all flex flex-col justify-between group">
+          <div class="flex items-center space-x-4 mb-4">
+            <div class="w-16 h-16 rounded-full overflow-hidden border border-bronze/40 shrink-0">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80" alt="Jean-Luc Mercier" class="w-full h-full object-cover">
+            </div>
+            <div>
+              <h3 class="font-serif text-xl text-sand-50 group-hover:text-bronze-light">Jean-Luc Mercier</h3>
+              <p class="text-[11px] font-mono text-bronze">Director &bull; Bespoke Architectural Craft</p>
+              <p class="text-[10px] text-sand-400 mt-0.5">Foster &amp; Partners Liaison</p>
+            </div>
+          </div>
+          <p class="text-xs text-sand-300 font-light leading-relaxed">
+            Architectural curator overseeing interior bespoke joinery, smart acoustic integrations, and private plunge pool commissions.
+          </p>
+          <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono">
+            <span class="text-sand-400">Direct Line:</span>
+            <a href="tel:+971480076524" class="text-bronze hover:underline font-bold">+971 4 800 76524</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: FREQUENTLY ASKED SOVEREIGN & LEGAL QUESTIONS -->
+    <section class="py-20 bg-graphite-900/60 border-t border-white/10">
+      <div class="max-w-4xl mx-auto px-6 md:px-12">
+        <div class="text-center mb-12">
+          <span class="text-[10px] uppercase font-mono tracking-[0.3em] text-bronze">LEGAL &amp; ACQUISITION ADVISORY</span>
+          <h2 class="font-serif text-3xl sm:text-5xl font-light text-sand-50 mt-1">Frequently Asked Questions</h2>
+          <p class="text-sand-300 text-sm mt-3 font-light">Key answers regarding freehold status, Golden Visas, currencies, and completion guarantees.</p>
+        </div>
+
+        <div class="space-y-4" id="faq-accordion">
+          <!-- FAQ 1 -->
+          <div class="faq-item rounded-2xl bg-white/[0.02] border border-white/10 overflow-hidden transition-all">
+            <button onclick="toggleFaq(this)" class="w-full p-5 text-left flex items-center justify-between font-serif text-lg text-sand-100 hover:text-bronze-light transition-colors">
+              <span>Can foreign non-UAE residents acquire 100% freehold property at The Solaire?</span>
+              <i data-lucide="chevron-down" class="w-5 h-5 text-bronze transform transition-transform"></i>
+            </button>
+            <div class="faq-content hidden px-5 pb-5 text-xs text-sand-300 font-light leading-relaxed border-t border-white/5 pt-3">
+              Yes. The Solaire is situated in a designated Freehold Zone on Jumeirah Bay Island, permitting 100% foreign freehold ownership with an unencumbered title deed issued directly by the Dubai Land Department (DLD). Buyers can register under individual names, offshore SPVs, family foundations, or international trusts.
+            </div>
+          </div>
+
+          <!-- FAQ 2 -->
+          <div class="faq-item rounded-2xl bg-white/[0.02] border border-white/10 overflow-hidden transition-all">
+            <button onclick="toggleFaq(this)" class="w-full p-5 text-left flex items-center justify-between font-serif text-lg text-sand-100 hover:text-bronze-light transition-colors">
+              <span>What is the process and timeline for obtaining the 10-Year UAE Golden Visa?</span>
+              <i data-lucide="chevron-down" class="w-5 h-5 text-bronze transform transition-transform"></i>
+            </button>
+            <div class="faq-content hidden px-5 pb-5 text-xs text-sand-300 font-light leading-relaxed border-t border-white/5 pt-3">
+              Any residence purchased at The Solaire (starting from AED 11.8M) exceeds the AED 2M Golden Visa threshold. Our concierge legal desk processes the VIP fast-track application through the Federal Authority for Identity, Citizenship, Customs and Port Security (ICP) within 5 to 7 business days, covering the investor, spouse, dependent children, and domestic staff.
+            </div>
+          </div>
+
+          <!-- FAQ 3 -->
+          <div class="faq-item rounded-2xl bg-white/[0.02] border border-white/10 overflow-hidden transition-all">
+            <button onclick="toggleFaq(this)" class="w-full p-5 text-left flex items-center justify-between font-serif text-lg text-sand-100 hover:text-bronze-light transition-colors">
+              <span>What currencies and payment structures are accepted for unit settlement?</span>
+              <i data-lucide="chevron-down" class="w-5 h-5 text-bronze transform transition-transform"></i>
+            </button>
+            <div class="faq-content hidden px-5 pb-5 text-xs text-sand-300 font-light leading-relaxed border-t border-white/5 pt-3">
+              Payments are deposited directly into the officially regulated DLD Escrow Trust Account. We accept settlements in UAE Dirhams (AED), US Dollars (USD), Euros (EUR), British Pounds (GBP), and Swiss Francs (CHF). Through fully licensed institutional custody partners, compliant digital asset settlements (Bitcoin, Ethereum, USDT) are also accommodated.
+            </div>
+          </div>
+
+          <!-- FAQ 4 -->
+          <div class="faq-item rounded-2xl bg-white/[0.02] border border-white/10 overflow-hidden transition-all">
+            <button onclick="toggleFaq(this)" class="w-full p-5 text-left flex items-center justify-between font-serif text-lg text-sand-100 hover:text-bronze-light transition-colors">
+              <span>How are investor funds protected during the construction phase?</span>
+              <i data-lucide="chevron-down" class="w-5 h-5 text-bronze transform transition-transform"></i>
+            </button>
+            <div class="faq-content hidden px-5 pb-5 text-xs text-sand-300 font-light leading-relaxed border-t border-white/5 pt-3">
+              In strict accordance with Law No. 8 of 2007, 100% of all payments are safeguarded within a dedicated Dubai Land Department Escrow Account (Project #2026-92). Funds are released to the general contractor solely against verified independent third-party engineering milestones certified by RERA, guaranteeing delivery to Q4 2027.
             </div>
           </div>
         </div>
@@ -223,24 +725,199 @@
     </section>
   </main>
 
-  <!-- FOOTER -->
+  <!-- LUXURY FOOTER -->
   <footer class="relative bg-graphite-950 text-sand-50 pt-20 pb-12 border-t border-white/10 text-center">
-    <p class="font-serif text-2xl font-light tracking-widest text-sand-50">THE SOLAIRE RESIDENCES</p>
-    <p class="text-xs uppercase font-mono tracking-widest text-bronze mt-1">Jumeirah Bay Island, Dubai</p>
-    <p class="text-[11px] text-sand-500 mt-8">© 2027 The Solaire Residences LLC.</p>
+    <div class="max-w-7xl mx-auto px-6 md:px-12 flex flex-col items-center">
+      <img src="assets/images/logo-icon.png" alt="Stackly Emblem" class="w-10 h-10 object-contain mb-3 drop-shadow-[0_2px_10px_rgba(197,168,128,0.4)]">
+      <p class="font-serif text-2xl font-light tracking-[0.25em] text-sand-50">STACKLY RESIDENCES</p>
+      <p class="text-xs uppercase font-mono tracking-widest text-bronze mt-1">THE SOLAIRE &bull; Jumeirah Bay Island, Dubai</p>
+      <div class="mt-8 flex justify-center space-x-8 text-xs font-mono uppercase tracking-widest text-sand-400">
+        <a href="index.html" class="hover:text-bronze transition-colors">Overview</a>
+        <a href="residences.html" class="hover:text-bronze transition-colors">Residences</a>
+        <a href="interiors.html" class="hover:text-bronze transition-colors">Interiors</a>
+        <a href="floor-plans.html" class="hover:text-bronze transition-colors">Floor Plans</a>
+        <a href="amenities.html" class="hover:text-bronze transition-colors">Amenities</a>
+        <a href="architecture.html" class="hover:text-bronze transition-colors">Architecture</a>
+        <a href="contact.html" class="text-bronze">Contact</a>
+      </div>
+
+      <!-- Social Media Channels (Links to 404) -->
+      <div class="mt-8 flex items-center justify-center space-x-3">
+        <!-- Instagram -->
+        <a href="404.html" class="w-10 h-10 rounded-full border border-white/20 bg-white/5 hover:border-bronze hover:bg-bronze/10 text-sand-200 hover:text-bronze flex items-center justify-center transition-all duration-300 shadow-md group" title="Instagram (@thesolaire.dubai)" data-cursor="pointer">
+          <svg class="w-4 h-4 fill-none stroke-current transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+        </a>
+        <!-- LinkedIn -->
+        <a href="404.html" class="w-10 h-10 rounded-full border border-white/20 bg-white/5 hover:border-bronze hover:bg-bronze/10 text-sand-200 hover:text-bronze flex items-center justify-center transition-all duration-300 shadow-md group" title="LinkedIn (The Solaire Residences)" data-cursor="pointer">
+          <svg class="w-4 h-4 fill-current transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24">
+            <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9h2.79v8.37H6.46v-8.37M7.86 6.88a1.63 1.63 0 1 0 0 3.25 1.63 1.63 0 0 0 0-3.25z"/>
+          </svg>
+        </a>
+        <!-- YouTube -->
+        <a href="404.html" class="w-10 h-10 rounded-full border border-white/20 bg-white/5 hover:border-bronze hover:bg-bronze/10 text-sand-200 hover:text-bronze flex items-center justify-center transition-all duration-300 shadow-md group" title="YouTube (The Solaire Monograph Cinema)" data-cursor="pointer">
+          <svg class="w-4 h-4 fill-current transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+        </a>
+        <!-- Twitter / X -->
+        <a href="404.html" class="w-10 h-10 rounded-full border border-white/20 bg-white/5 hover:border-bronze hover:bg-bronze/10 text-sand-200 hover:text-bronze flex items-center justify-center transition-all duration-300 shadow-md group" title="Twitter / X (@TheSolaireDubai)" data-cursor="pointer">
+          <svg class="w-3.5 h-3.5 fill-current transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </a>
+        <!-- Facebook -->
+        <a href="404.html" class="w-10 h-10 rounded-full border border-white/20 bg-white/5 hover:border-bronze hover:bg-bronze/10 text-sand-200 hover:text-bronze flex items-center justify-center transition-all duration-300 shadow-md group" title="Facebook (The Solaire Jumeirah Bay)" data-cursor="pointer">
+          <svg class="w-4 h-4 fill-current transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+        </a>
+      </div>
+
+      <p class="text-[11px] text-sand-500 mt-8">&copy; 2027 The Solaire Residences LLC. RERA Registered Project No. 2026-92.</p>
+    </div>
   </footer>
 
   <script src="js/main.js"></script>
+  <script src="js/auth.js"></script>
   <script>
+    let activeFormat = 'pavilion';
+
+    function selectConsultationFormat(format, btn) {
+      activeFormat = format;
+      document.querySelectorAll('.format-card').forEach(b => {
+        b.classList.remove('border-bronze', 'bg-gradient-to-r', 'from-bronze/20', 'to-white/5', 'shadow-md');
+        b.classList.add('border-white/10', 'bg-white/[0.03]');
+      });
+      if (btn) {
+        btn.classList.add('border-bronze', 'bg-gradient-to-r', 'from-bronze/20', 'to-white/5', 'shadow-md');
+        btn.classList.remove('border-white/10', 'bg-white/[0.03]');
+      }
+      if (typeof window.playLuxuryChime === 'function') window.playLuxuryChime(659.25);
+    }
+
+    // Smooth Scroll Helper
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Toggle FAQ Accordion
+    function toggleFaq(btn) {
+      const item = btn.parentElement;
+      const content = item.querySelector('.faq-content');
+      const icon = btn.querySelector('svg');
+
+      const isHidden = content.classList.contains('hidden');
+      if (isHidden) {
+        content.classList.remove('hidden');
+        if (icon) icon.classList.add('rotate-180');
+      } else {
+        content.classList.add('hidden');
+        if (icon) icon.classList.remove('rotate-180');
+      }
+      if (typeof window.playLuxuryChime === 'function') window.playLuxuryChime(587.33);
+    }
+
+    // Form Submission & Live Confirmation Badge Generation
     const form = document.getElementById('contact-page-form');
     if (form) {
       form.addEventListener('submit', (e) => {
         e.preventDefault();
+        const refCode = 'SLR-' + Math.floor(100000 + Math.random() * 900000);
+        document.getElementById('display-ref-code').textContent = refCode;
+
+        const chauffeurChecked = document.getElementById('chauffeur-toggle').checked;
+        const chauffeurStatus = document.getElementById('display-chauffeur-status');
+        if (chauffeurStatus) {
+          chauffeurStatus.textContent = chauffeurChecked ? 'Rolls-Royce Confirmed' : 'Self Arrival';
+        }
+
         form.classList.add('hidden');
         document.getElementById('contact-success-msg').classList.remove('hidden');
+        if (typeof window.playLuxuryChime === 'function') window.playLuxuryChime(880.0);
       });
     }
+
+    // Direct WhatsApp Concierge Dispatch
+    function openWhatsAppInquiry() {
+      const name = document.getElementById('contact-name')?.value || 'Valued Principal';
+      const tier = document.getElementById('contact-tier')?.value || 'The Sky Penthouse Crown';
+      const date = document.getElementById('contact-date')?.value || 'Upcoming';
+      const text = encodeURIComponent(`Hello The Solaire Concierge, my name is ${name}. I wish to arrange a private consultation for ${tier} regarding our viewing on ${date}.`);
+      window.open(`https://wa.me/971501234567?text=${text}`, '_blank');
+    }
+
+    // Calendar Invite (.ics file simulator)
+    function downloadCalendarInvite() {
+      const icsData = `BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//The Solaire Residences Dubai//VIP Viewing//EN
+BEGIN:VEVENT
+SUMMARY:Private Architectural Presentation — The Solaire Dubai
+DESCRIPTION:Confidential viewing with Senior Client Director at Jumeirah Bay Pavilion.
+LOCATION:The Solaire Pavilion, Jumeirah Bay Island, Dubai, UAE
+DTSTART:20270220T133000Z
+DTEND:20270220T153000Z
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR`;
+
+      const blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8' });
+      const link = document.createElement('a');
+      link.href = window.URL.createObjectURL(blob);
+      link.setAttribute('download', 'The-Solaire-VIP-Viewing.ics');
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    // Toggle Background Video Playback
+    function toggleContactHeroVideo() {
+      const vid = document.getElementById('contact-hero-video');
+      const btn = document.getElementById('video-toggle-btn');
+      if (!vid) return;
+
+      if (vid.paused) {
+        vid.play().catch(() => {});
+        if (btn) btn.innerHTML = `<i data-lucide="pause" class="w-3 h-3 text-bronze"></i><span>MOTION ON</span>`;
+      } else {
+        vid.pause();
+        if (btn) btn.innerHTML = `<i data-lucide="play" class="w-3 h-3 text-bronze"></i><span>PAUSED</span>`;
+      }
+      if (window.lucide) window.lucide.createIcons();
+      if (typeof window.playLuxuryChime === 'function') window.playLuxuryChime(659.25);
+    }
+
+    // Autoplay Enforcer for Contact Page Videos
+    document.addEventListener('DOMContentLoaded', () => {
+      const vids = [
+        document.getElementById('contact-hero-video'),
+        document.getElementById('contact-slipway-video')
+      ];
+      vids.forEach(v => {
+        if (!v) return;
+        v.muted = true;
+        v.playsInline = true;
+        const playPromise = v.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {
+            const unlockPlay = () => {
+              v.play().catch(() => {});
+              window.removeEventListener('click', unlockPlay);
+              window.removeEventListener('touchstart', unlockPlay);
+              window.removeEventListener('scroll', unlockPlay);
+            };
+            window.addEventListener('click', unlockPlay, { once: true });
+            window.addEventListener('touchstart', unlockPlay, { once: true });
+            window.addEventListener('scroll', unlockPlay, { once: true });
+          });
+        }
+      });
+    });
   </script>
 </body>
 </html>
-

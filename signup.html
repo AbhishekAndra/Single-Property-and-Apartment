@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en" class="antialiased selection:bg-amber-700 selection:text-white">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resident Account Application &amp; Registration | STACKLY &bull; THE SOLAIRE DUBAI</title>
+  <!-- Luxury Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo-icon.svg">
+  <link rel="alternate icon" type="image/png" href="assets/images/logo-icon.png">
+  <link rel="apple-touch-icon" href="assets/images/logo-icon.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            sand: { 50: '#FDFCFA', 100: '#F8F6F0', 200: '#F3EFEA', 300: '#E8E2D8', 400: '#D5CDC0', 500: '#B8ADA0' },
+            bronze: { light: '#DFCFB7', DEFAULT: '#C5A880', dark: '#9A784E', deep: '#695133' },
+            graphite: { 50: '#F5F5F4', 100: '#E7E6E4', 300: '#B0AEA9', 500: '#73706A', 700: '#3D3B37', 800: '#242321', 900: '#141413', 950: '#0A0A09' }
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Playfair Display', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+  <!-- GSAP & Lenis -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .signup-bg-gradient {
+      background: radial-gradient(circle at 50% 15%, rgba(197, 168, 128, 0.16), transparent 60%),
+                  radial-gradient(circle at 20% 80%, rgba(154, 120, 78, 0.1), transparent 50%),
+                  #0A0A09;
+    }
+  </style>
+</head>
+<body class="signup-bg-gradient text-sand-50 font-sans min-h-screen flex flex-col justify-between overflow-x-hidden selection:bg-bronze selection:text-black">
+
+  <!-- LUXURY EDITORIAL PRELOADER -->
+  <div id="luxury-preloader">
+    <div class="preloader-brand">STACKLY</div>
+    <div class="preloader-status">THE SOLAIRE &bull; RESIDENT ONBOARDING &bull; DIGITAL KEYCARD ISSUANCE</div>
+    <div class="preloader-counter"><span id="preloader-count">0</span>%</div>
+    <div class="preloader-bar-bg">
+      <div id="preloader-progress" class="preloader-bar-fill"></div>
+    </div>
+  </div>
+
+  <!-- MINIMAL LUXURY HEADER -->
+  <header class="w-full z-40 py-6 px-6 md:px-12 flex items-center justify-between border-b border-white/10 backdrop-blur-md">
+    <a href="index.html" class="flex items-center space-x-3.5 tracking-widest text-left group">
+      <img src="assets/images/logo-icon.png" alt="Stackly Emblem" class="w-9 h-9 object-contain drop-shadow-[0_2px_12px_rgba(197,168,128,0.4)] group-hover:scale-105 transition-transform duration-300">
+      <div class="flex flex-col">
+        <span class="font-serif text-xl md:text-2xl font-light tracking-[0.25em] text-sand-50 group-hover:text-bronze-light transition-colors leading-tight">STACKLY</span>
+        <span class="text-[9px] uppercase tracking-[0.35em] text-bronze font-medium opacity-90 -mt-0.5">THE SOLAIRE &bull; DUBAI</span>
+      </div>
+    </a>
+
+    <div class="flex items-center space-x-4">
+      <a href="login.html" class="text-xs uppercase font-mono tracking-widest text-sand-400 hover:text-white transition-colors flex items-center space-x-1.5">
+        <span>Already hold a key?</span>
+        <span class="text-bronze font-semibold">Sign In &rarr;</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- MAIN REGISTRATION CONTAINER -->
+  <main class="flex-1 flex items-center justify-center p-6 md:p-12 relative z-10 my-4">
+    <div class="w-full max-w-2xl">
+
+      <!-- GLASS REGISTRATION CARD -->
+      <div class="relative bg-[#141312]/85 backdrop-blur-2xl rounded-3xl border border-bronze/30 shadow-[0_25px_60px_rgba(0,0,0,0.85)] p-8 sm:p-12 overflow-hidden">
+        
+        <!-- Ambient Radial Glows -->
+        <div class="absolute -top-32 -left-32 w-72 h-72 rounded-full bg-bronze/10 filter blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-32 -right-32 w-72 h-72 rounded-full bg-bronze/10 filter blur-3xl pointer-events-none"></div>
+
+        <!-- Header -->
+        <div class="text-center mb-8">
+          <img src="assets/images/logo-icon.png" alt="The Solaire Emblem" class="w-12 h-12 object-contain mx-auto mb-4 drop-shadow-[0_4px_16px_rgba(197,168,128,0.4)]">
+          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-bronze/10 border border-bronze/30 text-bronze-light text-[10px] font-mono uppercase tracking-[0.25em] mb-3">
+            <i data-lucide="key" class="w-3.5 h-3.5 text-bronze"></i>
+            <span>EXCLUSIVE RESIDENT REGISTRATION</span>
+          </div>
+          <h1 class="font-serif text-3xl sm:text-5xl font-light text-sand-50 tracking-tight">
+            Apply for Resident Key
+          </h1>
+          <p class="text-xs sm:text-sm text-sand-400 font-light mt-2 max-w-lg mx-auto leading-relaxed">
+            Create your confidential credentials. Any email and password can be used to test and explore the full resident suite dashboard immediately.
+          </p>
+        </div>
+
+        <!-- SIGN UP FORM -->
+        <form id="signup-form" class="space-y-5">
+          <!-- Full Legal Name -->
+          <div>
+            <label class="block text-[10px] uppercase font-mono tracking-wider text-sand-300 mb-1.5">
+              Full Legal Name / Family Office Representative
+            </label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-sand-400">
+                <i data-lucide="user" class="w-4 h-4"></i>
+              </div>
+              <input type="text" id="signup-name" required placeholder="e.g. Lord Alexander Sterling or Abhishek Andra" class="w-full pl-10 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sand-100 text-xs placeholder:text-sand-600 focus:outline-none focus:border-bronze focus:bg-white/[0.08] transition-all">
+            </div>
+          </div>
+
+          <!-- Email & Phone Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- Email (Any email accepted) -->
+            <div>
+              <label class="block text-[10px] uppercase font-mono tracking-wider text-sand-300 mb-1.5 flex justify-between">
+                <span>Direct Email Address</span>
+                <span class="text-bronze text-[9px] font-sans">(Any Email)</span>
+              </label>
+              <div class="relative">
+                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-sand-400">
+                  <i data-lucide="mail" class="w-4 h-4"></i>
+                </div>
+                <input type="email" id="signup-email" required placeholder="name@domain.com" class="w-full pl-10 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sand-100 text-xs placeholder:text-sand-600 focus:outline-none focus:border-bronze focus:bg-white/[0.08] transition-all">
+              </div>
+            </div>
+
+            <!-- International Phone -->
+            <div>
+              <label class="block text-[10px] uppercase font-mono tracking-wider text-sand-300 mb-1.5">
+                Contact Telephone
+              </label>
+              <div class="relative">
+                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-sand-400">
+                  <i data-lucide="phone" class="w-4 h-4"></i>
+                </div>
+                <input type="tel" id="signup-phone" placeholder="+971 50 000 0000" class="w-full pl-10 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sand-100 text-xs placeholder:text-sand-600 focus:outline-none focus:border-bronze focus:bg-white/[0.08] transition-all">
+              </div>
+            </div>
+          </div>
+
+          <!-- Residence Tier Selection -->
+          <div>
+            <label class="block text-[10px] uppercase font-mono tracking-wider text-sand-300 mb-1.5">
+              Select Residence Tier of Ownership / Interest
+            </label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-bronze">
+                <i data-lucide="building" class="w-4 h-4"></i>
+              </div>
+              <select id="signup-tier" class="w-full pl-10 pr-4 py-3 rounded-xl bg-[#1d1c1a] border border-white/10 text-sand-100 text-xs focus:outline-none focus:border-bronze transition-all">
+                <option value="The Sky Penthouse Crown">The Sky Penthouse Crown (Level 48 Duplex • 8,650 ft² • AED 52M)</option>
+                <option value="The Celestial Suite">The Celestial Sky Suite (Level 30 • 4,120 ft² • AED 21.5M)</option>
+                <option value="The Grand Haven">The Grand Haven (Level 16 • 2,380 ft² • AED 14.5M)</option>
+                <option value="The Atelier Suite">The Atelier Suite (Level 06 • 1,420 ft² • AED 8.9M)</option>
+                <option value="Portfolio Investor">Private Portfolio / Multi-Unit Acquisition</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Password & Invite Code Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- Password (Any password accepted) -->
+            <div>
+              <label class="block text-[10px] uppercase font-mono tracking-wider text-sand-300 mb-1.5 flex justify-between">
+                <span>Create Passcode</span>
+                <span class="text-bronze text-[9px] font-sans">(Any Password)</span>
+              </label>
+              <div class="relative">
+                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-sand-400">
+                  <i data-lucide="lock" class="w-4 h-4"></i>
+                </div>
+                <input type="password" id="signup-password" required placeholder="Choose any passcode" class="w-full pl-10 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sand-100 text-xs placeholder:text-sand-600 focus:outline-none focus:border-bronze focus:bg-white/[0.08] transition-all">
+              </div>
+              <p class="text-[9px] font-mono text-emerald-400 mt-1 flex items-center space-x-1">
+                <i data-lucide="shield-check" class="w-3 h-3"></i>
+                <span>Noble Grade 256-Bit SHA Encryption</span>
+              </p>
+            </div>
+
+            <!-- VIP Concierge Invite Code -->
+            <div>
+              <label class="block text-[10px] uppercase font-mono tracking-wider text-sand-300 mb-1.5">
+                VIP Invitation Code
+              </label>
+              <div class="relative">
+                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-emerald-400">
+                  <i data-lucide="check-circle-2" class="w-4 h-4"></i>
+                </div>
+                <input type="text" id="signup-invite" value="SOLAIRE-2027-VIP" class="w-full pl-10 pr-4 py-3 rounded-xl bg-white/5 border border-emerald-500/30 text-emerald-300 font-mono text-xs focus:outline-none focus:border-bronze transition-all">
+              </div>
+              <p class="text-[9px] font-mono text-sand-500 mt-1">Invitation code pre-validated</p>
+            </div>
+          </div>
+
+          <!-- Terms Checkbox -->
+          <div class="p-3.5 rounded-xl bg-white/[0.02] border border-white/10 flex items-start space-x-3 text-xs text-sand-400">
+            <input type="checkbox" checked required class="mt-0.5 w-4 h-4 rounded bg-white/5 border-white/20 text-bronze accent-amber-600">
+            <span class="text-[11px] leading-relaxed">
+              I certify that I am registering for confidential access to The Solaire Residences portfolio, in-suite automation, and private St. Regis concierge services.
+            </span>
+          </div>
+
+          <!-- Handshake Banner -->
+          <div id="signup-status-box" class="p-3.5 rounded-xl bg-bronze/10 border border-bronze/30 text-center hidden">
+            <div class="flex items-center justify-center space-x-2 text-xs font-mono text-bronze-light">
+              <i data-lucide="loader-2" class="w-4 h-4 animate-spin text-bronze"></i>
+              <span id="signup-status-text">Minting Private Resident Keycard...</span>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="pt-2">
+            <button type="submit" id="signup-submit-btn" data-magnetic class="w-full py-4 rounded-full bg-bronze hover:bg-bronze-light text-graphite-950 font-semibold text-xs uppercase tracking-[0.2em] shadow-[0_0_25px_rgba(197,168,128,0.3)] transition-all flex items-center justify-center space-x-2 group">
+              <span>Issue Resident Key &amp; Open Dashboard</span>
+              <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+            </button>
+          </div>
+        </form>
+
+        <!-- Footer Link -->
+        <div class="mt-8 pt-6 border-t border-white/10 text-center">
+          <p class="text-xs text-sand-400">
+            Already possess an active resident credential?
+            <a href="login.html" class="text-bronze font-medium hover:underline ml-1">Access Resident Portal &rarr;</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- LUXURY FOOTER STRIP -->
+  <footer class="w-full py-6 px-6 md:px-12 border-t border-white/10 text-center text-xs font-mono text-sand-500 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <p>STACKLY RESIDENCES &bull; THE SOLAIRE DUBAI &bull; JUMEIRAH BAY ISLAND</p>
+    <div class="flex items-center space-x-4">
+      <a href="login.html" class="hover:text-bronze transition-colors">Portal Login</a>
+      <span>&bull;</span>
+      <a href="contact.html" class="hover:text-bronze transition-colors">Private Sales Gallery</a>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="js/main.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    const signupForm = document.getElementById('signup-form');
+    if (signupForm) {
+      signupForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('signup-name').value.trim();
+        const email = document.getElementById('signup-email').value.trim();
+        const password = document.getElementById('signup-password').value;
+        const tier = document.getElementById('signup-tier').value;
+
+        if (!email) return;
+
+        const statusBox = document.getElementById('signup-status-box');
+        const statusText = document.getElementById('signup-status-text');
+        const submitBtn = document.getElementById('signup-submit-btn');
+
+        statusBox.classList.remove('hidden');
+        submitBtn.disabled = true;
+        submitBtn.classList.add('opacity-75');
+
+        statusText.textContent = `Registering ${name || email} into Solaire Ledger...`;
+
+        setTimeout(() => {
+          statusText.textContent = `Allocating ${tier} • Authorizing Jumeirah Bay Helipad Pass...`;
+        }, 600);
+
+        setTimeout(() => {
+          statusText.textContent = 'Resident Keycard SLR-8821 Active • Launching Dashboard...';
+        }, 1100);
+
+        setTimeout(() => {
+          SolaireAuth.signup(name, email, password, tier);
+          window.location.href = 'dashboard.html';
+        }, 1600);
+      });
+    }
+  </script>
+</body>
+</html>
+

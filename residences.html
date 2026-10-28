@@ -3,7 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Residences Collection | THE SOLAIRE DUBAI</title>
+  <title>Residences Collection & Investment Schedule | STACKLY &bull; THE SOLAIRE DUBAI</title>
+  <!-- Luxury Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo-icon.svg">
+  <link rel="alternate icon" type="image/png" href="assets/images/logo-icon.png">
+  <link rel="apple-touch-icon" href="assets/images/logo-icon.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -28,34 +32,66 @@
   <script src="https://unpkg.com/lucide@latest"></script>
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="bg-graphite-950 text-sand-50 font-sans overflow-x-hidden">
+<body class="bg-graphite-950 text-sand-50 font-sans overflow-x-hidden overflow-hidden">
 
-  <!-- HEADER -->
-  <header class="fixed top-0 left-0 right-0 z-50 py-5 bg-graphite-950/90 backdrop-blur-xl border-b border-white/10">
+  <!-- GLOBAL SCROLL PROGRESS INDICATOR -->
+  <div id="global-scroll-progress"></div>
+
+  <!-- LUXURY EDITORIAL PRELOADER -->
+  <div id="luxury-preloader">
+    <div class="flex flex-col items-center text-center px-6">
+      <img src="assets/images/logo-icon.png" alt="Stackly Emblem" class="w-14 h-14 object-contain mb-4 animate-pulse drop-shadow-[0_0_20px_rgba(197,168,128,0.5)]">
+      <span class="text-[10px] uppercase font-mono tracking-[0.4em] text-bronze mb-2">ARCHITECTURAL RESIDENCES MONOGRAPH</span>
+      <h2 class="font-serif text-5xl sm:text-7xl font-light text-sand-50 tracking-widest">RESIDENCES</h2>
+      <p class="text-[9px] uppercase tracking-[0.35em] text-sand-400 font-mono mt-1">STACKLY &bull; THE SOLAIRE &bull; 92 SKY ESTATES</p>
+      <div class="preloader-line">
+        <div id="preloader-progress" class="preloader-progress"></div>
+      </div>
+      <div class="mt-4 font-mono text-xs text-sand-400">
+        <span id="preloader-count">0</span>%
+      </div>
+    </div>
+  </div>
+
+  <!-- FIXED NAVIGATION HEADER -->
+  <header class="fixed top-0 left-0 right-0 z-50 py-5 bg-gradient-to-b from-graphite-950/85 via-graphite-950/30 to-transparent transition-all duration-500" id="main-header">
     <div class="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between">
-      <a href="index.html" class="flex flex-col tracking-widest text-left group">
-        <span class="font-serif text-xl md:text-2xl font-light tracking-[0.25em] text-sand-50 group-hover:text-bronze-light transition-colors">THE SOLAIRE</span>
-        <span class="text-[9px] uppercase tracking-[0.35em] text-bronze font-medium -mt-1 opacity-90">DUBAI WATERFRONT</span>
+      <a href="index.html" class="flex items-center space-x-3.5 tracking-widest text-left group" data-cursor="pointer">
+        <img src="assets/images/logo-icon.png" alt="Stackly Emblem" class="w-9 h-9 object-contain drop-shadow-[0_2px_12px_rgba(197,168,128,0.4)] group-hover:scale-105 transition-transform duration-300">
+        <div class="flex flex-col">
+          <span class="font-serif text-xl md:text-2xl font-light tracking-[0.25em] text-sand-50 group-hover:text-bronze-light transition-colors leading-tight">STACKLY</span>
+          <span class="text-[9px] uppercase tracking-[0.35em] text-bronze font-medium opacity-90 -mt-0.5">THE SOLAIRE &bull; DUBAI</span>
+        </div>
       </a>
 
+      <!-- Desktop Nav -->
       <nav class="hidden lg:flex items-center space-x-7">
-        <a href="index.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1">Overview</a>
-        <a href="residences.html" class="text-[11px] uppercase tracking-[0.25em] text-bronze font-semibold py-1 border-b border-bronze">Residences</a>
-        <a href="interiors.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1">Interiors</a>
-        <a href="floor-plans.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1">Floor Plans</a>
-        <a href="amenities.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1">Amenities</a>
-        <a href="architecture.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1">Architecture</a>
-        <a href="contact.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1">Contact</a>
+        <a href="index.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1" data-cursor="pointer">Overview</a>
+        <a href="residences.html" class="text-[11px] uppercase tracking-[0.25em] text-bronze font-semibold py-1 border-b border-bronze" data-cursor="pointer">Residences</a>
+        <a href="interiors.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1" data-cursor="pointer">Interiors</a>
+        <a href="floor-plans.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1" data-cursor="pointer">Floor Plans</a>
+        <a href="amenities.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1" data-cursor="pointer">Amenities</a>
+        <a href="architecture.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1" data-cursor="pointer">Architecture</a>
+        <a href="contact.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1" data-cursor="pointer">Contact</a>
       </nav>
 
-      <div class="hidden sm:flex items-center space-x-4">
-        <button class="ambient-sound-toggle p-2.5 rounded-full border border-white/15 text-sand-300 hover:text-white hover:border-bronze transition-all backdrop-blur-sm">
+      <!-- Action Controls -->
+      <div class="hidden sm:flex items-center space-x-3">
+        <!-- Live Dubai Telemetry -->
+        <div class="live-dubai-clock hidden xl:inline-flex items-center space-x-2 text-[9px] font-mono uppercase tracking-[0.22em] text-bronze-light bg-black/60 px-3.5 py-1.5 rounded-full border border-white/10 shadow-lg">
+          DUBAI (GMT+4) • 12:45 PM • 28°C SUNNY
+        </div>
+        <button class="ambient-sound-toggle p-2.5 rounded-full border border-white/15 text-sand-300 hover:text-white hover:border-bronze transition-all backdrop-blur-sm" title="Toggle coastal ambient sound" data-cursor="pointer">
           <i data-lucide="volume-x" class="w-4 h-4 opacity-60"></i>
         </button>
-        <button data-open-booking="The Sky Penthouse Crown" class="px-5 py-2.5 rounded-full border border-bronze/60 bg-bronze/10 hover:bg-bronze text-white text-[11px] uppercase tracking-[0.2em] font-medium transition-all shadow-[0_0_15px_rgba(197,168,128,0.2)] hover:text-graphite-950 flex items-center space-x-2">
+        <button data-magnetic data-open-booking="The Sky Penthouse Crown" class="px-4 py-2.5 rounded-full border border-bronze/60 bg-bronze/10 hover:bg-bronze text-white text-[11px] uppercase tracking-[0.2em] font-medium transition-all shadow-[0_0_15px_rgba(197,168,128,0.2)] hover:text-graphite-950 flex items-center space-x-2" data-cursor="pointer">
           <i data-lucide="calendar" class="w-3.5 h-3.5 text-bronze-light"></i>
           <span>Schedule Tour</span>
         </button>
+        <a href="login.html" class="portal-auth-btn px-4 py-2.5 rounded-full border border-white/20 bg-white/5 hover:border-bronze hover:text-bronze text-sand-200 text-[11px] uppercase tracking-[0.18em] font-medium transition-all flex items-center space-x-2" data-magnetic data-cursor="pointer">
+          <i data-lucide="key" class="w-3.5 h-3.5 text-bronze"></i>
+          <span class="portal-user-text">Resident Portal</span>
+        </a>
       </div>
 
       <button id="mobile-menu-toggle" class="lg:hidden p-2 text-sand-100 hover:text-bronze">
@@ -75,104 +111,1039 @@
       <a href="amenities.html" class="font-serif text-3xl text-sand-100 hover:text-bronze">Amenities</a>
       <a href="architecture.html" class="font-serif text-3xl text-sand-100 hover:text-bronze">Architecture</a>
       <a href="contact.html" class="font-serif text-3xl text-sand-100 hover:text-bronze">Contact</a>
+      <div class="pt-4 border-t border-white/10 flex flex-col space-y-2">
+        <a href="login.html" class="portal-auth-btn font-serif text-2xl text-bronze flex items-center space-x-2">
+          <i data-lucide="key" class="w-5 h-5"></i>
+          <span class="portal-user-text">Resident Portal / Login</span>
+        </a>
+        <a href="signup.html" class="text-xs uppercase font-mono tracking-widest text-sand-400">Apply for Resident Key &rarr;</a>
+      </div>
     </div>
   </div>
 
   <main class="pt-32">
-    <!-- PAGE TITLE -->
+    <!-- PAGE HERO HEADER WITH KEY TELEMETRY -->
     <div class="max-w-7xl mx-auto px-6 md:px-12 py-12 border-b border-white/10">
-      <div class="flex items-center space-x-2 text-[10px] uppercase font-mono tracking-[0.3em] text-bronze mb-3">
-        <i data-lucide="sparkles" class="w-3.5 h-3.5 text-bronze"></i>
-        <span>3D ARCHITECTURAL VOLUMETRICS</span>
+      <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
+        <div class="inline-flex items-center space-x-2 text-[10px] uppercase font-mono tracking-[0.3em] text-bronze bg-bronze/10 px-3.5 py-1.5 rounded-full border border-bronze/30">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5 text-bronze"></i>
+          <span>92 BESPOKE WATERFRONT RESIDENCES • FOSTER &amp; PARTNERS</span>
+        </div>
+
+        <!-- Global Currency & Unit Switchers -->
+        <div class="flex items-center space-x-3">
+          <!-- Area Unit Toggle -->
+          <div class="flex items-center bg-black/60 border border-white/15 p-1 rounded-full text-[10px] font-mono">
+            <button onclick="setAreaUnit('sqft', this)" id="unit-btn-sqft" class="px-2.5 py-1 rounded-full bg-bronze text-graphite-950 font-bold transition-all">SQ FT</button>
+            <button onclick="setAreaUnit('sqm', this)" id="unit-btn-sqm" class="px-2.5 py-1 rounded-full text-sand-300 hover:text-white transition-all">SQ M</button>
+          </div>
+
+          <!-- Currency Selector -->
+          <div class="flex items-center bg-black/60 border border-white/15 p-1 rounded-full text-[10px] font-mono">
+            <button onclick="setGlobalCurrency('AED', this)" class="curr-btn px-2.5 py-1 rounded-full bg-bronze text-graphite-950 font-bold transition-all">AED</button>
+            <button onclick="setGlobalCurrency('USD', this)" class="curr-btn px-2.5 py-1 rounded-full text-sand-300 hover:text-white transition-all">USD ($)</button>
+            <button onclick="setGlobalCurrency('EUR', this)" class="curr-btn px-2.5 py-1 rounded-full text-sand-300 hover:text-white transition-all">EUR (€)</button>
+            <button onclick="setGlobalCurrency('GBP', this)" class="curr-btn px-2.5 py-1 rounded-full text-sand-300 hover:text-white transition-all">GBP (£)</button>
+          </div>
+        </div>
       </div>
-      <h1 class="font-serif text-5xl sm:text-7xl md:text-8xl font-light text-sand-50 tracking-tight leading-[0.95]">
-        EXPLORE <br>
-        <span class="italic font-normal text-gold-gradient">RESIDENCES</span>
-      </h1>
-      <p class="max-w-2xl text-sand-400 text-sm md:text-base font-light mt-4 leading-relaxed">
-        Ninety-two bespoke homes elevated above the Persian Gulf. Drag and rotate the real-time 3D model below to inspect elevations, cantilevered slabs, and sky pool terraces.
-      </p>
+
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+        <div>
+          <h1 class="font-serif text-5xl sm:text-7xl md:text-8xl font-light text-sand-50 tracking-tight leading-[0.95]">
+            EXPLORE <br>
+            <span class="italic font-normal text-gold-gradient">RESIDENCES</span>
+          </h1>
+          <p class="max-w-2xl text-sand-300 text-sm md:text-base font-light mt-4 leading-relaxed">
+            Ninety-two bespoke homes elevated above the Persian Gulf across 48 sculptural levels. Orbit the WebGL twin below to inspect floor elevations, cantilevered infinity pools, and penthouse sky decks.
+          </p>
+        </div>
+
+        <!-- Daylight/Sunset/Night Mode Controls -->
+        <div class="flex items-center space-x-2 bg-black/60 border border-bronze/30 p-1.5 rounded-full shadow-lg backdrop-blur-md">
+          <button onclick="setLighting('day', this)" class="px-3.5 py-1.5 rounded-full text-xs font-mono text-sand-300 hover:text-white transition-all flex items-center space-x-1.5" data-cursor="pointer">
+            <span>☀️</span><span>DAY</span>
+          </button>
+          <button onclick="setLighting('sunset', this)" class="px-3.5 py-1.5 rounded-full text-xs font-mono bg-bronze text-graphite-950 font-semibold shadow-[0_0_15px_rgba(197,168,128,0.5)] transition-all flex items-center space-x-1.5" data-cursor="pointer">
+            <span>🌅</span><span>SUNSET</span>
+          </button>
+          <button onclick="setLighting('night', this)" class="px-3.5 py-1.5 rounded-full text-xs font-mono text-sand-300 hover:text-white transition-all flex items-center space-x-1.5" data-cursor="pointer">
+            <span>🌌</span><span>TWILIGHT</span>
+          </button>
+        </div>
+      </div>
     </div>
 
-    <!-- 3D INTERACTIVE SECTION -->
-    <section class="max-w-7xl mx-auto px-6 md:px-12 py-16">
+    <!-- SECTION 1: 3D INTERACTIVE ARCHITECTURAL EXPLORER WITH REAL-TIME HUD -->
+    <section class="max-w-7xl mx-auto px-6 md:px-12 py-12">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center min-h-[640px]">
-        <!-- Tier Buttons -->
+        <!-- Left: Tier Selector Navigation -->
         <div class="lg:col-span-4 flex flex-col space-y-3 order-2 lg:order-1">
-          <p class="text-[10px] uppercase tracking-[0.3em] text-bronze font-mono mb-1">Select Vertical Tier</p>
+          <div class="flex items-center justify-between mb-1">
+            <p class="text-[10px] uppercase tracking-[0.3em] text-bronze font-mono">SELECT VERTICAL TIER</p>
+            <span class="text-[9px] font-mono text-sand-400">Click to fly camera</span>
+          </div>
           
-          <button onclick="selectTier('penthouse', 'The Sky Penthouse Crown', 'Duplex Palace in the Clouds', 'AED 52,000,000', 'Level 44 - 48', 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80')" class="tier-nav-btn w-full text-left p-4 rounded-xl border border-bronze bg-gradient-to-r from-bronze/25 to-white/5 transition-all" data-cursor="pointer">
-            <div class="flex items-center justify-between"><span class="text-[10px] uppercase font-mono text-bronze">Level 44 - 48</span><span class="text-[9px] uppercase px-2 py-0.5 rounded-full bg-white/10 text-sand-300 font-mono">Only 2 Left</span></div>
-            <h3 class="font-serif text-xl font-light text-sand-50 mt-1">The Sky Penthouse Crown</h3>
-            <p class="text-xs text-sand-400 font-light mt-0.5">Duplex Palace in the Clouds • 8,450 sq ft</p>
-            <div class="mt-2 text-xs font-mono text-bronze-light">AED 52,000,000 ($14.2M)</div>
+          <!-- Tier 1: Penthouse -->
+          <button onclick="selectTier('penthouse', 'The Sky Penthouse Crown', 'Duplex Palace in the Clouds', 52000000, 'Level 44 - 48', '185m', '360° Omnidirectional Panoramic', 8450, 785, '5 Beds + Staff', 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80', this)" class="tier-nav-btn w-full text-left p-4 rounded-xl border border-bronze bg-gradient-to-r from-bronze/25 to-white/5 transition-all shadow-lg group" data-cursor="pointer">
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] uppercase font-mono text-bronze font-bold">Level 44 - 48 • 185M</span>
+              <span class="text-[9px] uppercase px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 font-mono font-semibold">Only 2 Left</span>
+            </div>
+            <h3 class="font-serif text-xl font-light text-sand-50 mt-1 group-hover:text-bronze-light transition-colors">The Sky Penthouse Crown</h3>
+            <p class="text-xs text-sand-300 font-light mt-0.5"><span class="unit-area" data-sqft="8450" data-sqm="785">8,450 sq ft</span> • 18m Cantilevered Pool</p>
+            <div class="mt-2 text-xs font-mono text-bronze-light font-bold currency-val" data-aed="52000000">AED 52,000,000</div>
           </button>
 
-          <button onclick="selectTier('horizon', 'The Horizon Residences', '3-Bedroom Panorama Suites', 'AED 21,500,000', 'Level 28 - 42', 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80')" class="tier-nav-btn w-full text-left p-4 rounded-xl border border-white/10 bg-white/[0.03] hover:border-bronze/40 transition-all" data-cursor="pointer">
-            <div class="flex items-center justify-between"><span class="text-[10px] uppercase font-mono text-bronze">Level 28 - 42</span><span class="text-[9px] uppercase px-2 py-0.5 rounded-full bg-white/10 text-sand-300 font-mono">High Demand</span></div>
-            <h3 class="font-serif text-xl font-light text-sand-50 mt-1">The Horizon Residences</h3>
-            <p class="text-xs text-sand-400 font-light mt-0.5">3-Bed Panorama Suites • 3,940 sq ft</p>
-            <div class="mt-2 text-xs font-mono text-bronze-light">AED 21,500,000 ($5.85M)</div>
+          <!-- Tier 2: Horizon Suites -->
+          <button onclick="selectTier('horizon', 'The Horizon Residences', '3-Bedroom Panorama Suites', 21500000, 'Level 28 - 42', '115m', 'Sunset & Gulf Horizon', 3940, 366, '3 En-Suite Bedrooms', 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80', this)" class="tier-nav-btn w-full text-left p-4 rounded-xl border border-white/10 bg-white/[0.03] hover:border-bronze/40 transition-all group" data-cursor="pointer">
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] uppercase font-mono text-bronze font-bold">Level 28 - 42 • 115M</span>
+              <span class="text-[9px] uppercase px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-mono font-semibold">High Demand</span>
+            </div>
+            <h3 class="font-serif text-xl font-light text-sand-50 mt-1 group-hover:text-bronze-light transition-colors">The Horizon Residences</h3>
+            <p class="text-xs text-sand-300 font-light mt-0.5"><span class="unit-area" data-sqft="3940" data-sqm="366">3,940 sq ft</span> • 3.4m Deep Loggia</p>
+            <div class="mt-2 text-xs font-mono text-bronze-light font-bold currency-val" data-aed="21500000">AED 21,500,000</div>
           </button>
 
-          <button onclick="selectTier('amenities', 'The Celestial Sky Deck', 'Wellness, Spa & Residents Club', 'Resident Access', 'Level 18 - 20', 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1200&q=80')" class="tier-nav-btn w-full text-left p-4 rounded-xl border border-white/10 bg-white/[0.03] hover:border-bronze/40 transition-all" data-cursor="pointer">
-            <div class="flex items-center justify-between"><span class="text-[10px] uppercase font-mono text-bronze">Level 18 - 20</span><span class="text-[9px] uppercase px-2 py-0.5 rounded-full bg-white/10 text-sand-300 font-mono">Private Amenity</span></div>
-            <h3 class="font-serif text-xl font-light text-sand-50 mt-1">The Celestial Sky Deck</h3>
-            <p class="text-xs text-sand-400 font-light mt-0.5">50m Infinity Sky Pool • 16,000 sq ft Club</p>
-            <div class="mt-2 text-xs font-mono text-bronze-light">Residents Exclusive</div>
+          <!-- Tier 3: Celestial Sky Deck -->
+          <button onclick="selectTier('amenities', 'The Celestial Sky Deck', 'Wellness, Spa & Residents Club', 0, 'Level 18 - 20', '75m', 'Panoramic Persian Gulf & Marina', 16000, 1486, 'Exclusive Amenity', 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1200&q=80', this)" class="tier-nav-btn w-full text-left p-4 rounded-xl border border-white/10 bg-white/[0.03] hover:border-cyan-500/40 transition-all group" data-cursor="pointer">
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] uppercase font-mono text-cyan-300 font-bold">Level 18 - 20 • 75M</span>
+              <span class="text-[9px] uppercase px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 font-mono font-semibold">Private Amenity</span>
+            </div>
+            <h3 class="font-serif text-xl font-light text-sand-50 mt-1 group-hover:text-cyan-200 transition-colors">The Celestial Sky Deck</h3>
+            <p class="text-xs text-sand-300 font-light mt-0.5"><span class="unit-area" data-sqft="16000" data-sqm="1486">16,000 sq ft</span> • 50m Cantilevered Pool</p>
+            <div class="mt-2 text-xs font-mono text-cyan-300 font-bold">Exclusive to Residents</div>
           </button>
 
-          <button onclick="selectTier('signature', 'Signature Waterfront Suites', '2-Bedroom Coastal Havens', 'AED 12,200,000', 'Level 05 - 16', 'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1200&q=80')" class="tier-nav-btn w-full text-left p-4 rounded-xl border border-white/10 bg-white/[0.03] hover:border-bronze/40 transition-all" data-cursor="pointer">
-            <div class="flex items-center justify-between"><span class="text-[10px] uppercase font-mono text-bronze">Level 05 - 16</span><span class="text-[9px] uppercase px-2 py-0.5 rounded-full bg-white/10 text-sand-300 font-mono">Available</span></div>
-            <h3 class="font-serif text-xl font-light text-sand-50 mt-1">Signature Waterfront Suites</h3>
-            <p class="text-xs text-sand-400 font-light mt-0.5">2-Bed Coastal Havens • 2,280 sq ft</p>
-            <div class="mt-2 text-xs font-mono text-bronze-light">AED 12,200,000 ($3.32M)</div>
+          <!-- Tier 4: Signature Waterfront -->
+          <button onclick="selectTier('signature', 'Signature Waterfront Suites', '2-Bedroom Coastal Havens', 12200000, 'Level 05 - 16', '30m', 'Marina & Superyacht Slipway', 2280, 212, '2 En-Suite Bedrooms', 'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1200&q=80', this)" class="tier-nav-btn w-full text-left p-4 rounded-xl border border-white/10 bg-white/[0.03] hover:border-bronze/40 transition-all group" data-cursor="pointer">
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] uppercase font-mono text-bronze font-bold">Level 05 - 16 • 30M</span>
+              <span class="text-[9px] uppercase px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-mono font-semibold">Available</span>
+            </div>
+            <h3 class="font-serif text-xl font-light text-sand-50 mt-1 group-hover:text-bronze-light transition-colors">Signature Waterfront Suites</h3>
+            <p class="text-xs text-sand-300 font-light mt-0.5"><span class="unit-area" data-sqft="2280" data-sqm="212">2,280 sq ft</span> • Private Yacht Berth Access</p>
+            <div class="mt-2 text-xs font-mono text-bronze-light font-bold currency-val" data-aed="12200000">AED 12,200,000</div>
+          </button>
+
+          <!-- Tier 5: Grand Travertine Foyer -->
+          <button onclick="selectTier('lobby', 'Grand Travertine Arrival & Marina', 'Concierge, Valet & Beach Berth', 0, 'Ground & Marina', '0m Sea Level', 'Arrival Motor Court & Sea Gateway', 12500, 1160, 'St. Regis Butler Concierge', 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=80', this)" class="tier-nav-btn w-full text-left p-4 rounded-xl border border-white/10 bg-white/[0.03] hover:border-bronze/40 transition-all group" data-cursor="pointer">
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] uppercase font-mono text-sand-400 font-bold">Ground Level • 0M</span>
+              <span class="text-[9px] uppercase px-2 py-0.5 rounded-full bg-white/10 text-sand-300 font-mono">24/7 St. Regis Service</span>
+            </div>
+            <h3 class="font-serif text-xl font-light text-sand-50 mt-1 group-hover:text-bronze-light transition-colors">Grand Travertine Foyer</h3>
+            <p class="text-xs text-sand-300 font-light mt-0.5">12m Double-Height Foyer • Supercar Lifts</p>
+            <div class="mt-2 text-xs font-mono text-sand-400 font-bold">White-Glove Butler Service</div>
           </button>
         </div>
 
-        <!-- Center 3D Canvas -->
-        <div class="lg:col-span-5 relative h-[520px] md:h-[620px] rounded-2xl overflow-hidden border border-white/15 bg-graphite-900/60 shadow-2xl order-1 lg:order-2" id="residences-3d-canvas" data-cursor="drag" data-cursor-text="ROTATE">
-          <div class="absolute top-4 left-4 z-10 pointer-events-none bg-black/50 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10 text-[10px] font-mono text-sand-300 flex items-center space-x-2">
-            <span class="w-1.5 h-1.5 rounded-full bg-bronze animate-pulse"></span>
-            <span>CLICK & DRAG TO ROTATE 360°</span>
+        <!-- Center: 3D Canvas Box -->
+        <div class="lg:col-span-5 relative h-[560px] md:h-[700px] rounded-3xl overflow-hidden border border-bronze/40 shadow-[0_25px_80px_rgba(0,0,0,0.95)] order-1 lg:order-2 transition-all" id="residences-3d-canvas" data-cursor="drag" data-cursor-text="ROTATE" style="background: radial-gradient(circle at 50% 28%, rgba(245, 158, 11, 0.38) 0%, rgba(197, 168, 128, 0.26) 30%, rgba(14, 165, 233, 0.16) 54%, rgba(15, 23, 42, 0.92) 80%, #07080A 100%);">
+          <!-- Top Left Angle Telemetry HUD -->
+          <div class="absolute top-4 left-4 z-10 pointer-events-none bg-black/60 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/20 text-[10px] font-mono text-sand-200 flex items-center space-x-2 shadow-xl">
+            <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse shadow-[0_0_8px_#ffd700]"></span>
+            <span>360° DRAG ORBIT</span>
+            <span class="text-white/30">•</span>
+            <span id="tower-orbit-angle" class="text-amber-300 font-bold">45° ORBIT</span>
+          </div>
+
+          <!-- Top Right Controls -->
+          <div class="absolute top-4 right-4 z-10 flex items-center space-x-1 bg-black/60 backdrop-blur-md p-1 rounded-full border border-white/15 shadow-xl">
+            <button onclick="window.zoomBuilding('in')" class="w-7 h-7 rounded-full bg-white/5 hover:bg-bronze hover:text-graphite-950 text-sand-200 text-xs font-mono font-bold flex items-center justify-center transition-all" title="Zoom In" data-cursor="pointer">+</button>
+            <button onclick="window.zoomBuilding('out')" class="w-7 h-7 rounded-full bg-white/5 hover:bg-bronze hover:text-graphite-950 text-sand-200 text-xs font-mono font-bold flex items-center justify-center transition-all" title="Zoom Out" data-cursor="pointer">-</button>
+            <button id="tower-spin-toggle" onclick="window.toggleBuildingAutoSpin()" class="px-2.5 py-1 rounded-full bg-white/5 hover:bg-bronze hover:text-graphite-950 text-[9px] font-mono tracking-wider text-amber-300 font-semibold transition-all" data-cursor="pointer">PAUSE</button>
+          </div>
+
+          <div class="absolute bottom-4 inset-x-0 z-10 pointer-events-none flex justify-center opacity-75">
+            <div class="bg-black/50 backdrop-blur-sm px-4 py-1.5 rounded-full border border-white/10 text-[9px] font-mono tracking-widest text-amber-200 uppercase shadow-md">
+              &larr; Drag horizontally to spin 360&deg; &bull; Tap pins to inspect &rarr;
+            </div>
           </div>
         </div>
 
-        <!-- Right Detail HUD Card -->
-        <div class="lg:col-span-3 p-6 rounded-2xl glass-panel-dark border border-white/15 shadow-2xl flex flex-col justify-between order-3">
+        <!-- Right: Detail HUD Card -->
+        <div class="lg:col-span-3 p-6 md:p-7 rounded-2xl glass-panel-dark border border-white/15 shadow-2xl flex flex-col justify-between order-3 transition-all min-h-[560px]">
           <div>
-            <div class="relative h-44 rounded-xl overflow-hidden mb-5 border border-white/10">
-              <img id="hud-img" src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80" alt="Active Tier" class="w-full h-full object-cover">
+            <div class="relative h-44 rounded-xl overflow-hidden mb-5 border border-white/10 group">
+              <img id="hud-img" src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80" alt="Active Tier" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
               <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-              <div class="absolute bottom-3 left-3"><span id="hud-level" class="text-[10px] font-mono text-bronze uppercase bg-black/60 px-2 py-0.5 rounded">Level 44 - 48</span></div>
+              <div class="absolute bottom-3 left-3 flex items-center space-x-2">
+                <span id="hud-level" class="text-[10px] font-mono text-bronze uppercase bg-black/70 px-2 py-0.5 rounded border border-white/10">Level 44 - 48</span>
+                <span id="hud-elevation" class="text-[10px] font-mono text-amber-300 uppercase bg-black/70 px-2 py-0.5 rounded border border-white/10">185M High</span>
+              </div>
             </div>
-            <span class="text-[10px] uppercase tracking-widest font-mono text-bronze">Specification</span>
+
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] uppercase tracking-widest font-mono text-bronze font-bold">SPECIFICATION</span>
+              <span id="hud-rooms" class="text-[10px] font-mono text-sand-300">5 Beds + Staff</span>
+            </div>
+
             <h4 id="hud-title" class="font-serif text-2xl font-light text-sand-50 mt-1">The Sky Penthouse Crown</h4>
-            <p id="hud-subtitle" class="text-xs text-sand-300 font-light mt-1">Duplex Palace in the Clouds</p>
-            <div class="mt-4 pt-4 border-t border-white/10 space-y-2 text-xs text-sand-300 font-light">
-              <div class="flex items-center space-x-2"><i data-lucide="check" class="w-3.5 h-3.5 text-bronze"></i><span>Private 18m cantilevered pool</span></div>
-              <div class="flex items-center space-x-2"><i data-lucide="check" class="w-3.5 h-3.5 text-bronze"></i><span>Dedicated express elevator</span></div>
-              <div class="flex items-center space-x-2"><i data-lucide="check" class="w-3.5 h-3.5 text-bronze"></i><span>360° unobstructed horizon</span></div>
+            <p id="hud-subtitle" class="text-xs text-sand-300 font-light mt-0.5">Duplex Palace in the Clouds</p>
+
+            <div class="mt-4 pt-3 border-t border-white/10 space-y-2 text-xs text-sand-300 font-light">
+              <div class="flex items-center space-x-2">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-bronze flex-shrink-0"></i>
+                <span id="hud-feat-1">Private 18m cantilevered infinity pool</span>
+              </div>
+              <div class="flex items-center space-x-2">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-bronze flex-shrink-0"></i>
+                <span id="hud-feat-2">Dedicated express penthouse elevator</span>
+              </div>
+              <div class="flex items-center space-x-2">
+                <i data-lucide="compass" class="w-3.5 h-3.5 text-bronze flex-shrink-0"></i>
+                <span id="hud-view" class="truncate">360° Omnidirectional Panoramic</span>
+              </div>
+              <div class="flex items-center space-x-2">
+                <i data-lucide="maximize" class="w-3.5 h-3.5 text-bronze flex-shrink-0"></i>
+                <span id="hud-area-text"><strong class="unit-area text-sand-100" data-sqft="8450" data-sqm="785">8,450 sq ft (785 m²)</strong></span>
+              </div>
             </div>
           </div>
-          <div class="mt-6 pt-4 border-t border-white/10">
-            <div class="flex justify-between items-baseline mb-3">
-              <span class="text-[10px] uppercase font-mono text-sand-400">Price</span>
-              <span id="hud-price" class="text-sm font-mono text-bronze-light font-bold">AED 52,000,000</span>
+
+          <div class="mt-6 pt-4 border-t border-white/10 space-y-3">
+            <div class="flex justify-between items-baseline">
+              <span class="text-[10px] uppercase font-mono text-sand-400">GUIDE PRICE</span>
+              <span id="hud-price" class="text-base font-mono text-bronze-light font-bold currency-val" data-aed="52000000">AED 52,000,000</span>
             </div>
-            <button onclick="document.querySelector('[data-open-booking]').click()" class="w-full py-3.5 rounded-full bg-bronze hover:bg-bronze-light text-graphite-950 font-semibold text-xs uppercase tracking-[0.2em] transition-all shadow-lg">Inquire This Tier</button>
+            
+            <div class="grid grid-cols-2 gap-2">
+              <button data-magnetic onclick="window.openBookingFor(document.getElementById('hud-title').textContent)" class="w-full py-3 rounded-full bg-bronze hover:bg-bronze-light text-graphite-950 font-bold text-xs uppercase tracking-wider transition-all shadow-lg text-center" data-cursor="pointer">
+                Inquire Tier
+              </button>
+              <a href="floor-plans.html" class="w-full py-3 rounded-full border border-white/20 bg-white/5 hover:border-bronze hover:text-bronze text-sand-100 text-xs uppercase font-mono tracking-wider transition-all text-center flex items-center justify-center space-x-1" data-cursor="pointer">
+                <span>Floor Plan</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </a>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- COMPARISON TABLE -->
+    <!-- SECTION 2: 48-STOREY VERTICAL ARCHITECTURAL STACKING PLAN -->
+    <section class="py-20 bg-graphite-900/70 border-t border-white/10">
+      <div class="max-w-7xl mx-auto px-6 md:px-12">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+          <div>
+            <div class="inline-flex items-center space-x-2 text-[10px] uppercase font-mono tracking-[0.3em] text-bronze mb-2">
+              <i data-lucide="layers" class="w-3.5 h-3.5 text-bronze"></i>
+              <span>VERTICAL ELEVATION ARCHITECTURE</span>
+            </div>
+            <h2 class="font-serif text-3xl sm:text-5xl font-light text-sand-50">Tower Stacking Schedule</h2>
+            <p class="text-sand-300 text-sm mt-2 max-w-xl font-light">
+              Understand the vertical distribution of the 92 private residences, cantilevered sky clubs, and waterfront arrival decks.
+            </p>
+          </div>
+          <div class="mt-4 md:mt-0 font-mono text-xs text-sand-400">
+            <span class="text-bronze font-bold">TOTAL HEIGHT:</span> 185 METERS • 48 LEVELS
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <!-- Tier Block: Penthouse -->
+          <div onclick="selectTier('penthouse', 'The Sky Penthouse Crown', 'Duplex Palace in the Clouds', 52000000, 'Level 44 - 48', '185m', '360° Omnidirectional Panoramic', 8450, 785, '5 Beds + Staff', 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80')" class="p-6 rounded-2xl bg-white/[0.03] border border-amber-500/30 hover:border-amber-400 hover:bg-white/[0.06] transition-all cursor-pointer flex flex-col md:flex-row md:items-center justify-between gap-4 group">
+            <div class="flex items-center space-x-6">
+              <div class="w-16 text-center font-mono text-sm font-bold text-amber-300 bg-amber-500/10 py-2 rounded-xl border border-amber-500/30">L44-48</div>
+              <div>
+                <div class="flex items-center space-x-3">
+                  <h3 class="font-serif text-xl sm:text-2xl font-light text-sand-50 group-hover:text-bronze-light">The Sky Penthouse Crown</h3>
+                  <span class="text-[9px] font-mono px-2 py-0.5 rounded-full bg-amber-400/20 text-amber-300 font-bold uppercase">2 Duplex Palaces</span>
+                </div>
+                <p class="text-xs text-sand-300 mt-1 font-light">7.0m double-height living salon, private 18m cantilevered pool, rooftop helipad access, and 360° vistas.</p>
+              </div>
+            </div>
+            <div class="flex items-center justify-between md:justify-end space-x-6 pt-3 md:pt-0 border-t md:border-t-0 border-white/10">
+              <div class="text-right">
+                <span class="text-[9px] font-mono text-sand-400 uppercase">INTERNAL &bull; OUTDOOR</span>
+                <p class="font-mono text-xs text-sand-200"><span class="unit-area" data-sqft="8450" data-sqm="785">8,450 sq ft</span></p>
+              </div>
+              <div class="text-right">
+                <span class="text-[9px] font-mono text-sand-400 uppercase">GUIDE PRICE</span>
+                <p class="font-mono text-sm text-bronze font-bold currency-val" data-aed="52000000">AED 52,000,000</p>
+              </div>
+              <i data-lucide="chevron-right" class="w-5 h-5 text-bronze group-hover:translate-x-1 transition-transform"></i>
+            </div>
+          </div>
+
+          <!-- Tier Block: Horizon Panorama -->
+          <div onclick="selectTier('horizon', 'The Horizon Residences', '3-Bedroom Panorama Suites', 21500000, 'Level 28 - 42', '115m', 'Sunset & Gulf Horizon', 3940, 366, '3 En-Suite Bedrooms', 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80')" class="p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-bronze hover:bg-white/[0.06] transition-all cursor-pointer flex flex-col md:flex-row md:items-center justify-between gap-4 group">
+            <div class="flex items-center space-x-6">
+              <div class="w-16 text-center font-mono text-sm font-bold text-bronze-light bg-bronze/10 py-2 rounded-xl border border-bronze/30">L28-42</div>
+              <div>
+                <div class="flex items-center space-x-3">
+                  <h3 class="font-serif text-xl sm:text-2xl font-light text-sand-50 group-hover:text-bronze-light">The Horizon Panoramic Suites</h3>
+                  <span class="text-[9px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-bold uppercase">28 Residences</span>
+                </div>
+                <p class="text-xs text-sand-300 mt-1 font-light">Half-floor estates with 3.6m ceiling clearance, private elevator arrival, and 3.4m deep sunset loggia.</p>
+              </div>
+            </div>
+            <div class="flex items-center justify-between md:justify-end space-x-6 pt-3 md:pt-0 border-t md:border-t-0 border-white/10">
+              <div class="text-right">
+                <span class="text-[9px] font-mono text-sand-400 uppercase">INTERNAL &bull; OUTDOOR</span>
+                <p class="font-mono text-xs text-sand-200"><span class="unit-area" data-sqft="3940" data-sqm="366">3,940 sq ft</span></p>
+              </div>
+              <div class="text-right">
+                <span class="text-[9px] font-mono text-sand-400 uppercase">GUIDE PRICE</span>
+                <p class="font-mono text-sm text-bronze font-bold currency-val" data-aed="21500000">AED 21,500,000</p>
+              </div>
+              <i data-lucide="chevron-right" class="w-5 h-5 text-bronze group-hover:translate-x-1 transition-transform"></i>
+            </div>
+          </div>
+
+          <!-- Tier Block: Celestial Amenity -->
+          <div onclick="selectTier('amenities', 'The Celestial Sky Deck', 'Wellness, Spa & Residents Club', 0, 'Level 18 - 20', '75m', 'Panoramic Persian Gulf & Marina', 16000, 1486, 'Exclusive Amenity', 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1200&q=80')" class="p-6 rounded-2xl bg-cyan-950/20 border border-cyan-500/30 hover:border-cyan-400 hover:bg-cyan-950/30 transition-all cursor-pointer flex flex-col md:flex-row md:items-center justify-between gap-4 group">
+            <div class="flex items-center space-x-6">
+              <div class="w-16 text-center font-mono text-sm font-bold text-cyan-300 bg-cyan-500/10 py-2 rounded-xl border border-cyan-500/30">L18-20</div>
+              <div>
+                <div class="flex items-center space-x-3">
+                  <h3 class="font-serif text-xl sm:text-2xl font-light text-sand-50 group-hover:text-cyan-200">The Celestial Sky Deck &amp; Pool</h3>
+                  <span class="text-[9px] font-mono px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 font-bold uppercase">Private Club</span>
+                </div>
+                <p class="text-xs text-sand-300 mt-1 font-light">Cantilevered 50m glass-bottom pool, Finnish herbal sauna, private treatment suites, and executive humidor.</p>
+              </div>
+            </div>
+            <div class="flex items-center justify-between md:justify-end space-x-6 pt-3 md:pt-0 border-t md:border-t-0 border-white/10">
+              <div class="text-right">
+                <span class="text-[9px] font-mono text-cyan-400 uppercase">DEDICATED AMENITY</span>
+                <p class="font-mono text-xs text-sand-200"><span class="unit-area" data-sqft="16000" data-sqm="1486">16,000 sq ft</span></p>
+              </div>
+              <div class="text-right">
+                <span class="text-[9px] font-mono text-cyan-400 uppercase">ACCESS</span>
+                <p class="font-mono text-sm text-cyan-300 font-bold">Residents Only</p>
+              </div>
+              <i data-lucide="chevron-right" class="w-5 h-5 text-cyan-400 group-hover:translate-x-1 transition-transform"></i>
+            </div>
+          </div>
+
+          <!-- Tier Block: Signature Waterfront -->
+          <div onclick="selectTier('signature', 'Signature Waterfront Suites', '2-Bedroom Coastal Havens', 12200000, 'Level 05 - 16', '30m', 'Marina & Superyacht Slipway', 2280, 212, '2 En-Suite Bedrooms', 'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1200&q=80')" class="p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-bronze hover:bg-white/[0.06] transition-all cursor-pointer flex flex-col md:flex-row md:items-center justify-between gap-4 group">
+            <div class="flex items-center space-x-6">
+              <div class="w-16 text-center font-mono text-sm font-bold text-bronze-light bg-bronze/10 py-2 rounded-xl border border-bronze/30">L05-16</div>
+              <div>
+                <div class="flex items-center space-x-3">
+                  <h3 class="font-serif text-xl sm:text-2xl font-light text-sand-50 group-hover:text-bronze-light">Signature Waterfront Residences</h3>
+                  <span class="text-[9px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-bold uppercase">44 Residences</span>
+                </div>
+                <p class="text-xs text-sand-300 mt-1 font-light">Intimate coastal havens overlooking the private 45m superyacht marina and Jumeirah Bay promenade.</p>
+              </div>
+            </div>
+            <div class="flex items-center justify-between md:justify-end space-x-6 pt-3 md:pt-0 border-t md:border-t-0 border-white/10">
+              <div class="text-right">
+                <span class="text-[9px] font-mono text-sand-400 uppercase">INTERNAL &bull; OUTDOOR</span>
+                <p class="font-mono text-xs text-sand-200"><span class="unit-area" data-sqft="2280" data-sqm="212">2,280 sq ft</span></p>
+              </div>
+              <div class="text-right">
+                <span class="text-[9px] font-mono text-sand-400 uppercase">GUIDE PRICE</span>
+                <p class="font-mono text-sm text-bronze font-bold currency-val" data-aed="12200000">AED 12,200,000</p>
+              </div>
+              <i data-lucide="chevron-right" class="w-5 h-5 text-bronze group-hover:translate-x-1 transition-transform"></i>
+            </div>
+          </div>
+
+          <!-- Tier Block: Ground & Marina Level -->
+          <div onclick="selectTier('lobby', 'Grand Travertine Arrival & Marina', 'Concierge, Valet & Beach Berth', 0, 'Ground & Marina', '0m Sea Level', 'Arrival Motor Court & Sea Gateway', 12500, 1160, 'St. Regis Butler Concierge', 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=80')" class="p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-bronze hover:bg-white/[0.06] transition-all cursor-pointer flex flex-col md:flex-row md:items-center justify-between gap-4 group">
+            <div class="flex items-center space-x-6">
+              <div class="w-16 text-center font-mono text-sm font-bold text-sand-400 bg-white/5 py-2 rounded-xl border border-white/15">L01-04</div>
+              <div>
+                <div class="flex items-center space-x-3">
+                  <h3 class="font-serif text-xl sm:text-2xl font-light text-sand-50 group-hover:text-bronze-light">Garden Beach Villas &amp; Arrival Foyer</h3>
+                  <span class="text-[9px] font-mono px-2 py-0.5 rounded-full bg-white/10 text-sand-300 font-bold uppercase">18 Residences + Foyer</span>
+                </div>
+                <p class="text-xs text-sand-300 mt-1 font-light">12m double-height reception, private marina slips up to 45m, subterranean supercar lifts, and valet court.</p>
+              </div>
+            </div>
+            <div class="flex items-center justify-between md:justify-end space-x-6 pt-3 md:pt-0 border-t md:border-t-0 border-white/10">
+              <div class="text-right">
+                <span class="text-[9px] font-mono text-sand-400 uppercase">INTERNAL &bull; OUTDOOR</span>
+                <p class="font-mono text-xs text-sand-200"><span class="unit-area" data-sqft="3100" data-sqm="288">3,100 sq ft</span></p>
+              </div>
+              <div class="text-right">
+                <span class="text-[9px] font-mono text-sand-400 uppercase">GUIDE PRICE</span>
+                <p class="font-mono text-sm text-bronze font-bold currency-val" data-aed="16800000">AED 16,800,000</p>
+              </div>
+              <i data-lucide="chevron-right" class="w-5 h-5 text-bronze group-hover:translate-x-1 transition-transform"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: FILTERABLE RESIDENCES COLLECTION CARDS -->
+    <section class="py-24 max-w-7xl mx-auto px-6 md:px-12">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-6 border-b border-white/10">
+        <div>
+          <span class="text-[10px] uppercase font-mono tracking-[0.3em] text-bronze">CURATED INVENTORY</span>
+          <h2 class="font-serif text-4xl sm:text-5xl font-light text-sand-50 mt-1">Select Your Residence</h2>
+          <p class="text-sand-300 text-sm mt-2 max-w-xl font-light">
+            Filter available floorplates by bedroom configurations, terrace orientation, and bespoke features.
+          </p>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="mt-6 md:mt-0 flex flex-wrap gap-2">
+          <button onclick="filterResidences('all', this)" class="res-filter-btn px-4 py-2 rounded-full text-xs font-mono bg-bronze text-graphite-950 font-bold transition-all shadow-md">ALL (92)</button>
+          <button onclick="filterResidences('penthouse', this)" class="res-filter-btn px-4 py-2 rounded-full text-xs font-mono bg-white/5 text-sand-300 hover:text-white border border-white/10 transition-all">PENTHOUSES</button>
+          <button onclick="filterResidences('3bed', this)" class="res-filter-btn px-4 py-2 rounded-full text-xs font-mono bg-white/5 text-sand-300 hover:text-white border border-white/10 transition-all">3-BED PANORAMA</button>
+          <button onclick="filterResidences('2bed', this)" class="res-filter-btn px-4 py-2 rounded-full text-xs font-mono bg-white/5 text-sand-300 hover:text-white border border-white/10 transition-all">2-BED COASTAL</button>
+        </div>
+      </div>
+
+      <!-- Residence Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="residences-grid">
+        <!-- Card 1: Sky Crown Duplex 4801 -->
+        <div class="res-card group rounded-3xl overflow-hidden bg-[#121110] border border-white/15 hover:border-bronze/60 transition-all duration-500 shadow-2xl flex flex-col justify-between" data-category="penthouse">
+          <div>
+            <div class="relative h-64 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80" alt="The Sky Crown Duplex" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              <div class="absolute inset-0 bg-gradient-to-t from-[#121110] via-transparent to-transparent"></div>
+              <div class="absolute top-4 left-4 flex items-center space-x-2">
+                <span class="text-[9px] font-mono uppercase tracking-wider bg-black/70 backdrop-blur-md px-3 py-1 rounded-full border border-amber-400/40 text-amber-300 font-bold">LEVEL 46 &bull; 48</span>
+                <span class="text-[9px] font-mono uppercase bg-emerald-500/20 text-emerald-300 px-2.5 py-1 rounded-full font-semibold">Available</span>
+              </div>
+              <div class="absolute bottom-4 left-4">
+                <span class="text-[10px] font-mono text-bronze uppercase">Unit 4801 &bull; Sky Duplex Palace</span>
+                <h3 class="font-serif text-2xl font-light text-sand-50">The Sky Crown Duplex</h3>
+              </div>
+            </div>
+            <div class="p-6 space-y-4">
+              <div class="grid grid-cols-3 gap-3 text-center py-3 border-y border-white/10 font-mono text-xs">
+                <div>
+                  <span class="text-[9px] text-sand-400 block uppercase">AREA</span>
+                  <span class="text-sand-100 font-bold unit-area" data-sqft="8650" data-sqm="803">8,650 sq ft</span>
+                </div>
+                <div>
+                  <span class="text-[9px] text-sand-400 block uppercase">BEDROOMS</span>
+                  <span class="text-sand-100 font-bold">5 Beds + Staff</span>
+                </div>
+                <div>
+                  <span class="text-[9px] text-sand-400 block uppercase">CEILING</span>
+                  <span class="text-sand-100 font-bold">7.0m Clear</span>
+                </div>
+              </div>
+              <p class="text-xs text-sand-300 font-light leading-relaxed">
+                Two-story palace in the sky with cathedral ceiling salon, private 18m cantilevered pool, rooftop helipad access, and direct express elevator.
+              </p>
+              <div class="space-y-1.5 text-xs text-sand-300 font-light">
+                <div class="flex items-center space-x-2"><i data-lucide="check" class="w-3.5 h-3.5 text-bronze"></i><span>Private 18m Cantilevered Pool</span></div>
+                <div class="flex items-center space-x-2"><i data-lucide="check" class="w-3.5 h-3.5 text-bronze"></i><span>360° Omnidirectional Horizon Views</span></div>
+                <div class="flex items-center space-x-2"><i data-lucide="check" class="w-3.5 h-3.5 text-bronze"></i><span>4 Private Underground Garage Berths</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="p-6 pt-0 mt-4 border-t border-white/10">
+            <div class="flex items-baseline justify-between py-3">
+              <span class="text-[10px] font-mono uppercase text-sand-400">PRICE</span>
+              <span class="font-mono text-lg text-bronze-light font-bold currency-val" data-aed="58000000">AED 58,000,000</span>
+            </div>
+            <div class="grid grid-cols-2 gap-2 mt-2">
+              <button onclick="window.openBookingFor('The Sky Crown Duplex (Unit 4801)')" class="py-2.5 rounded-full bg-bronze hover:bg-bronze-light text-graphite-950 font-bold text-xs uppercase tracking-wider transition-all text-center">
+                Inquire
+              </button>
+              <a href="floor-plans.html" class="py-2.5 rounded-full border border-white/20 hover:border-bronze hover:text-bronze text-sand-100 text-xs uppercase font-mono tracking-wider transition-all text-center flex items-center justify-center space-x-1">
+                <span>Blueprint</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Celestial Residence 3802 -->
+        <div class="res-card group rounded-3xl overflow-hidden bg-[#121110] border border-white/15 hover:border-bronze/60 transition-all duration-500 shadow-2xl flex flex-col justify-between" data-category="3bed">
+          <div>
+            <div class="relative h-64 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80" alt="The Celestial Residence" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              <div class="absolute inset-0 bg-gradient-to-t from-[#121110] via-transparent to-transparent"></div>
+              <div class="absolute top-4 left-4 flex items-center space-x-2">
+                <span class="text-[9px] font-mono uppercase tracking-wider bg-black/70 backdrop-blur-md px-3 py-1 rounded-full border border-white/20 text-bronze font-bold">LEVEL 38</span>
+                <span class="text-[9px] font-mono uppercase bg-emerald-500/20 text-emerald-300 px-2.5 py-1 rounded-full font-semibold">Available</span>
+              </div>
+              <div class="absolute bottom-4 left-4">
+                <span class="text-[10px] font-mono text-bronze uppercase">Unit 3802 &bull; Half Floor Plate</span>
+                <h3 class="font-serif text-2xl font-light text-sand-50">The Celestial Panorama</h3>
+              </div>
+            </div>
+            <div class="p-6 space-y-4">
+              <div class="grid grid-cols-3 gap-3 text-center py-3 border-y border-white/10 font-mono text-xs">
+                <div>
+                  <span class="text-[9px] text-sand-400 block uppercase">AREA</span>
+                  <span class="text-sand-100 font-bold unit-area" data-sqft="4120" data-sqm="382">4,120 sq ft</span>
+                </div>
+                <div>
+                  <span class="text-[9px] text-sand-400 block uppercase">BEDROOMS</span>
+                  <span class="text-sand-100 font-bold">3 En-Suite</span>
+                </div>
+                <div>
+                  <span class="text-[9px] text-sand-400 block uppercase">CEILING</span>
+                  <span class="text-sand-100 font-bold">3.6m Clear</span>
+                </div>
+              </div>
+              <p class="text-xs text-sand-300 font-light leading-relaxed">
+                Occupying half an entire floor plate with panoramic views from Burj Al Arab to Downtown Dubai. Direct elevator entry into private foyer.
+              </p>
+              <div class="space-y-1.5 text-xs text-sand-300 font-light">
+                <div class="flex items-center space-x-2"><i data-lucide="check" class="w-3.5 h-3.5 text-bronze"></i><span>16.5m Continuous Deep Loggia</span></div>
+                <div class="flex items-center space-x-2"><i data-lucide="check" class="w-3.5 h-3.5 text-bronze"></i><span>Temperature-Controlled Wine Gallery</span></div>
+                <div class="flex items-center space-x-2"><i data-lucide="check" class="w-3.5 h-3.5 text-bronze"></i><span>Dual Master Walk-in Dressing Suites</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="p-6 pt-0 mt-4 border-t border-white/10">
+            <div class="flex items-baseline justify-between py-3">
+              <span class="text-[10px] font-mono uppercase text-sand-400">PRICE</span>
+              <span class="font-mono text-lg text-bronze-light font-bold currency-val" data-aed="24000000">AED 24,000,000</span>
+            </div>
+            <div class="grid grid-cols-2 gap-2 mt-2">
+              <button onclick="window.openBookingFor('The Celestial Panorama (Unit 3802)')" class="py-2.5 rounded-full bg-bronze hover:bg-bronze-light text-graphite-950 font-bold text-xs uppercase tracking-wider transition-all text-center">
+                Inquire
+              </button>
+              <a href="floor-plans.html" class="py-2.5 rounded-full border border-white/20 hover:border-bronze hover:text-bronze text-sand-100 text-xs uppercase font-mono tracking-wider transition-all text-center flex items-center justify-center space-x-1">
+                <span>Blueprint</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Grand Haven 2404 -->
+        <div class="res-card group rounded-3xl overflow-hidden bg-[#121110] border border-white/15 hover:border-bronze/60 transition-all duration-500 shadow-2xl flex flex-col justify-between" data-category="2bed">
+          <div>
+            <div class="relative h-64 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1200&q=80" alt="The Grand Haven" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              <div class="absolute inset-0 bg-gradient-to-t from-[#121110] via-transparent to-transparent"></div>
+              <div class="absolute top-4 left-4 flex items-center space-x-2">
+                <span class="text-[9px] font-mono uppercase tracking-wider bg-black/70 backdrop-blur-md px-3 py-1 rounded-full border border-white/20 text-bronze font-bold">LEVEL 24</span>
+                <span class="text-[9px] font-mono uppercase bg-emerald-500/20 text-emerald-300 px-2.5 py-1 rounded-full font-semibold">Available</span>
+              </div>
+              <div class="absolute bottom-4 left-4">
+                <span class="text-[10px] font-mono text-bronze uppercase">Unit 2404 &bull; Flow-Through Dual Aspect</span>
+                <h3 class="font-serif text-2xl font-light text-sand-50">The Grand Haven</h3>
+              </div>
+            </div>
+            <div class="p-6 space-y-4">
+              <div class="grid grid-cols-3 gap-3 text-center py-3 border-y border-white/10 font-mono text-xs">
+                <div>
+                  <span class="text-[9px] text-sand-400 block uppercase">AREA</span>
+                  <span class="text-sand-100 font-bold unit-area" data-sqft="2380" data-sqm="221">2,380 sq ft</span>
+                </div>
+                <div>
+                  <span class="text-[9px] text-sand-400 block uppercase">BEDROOMS</span>
+                  <span class="text-sand-100 font-bold">2 En-Suite</span>
+                </div>
+                <div>
+                  <span class="text-[9px] text-sand-400 block uppercase">CEILING</span>
+                  <span class="text-sand-100 font-bold">3.4m Clear</span>
+                </div>
+              </div>
+              <p class="text-xs text-sand-300 font-light leading-relaxed">
+                Dual-orientation layout with natural cross-breeze ventilation, custom Poliform kitchen, and separate discreet staff entrance.
+              </p>
+              <div class="space-y-1.5 text-xs text-sand-300 font-light">
+                <div class="flex items-center space-x-2"><i data-lucide="check" class="w-3.5 h-3.5 text-bronze"></i><span>Direct Marina &amp; Harbor Views</span></div>
+                <div class="flex items-center space-x-2"><i data-lucide="check" class="w-3.5 h-3.5 text-bronze"></i><span>Bespoke Gaggenau 400 Culinary Suite</span></div>
+                <div class="flex items-center space-x-2"><i data-lucide="check" class="w-3.5 h-3.5 text-bronze"></i><span>2 Dedicated Underground Parking Spaces</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="p-6 pt-0 mt-4 border-t border-white/10">
+            <div class="flex items-baseline justify-between py-3">
+              <span class="text-[10px] font-mono uppercase text-sand-400">PRICE</span>
+              <span class="font-mono text-lg text-bronze-light font-bold currency-val" data-aed="14500000">AED 14,500,000</span>
+            </div>
+            <div class="grid grid-cols-2 gap-2 mt-2">
+              <button onclick="window.openBookingFor('The Grand Haven (Unit 2404)')" class="py-2.5 rounded-full bg-bronze hover:bg-bronze-light text-graphite-950 font-bold text-xs uppercase tracking-wider transition-all text-center">
+                Inquire
+              </button>
+              <a href="floor-plans.html" class="py-2.5 rounded-full border border-white/20 hover:border-bronze hover:text-bronze text-sand-100 text-xs uppercase font-mono tracking-wider transition-all text-center flex items-center justify-center space-x-1">
+                <span>Blueprint</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4: Signature Coastal 1202 -->
+        <div class="res-card group rounded-3xl overflow-hidden bg-[#121110] border border-white/15 hover:border-bronze/60 transition-all duration-500 shadow-2xl flex flex-col justify-between" data-category="2bed">
+          <div>
+            <div class="relative h-64 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1200&q=80" alt="Signature Coastal Haven" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              <div class="absolute inset-0 bg-gradient-to-t from-[#121110] via-transparent to-transparent"></div>
+              <div class="absolute top-4 left-4 flex items-center space-x-2">
+                <span class="text-[9px] font-mono uppercase tracking-wider bg-black/70 backdrop-blur-md px-3 py-1 rounded-full border border-white/20 text-bronze font-bold">LEVEL 12</span>
+                <span class="text-[9px] font-mono uppercase bg-emerald-500/20 text-emerald-300 px-2.5 py-1 rounded-full font-semibold">Available</span>
+              </div>
+              <div class="absolute bottom-4 left-4">
+                <span class="text-[10px] font-mono text-bronze uppercase">Unit 1202 &bull; Marina Facing</span>
+                <h3 class="font-serif text-2xl font-light text-sand-50">Signature Coastal Estate</h3>
+              </div>
+            </div>
+            <div class="p-6 space-y-4">
+              <div class="grid grid-cols-3 gap-3 text-center py-3 border-y border-white/10 font-mono text-xs">
+                <div>
+                  <span class="text-[9px] text-sand-400 block uppercase">AREA</span>
+                  <span class="text-sand-100 font-bold unit-area" data-sqft="2280" data-sqm="212">2,280 sq ft</span>
+                </div>
+                <div>
+                  <span class="text-[9px] text-sand-400 block uppercase">BEDROOMS</span>
+                  <span class="text-sand-100 font-bold">2 En-Suite</span>
+                </div>
+                <div>
+                  <span class="text-[9px] text-sand-400 block uppercase">CEILING</span>
+                  <span class="text-sand-100 font-bold">3.4m Clear</span>
+                </div>
+              </div>
+              <p class="text-xs text-sand-300 font-light leading-relaxed">
+                Overlooking the serene private mega-yacht moorings. Includes Rimadesio dressing galleries and integrated Lutron automated ambient lighting.
+              </p>
+              <div class="space-y-1.5 text-xs text-sand-300 font-light">
+                <div class="flex items-center space-x-2"><i data-lucide="check" class="w-3.5 h-3.5 text-bronze"></i><span>Direct Superyacht Slipway Proximity</span></div>
+                <div class="flex items-center space-x-2"><i data-lucide="check" class="w-3.5 h-3.5 text-bronze"></i><span>Single-Slab Calacatta Spa Bath</span></div>
+                <div class="flex items-center space-x-2"><i data-lucide="check" class="w-3.5 h-3.5 text-bronze"></i><span>Private Elevator Connection</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="p-6 pt-0 mt-4 border-t border-white/10">
+            <div class="flex items-baseline justify-between py-3">
+              <span class="text-[10px] font-mono uppercase text-sand-400">PRICE</span>
+              <span class="font-mono text-lg text-bronze-light font-bold currency-val" data-aed="12200000">AED 12,200,000</span>
+            </div>
+            <div class="grid grid-cols-2 gap-2 mt-2">
+              <button onclick="window.openBookingFor('Signature Coastal Estate (Unit 1202)')" class="py-2.5 rounded-full bg-bronze hover:bg-bronze-light text-graphite-950 font-bold text-xs uppercase tracking-wider transition-all text-center">
+                Inquire
+              </button>
+              <a href="floor-plans.html" class="py-2.5 rounded-full border border-white/20 hover:border-bronze hover:text-bronze text-sand-100 text-xs uppercase font-mono tracking-wider transition-all text-center flex items-center justify-center space-x-1">
+                <span>Blueprint</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 5: Horizon Sunset Villa 3201 -->
+        <div class="res-card group rounded-3xl overflow-hidden bg-[#121110] border border-white/15 hover:border-bronze/60 transition-all duration-500 shadow-2xl flex flex-col justify-between" data-category="3bed">
+          <div>
+            <div class="relative h-64 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80" alt="Horizon Sunset Villa" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              <div class="absolute inset-0 bg-gradient-to-t from-[#121110] via-transparent to-transparent"></div>
+              <div class="absolute top-4 left-4 flex items-center space-x-2">
+                <span class="text-[9px] font-mono uppercase tracking-wider bg-black/70 backdrop-blur-md px-3 py-1 rounded-full border border-white/20 text-bronze font-bold">LEVEL 32</span>
+                <span class="text-[9px] font-mono uppercase bg-amber-500/20 text-amber-300 px-2.5 py-1 rounded-full font-semibold">Under Offer</span>
+              </div>
+              <div class="absolute bottom-4 left-4">
+                <span class="text-[10px] font-mono text-bronze uppercase">Unit 3201 &bull; Sunset Loggia</span>
+                <h3 class="font-serif text-2xl font-light text-sand-50">Horizon Sunset Villa</h3>
+              </div>
+            </div>
+            <div class="p-6 space-y-4">
+              <div class="grid grid-cols-3 gap-3 text-center py-3 border-y border-white/10 font-mono text-xs">
+                <div>
+                  <span class="text-[9px] text-sand-400 block uppercase">AREA</span>
+                  <span class="text-sand-100 font-bold unit-area" data-sqft="3940" data-sqm="366">3,940 sq ft</span>
+                </div>
+                <div>
+                  <span class="text-[9px] text-sand-400 block uppercase">BEDROOMS</span>
+                  <span class="text-sand-100 font-bold">3 En-Suite</span>
+                </div>
+                <div>
+                  <span class="text-[9px] text-sand-400 block uppercase">CEILING</span>
+                  <span class="text-sand-100 font-bold">3.6m Clear</span>
+                </div>
+              </div>
+              <p class="text-xs text-sand-300 font-light leading-relaxed">
+                Sculpted corner terrace capturing 270-degree sunset ocean panoramas. Features private wine gallery and customized Boffi Italian cabinetry.
+              </p>
+              <div class="space-y-1.5 text-xs text-sand-300 font-light">
+                <div class="flex items-center space-x-2"><i data-lucide="check" class="w-3.5 h-3.5 text-bronze"></i><span>Cantilevered Ocean Terrace</span></div>
+                <div class="flex items-center space-x-2"><i data-lucide="check" class="w-3.5 h-3.5 text-bronze"></i><span>Bang &amp; Olufsen Acoustic Architecture</span></div>
+                <div class="flex items-center space-x-2"><i data-lucide="check" class="w-3.5 h-3.5 text-bronze"></i><span>Separate Scullery Prep Kitchen</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="p-6 pt-0 mt-4 border-t border-white/10">
+            <div class="flex items-baseline justify-between py-3">
+              <span class="text-[10px] font-mono uppercase text-sand-400">PRICE</span>
+              <span class="font-mono text-lg text-bronze-light font-bold currency-val" data-aed="21500000">AED 21,500,000</span>
+            </div>
+            <div class="grid grid-cols-2 gap-2 mt-2">
+              <button onclick="window.openBookingFor('Horizon Sunset Villa (Unit 3201)')" class="py-2.5 rounded-full bg-bronze hover:bg-bronze-light text-graphite-950 font-bold text-xs uppercase tracking-wider transition-all text-center">
+                Inquire
+              </button>
+              <a href="floor-plans.html" class="py-2.5 rounded-full border border-white/20 hover:border-bronze hover:text-bronze text-sand-100 text-xs uppercase font-mono tracking-wider transition-all text-center flex items-center justify-center space-x-1">
+                <span>Blueprint</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 6: Sky Penthouse Pinnacle 4702 -->
+        <div class="res-card group rounded-3xl overflow-hidden bg-[#121110] border border-white/15 hover:border-bronze/60 transition-all duration-500 shadow-2xl flex flex-col justify-between" data-category="penthouse">
+          <div>
+            <div class="relative h-64 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80" alt="The Pinnacle Sky Palace" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              <div class="absolute inset-0 bg-gradient-to-t from-[#121110] via-transparent to-transparent"></div>
+              <div class="absolute top-4 left-4 flex items-center space-x-2">
+                <span class="text-[9px] font-mono uppercase tracking-wider bg-black/70 backdrop-blur-md px-3 py-1 rounded-full border border-amber-400/40 text-amber-300 font-bold">LEVEL 47</span>
+                <span class="text-[9px] font-mono uppercase bg-amber-500/20 text-amber-300 px-2.5 py-1 rounded-full font-semibold">Trophy Asset</span>
+              </div>
+              <div class="absolute bottom-4 left-4">
+                <span class="text-[10px] font-mono text-bronze uppercase">Unit 4702 &bull; South-West Ocean Vista</span>
+                <h3 class="font-serif text-2xl font-light text-sand-50">The Pinnacle Sky Palace</h3>
+              </div>
+            </div>
+            <div class="p-6 space-y-4">
+              <div class="grid grid-cols-3 gap-3 text-center py-3 border-y border-white/10 font-mono text-xs">
+                <div>
+                  <span class="text-[9px] text-sand-400 block uppercase">AREA</span>
+                  <span class="text-sand-100 font-bold unit-area" data-sqft="8150" data-sqm="757">8,150 sq ft</span>
+                </div>
+                <div>
+                  <span class="text-[9px] text-sand-400 block uppercase">BEDROOMS</span>
+                  <span class="text-sand-100 font-bold">5 Beds + Staff</span>
+                </div>
+                <div>
+                  <span class="text-[9px] text-sand-400 block uppercase">CEILING</span>
+                  <span class="text-sand-100 font-bold">6.5m Double</span>
+                </div>
+              </div>
+              <p class="text-xs text-sand-300 font-light leading-relaxed">
+                Featuring double-height glass rotunda, private rooftop plunge pool, cinema screening room, and St. Regis 24/7 dedicated private butler.
+              </p>
+              <div class="space-y-1.5 text-xs text-sand-300 font-light">
+                <div class="flex items-center space-x-2"><i data-lucide="check" class="w-3.5 h-3.5 text-bronze"></i><span>Private Rooftop Plunge Pool</span></div>
+                <div class="flex items-center space-x-2"><i data-lucide="check" class="w-3.5 h-3.5 text-bronze"></i><span>Internal Private Glass Elevator</span></div>
+                <div class="flex items-center space-x-2"><i data-lucide="check" class="w-3.5 h-3.5 text-bronze"></i><span>Private Helipad Landing Rights</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="p-6 pt-0 mt-4 border-t border-white/10">
+            <div class="flex items-baseline justify-between py-3">
+              <span class="text-[10px] font-mono uppercase text-sand-400">PRICE</span>
+              <span class="font-mono text-lg text-bronze-light font-bold currency-val" data-aed="54000000">AED 54,000,000</span>
+            </div>
+            <div class="grid grid-cols-2 gap-2 mt-2">
+              <button onclick="window.openBookingFor('The Pinnacle Sky Palace (Unit 4702)')" class="py-2.5 rounded-full bg-bronze hover:bg-bronze-light text-graphite-950 font-bold text-xs uppercase tracking-wider transition-all text-center">
+                Inquire
+              </button>
+              <a href="floor-plans.html" class="py-2.5 rounded-full border border-white/20 hover:border-bronze hover:text-bronze text-sand-100 text-xs uppercase font-mono tracking-wider transition-all text-center flex items-center justify-center space-x-1">
+                <span>Blueprint</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: INVESTMENT INTELLIGENCE & UAE GOLDEN VISA ADVANTAGES -->
+    <section class="py-20 bg-gradient-to-b from-graphite-950 via-graphite-900 to-graphite-950 border-y border-white/10">
+      <div class="max-w-7xl mx-auto px-6 md:px-12">
+        <div class="max-w-2xl mb-12">
+          <div class="inline-flex items-center space-x-2 text-[10px] uppercase font-mono tracking-[0.3em] text-bronze mb-2">
+            <i data-lucide="shield-check" class="w-3.5 h-3.5 text-bronze"></i>
+            <span>SOVEREIGN INVESTMENT ADVANTAGES</span>
+          </div>
+          <h2 class="font-serif text-3xl sm:text-5xl font-light text-sand-50">Dubai Golden Visa &amp; Fiscal Sanctuary</h2>
+          <p class="text-sand-300 text-sm mt-3 font-light leading-relaxed">
+            Every residence at The Solaire qualifies for the prestigious 10-Year Renewable UAE Golden Visa with zero personal tax, full capital repatriation, and RERA-regulated escrow protection.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Benefit 1 -->
+          <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-bronze/40 transition-all flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-300 mb-5">
+                <i data-lucide="award" class="w-6 h-6"></i>
+              </div>
+              <h3 class="font-serif text-xl font-light text-sand-50">10-Year Golden Visa</h3>
+              <p class="text-xs text-sand-400 font-light mt-2 leading-relaxed">
+                Direct eligibility for owner, spouse, children, and domestic staff with seamless renewal and zero minimum stay requirements in the UAE.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-white/10 text-[10px] font-mono text-bronze">
+              100% FREEHOLD OWNERSHIP
+            </div>
+          </div>
+
+          <!-- Benefit 2 -->
+          <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-bronze/40 transition-all flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-300 mb-5">
+                <i data-lucide="percent" class="w-6 h-6"></i>
+              </div>
+              <h3 class="font-serif text-xl font-light text-sand-50">Zero Fiscal Taxation</h3>
+              <p class="text-xs text-sand-400 font-light mt-2 leading-relaxed">
+                0% Personal Income Tax, 0% Capital Gains Tax, 0% Inheritance Tax, and 0% Property Wealth Tax across all residential holdings.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-white/10 text-[10px] font-mono text-emerald-300">
+              TAX SANCTUARY STATUS
+            </div>
+          </div>
+
+          <!-- Benefit 3 -->
+          <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-bronze/40 transition-all flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-300 mb-5">
+                <i data-lucide="trending-up" class="w-6 h-6"></i>
+              </div>
+              <h3 class="font-serif text-xl font-light text-sand-50">8.4% Projected Yield</h3>
+              <p class="text-xs text-sand-400 font-light mt-2 leading-relaxed">
+                Rare ultra-prime Jumeirah Bay beachfront asset commanding industry-leading super-prime rental yields and +32% projected capital growth.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-white/10 text-[10px] font-mono text-cyan-300">
+              HIGH CAPITAL APPRECIATION
+            </div>
+          </div>
+
+          <!-- Benefit 4 -->
+          <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-bronze/40 transition-all flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-2xl bg-bronze/10 border border-bronze/20 flex items-center justify-center text-bronze mb-5">
+                <i data-lucide="lock" class="w-6 h-6"></i>
+              </div>
+              <h3 class="font-serif text-xl font-light text-sand-50">RERA Escrow Security</h3>
+              <p class="text-xs text-sand-400 font-light mt-2 leading-relaxed">
+                100% of investor funds are held in a legally ring-fenced Dubai Land Department Escrow Trust Account (Project #2026-92) backed by sovereign law.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-white/10 text-[10px] font-mono text-bronze">
+              ESCROW TRUST GUARANTEE
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: STRUCTURED MILESTONE PAYMENT SCHEDULE -->
+    <section class="py-20 max-w-7xl mx-auto px-6 md:px-12">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+        <div>
+          <span class="text-[10px] uppercase font-mono tracking-[0.3em] text-bronze">ACQUISITION TIMELINE</span>
+          <h2 class="font-serif text-3xl sm:text-5xl font-light text-sand-50 mt-1">Milestone Payment Plan</h2>
+          <p class="text-sand-300 text-sm mt-2 max-w-xl font-light">
+            Construction-linked payment structure certified by RERA, allowing effortless capital deployment through Q4 2027 handover.
+          </p>
+        </div>
+        <div class="mt-4 md:mt-0">
+          <span class="px-4 py-2 rounded-full border border-bronze/40 bg-bronze/10 text-bronze font-mono text-xs uppercase tracking-wider">
+            50/50 Handover Ratio
+          </span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <!-- Step 1 -->
+        <div class="p-6 rounded-2xl bg-[#141312] border border-white/10 relative overflow-hidden">
+          <div class="text-4xl font-serif text-bronze font-light mb-2">10%</div>
+          <span class="text-[10px] uppercase font-mono tracking-widest text-sand-400">IMMEDIATE MILESTONE</span>
+          <h3 class="font-serif text-lg text-sand-50 mt-2">Reservation Booking</h3>
+          <p class="text-xs text-sand-400 font-light mt-1.5 leading-relaxed">
+            Initial 10% deposit + 4% DLD registration fee to lock in tier allocation.
+          </p>
+          <div class="mt-4 text-[10px] font-mono text-emerald-300">Q2 2026 &bull; Booking</div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="p-6 rounded-2xl bg-[#141312] border border-white/10 relative overflow-hidden">
+          <div class="text-4xl font-serif text-bronze font-light mb-2">20%</div>
+          <span class="text-[10px] uppercase font-mono tracking-widest text-sand-400">CONSTRUCTION STAGE 1</span>
+          <h3 class="font-serif text-lg text-sand-50 mt-2">Substructure &amp; Podium</h3>
+          <p class="text-xs text-sand-400 font-light mt-1.5 leading-relaxed">
+            Payable upon 25% verified engineering inspection of foundation &amp; marina basin.
+          </p>
+          <div class="mt-4 text-[10px] font-mono text-sand-300">Q4 2026 &bull; Verified Build</div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="p-6 rounded-2xl bg-[#141312] border border-white/10 relative overflow-hidden">
+          <div class="text-4xl font-serif text-bronze font-light mb-2">20%</div>
+          <span class="text-[10px] uppercase font-mono tracking-widest text-sand-400">CONSTRUCTION STAGE 2</span>
+          <h3 class="font-serif text-lg text-sand-50 mt-2">Tower Topping Out</h3>
+          <p class="text-xs text-sand-400 font-light mt-1.5 leading-relaxed">
+            Payable upon Level 48 structural slab completion and triple-glazed facade installation.
+          </p>
+          <div class="mt-4 text-[10px] font-mono text-sand-300">Q2 2027 &bull; Superstructure</div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="p-6 rounded-2xl bg-[#141312] border border-bronze/40 relative overflow-hidden bg-gradient-to-br from-bronze/10 to-transparent">
+          <div class="text-4xl font-serif text-amber-300 font-light mb-2">50%</div>
+          <span class="text-[10px] uppercase font-mono tracking-widest text-amber-300 font-bold">COMPLETION &bull; HANDOVER</span>
+          <h3 class="font-serif text-lg text-sand-50 mt-2">Key Handover</h3>
+          <p class="text-xs text-sand-300 font-light mt-1.5 leading-relaxed">
+            Final payment upon issuance of Completion Certificate and St. Regis key handover.
+          </p>
+          <div class="mt-4 text-[10px] font-mono text-amber-300 font-bold">Q4 2027 &bull; Guaranteed Delivery</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: INTERACTIVE PRIVATE WEALTH FINANCING CALCULATOR -->
+    <section class="py-20 bg-graphite-900/60 border-y border-white/10">
+      <div class="max-w-7xl mx-auto px-6 md:px-12">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-5">
+            <span class="text-[10px] uppercase font-mono tracking-[0.3em] text-bronze">FINANCIAL INTELLIGENCE</span>
+            <h2 class="font-serif text-3xl sm:text-5xl font-light text-sand-50 mt-1">Mortgage &amp; Financing Simulator</h2>
+            <p class="text-sand-300 text-sm mt-3 font-light leading-relaxed">
+              Explore bespoke financing options tailored for international non-resident and resident ultra-high-net-worth investors, backed by premier private banking partners.
+            </p>
+
+            <div class="mt-8 space-y-4">
+              <div class="flex items-center space-x-3 text-xs text-sand-300">
+                <i data-lucide="check-circle" class="w-4 h-4 text-bronze"></i>
+                <span>Financing up to 80% for UAE Residents &bull; 60% for International Non-Residents</span>
+              </div>
+              <div class="flex items-center space-x-3 text-xs text-sand-300">
+                <i data-lucide="check-circle" class="w-4 h-4 text-bronze"></i>
+                <span>Private banking partnerships with HSBC Private, Emirates NBD &amp; FAB</span>
+              </div>
+              <div class="flex items-center space-x-3 text-xs text-sand-300">
+                <i data-lucide="check-circle" class="w-4 h-4 text-bronze"></i>
+                <span>Direct currency settlement in AED, USD, EUR, GBP, CHF or Bitcoin (via regulated partners)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Calculator Card -->
+          <div class="lg:col-span-7 p-8 rounded-3xl bg-[#141312] border border-white/15 shadow-2xl space-y-6">
+            <!-- Property Price Slider -->
+            <div>
+              <div class="flex justify-between items-baseline mb-2">
+                <label class="text-xs font-mono uppercase text-sand-300 tracking-wider">Property Valuation</label>
+                <span id="calc-price-display" class="font-mono text-base font-bold text-bronze">AED 21,500,000</span>
+              </div>
+              <input type="range" id="calc-price" min="11800000" max="58000000" step="500000" value="21500000" class="w-full accent-amber-400 bg-white/10 h-2 rounded-lg cursor-pointer">
+              <div class="flex justify-between text-[10px] font-mono text-sand-400 mt-1">
+                <span>AED 11.8M</span>
+                <span>AED 35M</span>
+                <span>AED 58M</span>
+              </div>
+            </div>
+
+            <!-- Down Payment Slider -->
+            <div>
+              <div class="flex justify-between items-baseline mb-2">
+                <label class="text-xs font-mono uppercase text-sand-300 tracking-wider">Down Payment (<span id="calc-dp-percent">30</span>%)</label>
+                <span id="calc-dp-display" class="font-mono text-sm text-sand-100">AED 6,450,000</span>
+              </div>
+              <input type="range" id="calc-dp" min="20" max="60" step="5" value="30" class="w-full accent-amber-400 bg-white/10 h-2 rounded-lg cursor-pointer">
+            </div>
+
+            <!-- Loan Tenure & Interest Rate -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="text-xs font-mono uppercase text-sand-300 tracking-wider block mb-2">Tenure</label>
+                <select id="calc-tenure" class="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/15 text-sand-100 text-xs font-mono focus:border-bronze outline-none">
+                  <option value="10">10 Years</option>
+                  <option value="15">15 Years</option>
+                  <option value="20" selected>20 Years</option>
+                  <option value="25">25 Years</option>
+                </select>
+              </div>
+              <div>
+                <label class="text-xs font-mono uppercase text-sand-300 tracking-wider block mb-2">Interest Rate</label>
+                <select id="calc-rate" class="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/15 text-sand-100 text-xs font-mono focus:border-bronze outline-none">
+                  <option value="3.9">3.9% (Prime Private Client)</option>
+                  <option value="4.5" selected>4.5% (Standard Resident)</option>
+                  <option value="5.2">5.2% (International Non-Resident)</option>
+                  <option value="5.9">5.9% (Commercial Tier)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Output Metric Box -->
+            <div class="p-6 rounded-2xl bg-black/60 border border-bronze/30 grid grid-cols-1 sm:grid-cols-2 gap-6 items-center">
+              <div>
+                <span class="text-[9px] font-mono uppercase text-sand-400 tracking-wider block">ESTIMATED MONTHLY INSTALLMENT</span>
+                <div class="flex items-baseline space-x-1.5 mt-1">
+                  <span id="calc-monthly-aed" class="font-serif text-3xl font-bold text-sand-50">AED 95,200</span>
+                  <span class="text-xs font-mono text-sand-400">/ MO</span>
+                </div>
+                <span id="calc-monthly-usd" class="text-xs font-mono text-bronze mt-0.5 block">$25,920 USD / MO</span>
+              </div>
+              <div class="text-left sm:text-right">
+                <button onclick="window.openBookingFor('Private Financing Consultation')" class="w-full sm:w-auto px-6 py-3 rounded-full bg-bronze hover:bg-bronze-light text-graphite-950 font-bold text-xs uppercase tracking-wider transition-all shadow-lg">
+                  Consult Private Banker &rarr;
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: MATERIALITY & BESPOKE FINISHES MATRIX -->
+    <section class="py-24 max-w-7xl mx-auto px-6 md:px-12">
+      <div class="max-w-2xl mb-12">
+        <span class="text-[10px] uppercase font-mono tracking-[0.3em] text-bronze">ARCHITECTURAL PALETTE</span>
+        <h2 class="font-serif text-3xl sm:text-5xl font-light text-sand-50 mt-1">Museum-Grade Materiality</h2>
+        <p class="text-sand-300 text-sm mt-3 font-light leading-relaxed">
+          Every texture, fixture, and stone has been custom-commissioned by Foster &amp; Partners in collaboration with Studio Liaigre for acoustic silence, tactile warmth, and timeless beauty.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Material 1 -->
+        <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-bronze/40 transition-all group">
+          <div class="h-48 rounded-xl overflow-hidden mb-5">
+            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80" alt="Calacatta Statuario" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          </div>
+          <span class="text-[9px] font-mono text-bronze uppercase">ITALIAN STONE</span>
+          <h3 class="font-serif text-xl font-light text-sand-50 mt-1">Calacatta Statuario Bookmatched Marble</h3>
+          <p class="text-xs text-sand-400 font-light mt-2 leading-relaxed">
+            Continuous monolithic marble slabs hand-selected from the Carrara mountains for seamless master bathrooms and sculptural kitchen islands.
+          </p>
+        </div>
+
+        <!-- Material 2 -->
+        <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-bronze/40 transition-all group">
+          <div class="h-48 rounded-xl overflow-hidden mb-5">
+            <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80" alt="Gaggenau 400" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          </div>
+          <span class="text-[9px] font-mono text-bronze uppercase">CULINARY APPLIANCES</span>
+          <h3 class="font-serif text-xl font-light text-sand-50 mt-1">Gaggenau 400 Series Suite</h3>
+          <p class="text-xs text-sand-400 font-light mt-2 leading-relaxed">
+            Flush-mounted induction cooktops with integrated ventilation, combi-steam ovens, and 100-bottle Sub-Zero preservation cellars.
+          </p>
+        </div>
+
+        <!-- Material 3 -->
+        <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-bronze/40 transition-all group">
+          <div class="h-48 rounded-xl overflow-hidden mb-5">
+            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" alt="Acoustic Triple Glazing" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          </div>
+          <span class="text-[9px] font-mono text-bronze uppercase">ACOUSTIC ENGINEERING</span>
+          <h3 class="font-serif text-xl font-light text-sand-50 mt-1">STC 62 Triple-Glazed Facade</h3>
+          <p class="text-xs text-sand-400 font-light mt-2 leading-relaxed">
+            Motorized Schüco floor-to-ceiling glass systems with argon gas insulation, blocking 99.4% of solar heat and achieving monastic silence.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 8: RESIDENCES SPECIFICATIONS SCHEDULE TABLE -->
     <section class="py-24 bg-graphite-900/60 border-t border-white/10">
       <div class="max-w-7xl mx-auto px-6 md:px-12">
-        <div class="max-w-xl mb-12">
-          <span class="text-[10px] uppercase font-mono tracking-[0.3em] text-bronze">SPECIFICATIONS SCHEDULE</span>
-          <h2 class="font-serif text-3xl md:text-5xl font-light text-sand-50 mt-1">Collection Comparison Matrix</h2>
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+          <div>
+            <span class="text-[10px] uppercase font-mono tracking-[0.3em] text-bronze">COMPREHENSIVE MATRIX</span>
+            <h2 class="font-serif text-3xl md:text-5xl font-light text-sand-50 mt-1">Collection Comparison Matrix</h2>
+          </div>
+          <div class="mt-4 md:mt-0">
+            <button onclick="downloadBrochure('Full Residence Matrix (PDF)')" class="px-5 py-2.5 rounded-full border border-white/20 hover:border-bronze text-sand-200 text-xs font-mono uppercase tracking-wider flex items-center space-x-2 transition-all">
+              <i data-lucide="download" class="w-4 h-4 text-bronze"></i>
+              <span>Download PDF Brochure</span>
+            </button>
+          </div>
         </div>
+
         <div class="overflow-x-auto">
           <table class="w-full text-left border-collapse text-xs">
             <thead>
@@ -183,40 +1154,55 @@
                 <th class="py-4 px-4">Bedrooms</th>
                 <th class="py-4 px-4">Ceiling Clearance</th>
                 <th class="py-4 px-4">Terrace Feature</th>
-                <th class="py-4 px-4">Price</th>
+                <th class="py-4 px-4">Private Berths</th>
+                <th class="py-4 px-4">Guide Price</th>
                 <th class="py-4 px-4">Action</th>
               </tr>
             </thead>
             <tbody class="divide-y divide-white/10 font-light text-sand-200">
-              <tr class="hover:bg-white/[0.04]">
+              <tr class="hover:bg-white/[0.04] transition-colors">
                 <td class="py-5 px-4 font-serif text-base text-sand-50">The Sky Penthouse Crown</td>
                 <td class="py-5 px-4 font-mono">Levels 44 – 48</td>
-                <td class="py-5 px-4 font-mono">8,450 sq ft (785 m²)</td>
+                <td class="py-5 px-4 font-mono"><span class="unit-area" data-sqft="8450" data-sqm="785">8,450 sq ft (785 m²)</span></td>
                 <td class="py-5 px-4">5 Beds + Staff</td>
                 <td class="py-5 px-4 font-mono">7.0m Double Height</td>
                 <td class="py-5 px-4">18m Cantilevered Pool</td>
-                <td class="py-5 px-4 font-mono font-bold text-bronze-light">AED 52,000,000</td>
-                <td class="py-5 px-4"><button data-open-booking="The Sky Penthouse Crown" class="px-3.5 py-1.5 rounded-full border border-bronze/60 text-bronze-light hover:bg-bronze hover:text-black text-[10px] uppercase font-mono">Inquire</button></td>
+                <td class="py-5 px-4 font-mono">4 Supercar Berths</td>
+                <td class="py-5 px-4 font-mono font-bold text-bronze-light currency-val" data-aed="52000000">AED 52,000,000</td>
+                <td class="py-5 px-4"><button data-magnetic onclick="window.openBookingFor('The Sky Penthouse Crown')" class="px-3.5 py-1.5 rounded-full border border-bronze/60 text-bronze-light hover:bg-bronze hover:text-black text-[10px] uppercase font-mono font-bold" data-cursor="pointer">Inquire</button></td>
               </tr>
-              <tr class="hover:bg-white/[0.04]">
+              <tr class="hover:bg-white/[0.04] transition-colors">
                 <td class="py-5 px-4 font-serif text-base text-sand-50">The Horizon Panorama Suite</td>
                 <td class="py-5 px-4 font-mono">Levels 28 – 42</td>
-                <td class="py-5 px-4 font-mono">3,940 sq ft (366 m²)</td>
+                <td class="py-5 px-4 font-mono"><span class="unit-area" data-sqft="3940" data-sqm="366">3,940 sq ft (366 m²)</span></td>
                 <td class="py-5 px-4">3 En-Suite</td>
                 <td class="py-5 px-4 font-mono">3.6m Clear Height</td>
                 <td class="py-5 px-4">3.4m Cantilevered Loggia</td>
-                <td class="py-5 px-4 font-mono font-bold text-bronze-light">AED 21,500,000</td>
-                <td class="py-5 px-4"><button data-open-booking="The Horizon Residences" class="px-3.5 py-1.5 rounded-full border border-bronze/60 text-bronze-light hover:bg-bronze hover:text-black text-[10px] uppercase font-mono">Inquire</button></td>
+                <td class="py-5 px-4 font-mono">2 Underground Berths</td>
+                <td class="py-5 px-4 font-mono font-bold text-bronze-light currency-val" data-aed="21500000">AED 21,500,000</td>
+                <td class="py-5 px-4"><button data-magnetic onclick="window.openBookingFor('The Horizon Residences')" class="px-3.5 py-1.5 rounded-full border border-bronze/60 text-bronze-light hover:bg-bronze hover:text-black text-[10px] uppercase font-mono font-bold" data-cursor="pointer">Inquire</button></td>
               </tr>
-              <tr class="hover:bg-white/[0.04]">
+              <tr class="hover:bg-white/[0.04] transition-colors">
                 <td class="py-5 px-4 font-serif text-base text-sand-50">Signature Waterfront Residence</td>
                 <td class="py-5 px-4 font-mono">Levels 05 – 16</td>
-                <td class="py-5 px-4 font-mono">2,280 sq ft (212 m²)</td>
+                <td class="py-5 px-4 font-mono"><span class="unit-area" data-sqft="2280" data-sqm="212">2,280 sq ft (212 m²)</span></td>
                 <td class="py-5 px-4">2 En-Suite</td>
                 <td class="py-5 px-4 font-mono">3.4m Clear Height</td>
                 <td class="py-5 px-4">Marina Loggia</td>
-                <td class="py-5 px-4 font-mono font-bold text-bronze-light">AED 12,200,000</td>
-                <td class="py-5 px-4"><button data-open-booking="Signature Waterfront Suites" class="px-3.5 py-1.5 rounded-full border border-bronze/60 text-bronze-light hover:bg-bronze hover:text-black text-[10px] uppercase font-mono">Inquire</button></td>
+                <td class="py-5 px-4 font-mono">2 Underground Berths</td>
+                <td class="py-5 px-4 font-mono font-bold text-bronze-light currency-val" data-aed="12200000">AED 12,200,000</td>
+                <td class="py-5 px-4"><button data-magnetic onclick="window.openBookingFor('Signature Waterfront Suites')" class="px-3.5 py-1.5 rounded-full border border-bronze/60 text-bronze-light hover:bg-bronze hover:text-black text-[10px] uppercase font-mono font-bold" data-cursor="pointer">Inquire</button></td>
+              </tr>
+              <tr class="hover:bg-white/[0.04] transition-colors">
+                <td class="py-5 px-4 font-serif text-base text-sand-50">Garden Beach Villa</td>
+                <td class="py-5 px-4 font-mono">Levels 01 – 04</td>
+                <td class="py-5 px-4 font-mono"><span class="unit-area" data-sqft="3100" data-sqm="288">3,100 sq ft (288 m²)</span></td>
+                <td class="py-5 px-4">3 En-Suite</td>
+                <td class="py-5 px-4 font-mono">3.8m Clear Height</td>
+                <td class="py-5 px-4">Private Beach Deck</td>
+                <td class="py-5 px-4 font-mono">Private 45m Marina Slip</td>
+                <td class="py-5 px-4 font-mono font-bold text-bronze-light currency-val" data-aed="16800000">AED 16,800,000</td>
+                <td class="py-5 px-4"><button data-magnetic onclick="window.openBookingFor('Garden Beach Villa')" class="px-3.5 py-1.5 rounded-full border border-bronze/60 text-bronze-light hover:bg-bronze hover:text-black text-[10px] uppercase font-mono font-bold" data-cursor="pointer">Inquire</button></td>
               </tr>
             </tbody>
           </table>
@@ -226,67 +1212,353 @@
   </main>
 
   <!-- FOOTER -->
-  <footer class="relative bg-graphite-950 text-sand-50 pt-20 pb-12 border-t border-white/10 text-center">
-    <p class="font-serif text-2xl font-light tracking-widest text-sand-50">THE SOLAIRE RESIDENCES</p>
-    <p class="text-xs uppercase font-mono tracking-widest text-bronze mt-1">Jumeirah Bay Island, Dubai</p>
+  <footer class="relative bg-graphite-950 text-sand-50 pt-20 pb-12 border-t border-white/10 text-center flex flex-col items-center">
+    <img src="assets/images/logo-icon.png" alt="Stackly Emblem" class="w-10 h-10 object-contain mb-3 drop-shadow-[0_2px_10px_rgba(197,168,128,0.4)]">
+    <p class="font-serif text-2xl font-light tracking-widest text-sand-50">STACKLY RESIDENCES</p>
+    <p class="text-xs uppercase font-mono tracking-widest text-bronze mt-1">THE SOLAIRE &bull; Jumeirah Bay Island, Dubai</p>
     <div class="flex justify-center space-x-6 text-xs text-sand-400 mt-6">
       <a href="index.html" class="hover:text-white">Overview</a>
       <a href="residences.html" class="hover:text-white">Residences</a>
       <a href="interiors.html" class="hover:text-white">Interiors</a>
       <a href="floor-plans.html" class="hover:text-white">Floor Plans</a>
       <a href="amenities.html" class="hover:text-white">Amenities</a>
+      <a href="architecture.html" class="hover:text-white">Architecture</a>
       <a href="contact.html" class="hover:text-white">Contact</a>
     </div>
-    <p class="text-[11px] text-sand-500 mt-8">© 2027 The Solaire Residences LLC.</p>
+
+    <!-- Social Media Channels (Links to 404) -->
+    <div class="mt-8 flex items-center justify-center space-x-3">
+      <!-- Instagram -->
+      <a href="404.html" class="w-10 h-10 rounded-full border border-white/20 bg-white/5 hover:border-bronze hover:bg-bronze/10 text-sand-200 hover:text-bronze flex items-center justify-center transition-all duration-300 shadow-md group" title="Instagram (@thesolaire.dubai)" data-cursor="pointer">
+        <svg class="w-4 h-4 fill-none stroke-current transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+        </svg>
+      </a>
+      <!-- LinkedIn -->
+      <a href="404.html" class="w-10 h-10 rounded-full border border-white/20 bg-white/5 hover:border-bronze hover:bg-bronze/10 text-sand-200 hover:text-bronze flex items-center justify-center transition-all duration-300 shadow-md group" title="LinkedIn (The Solaire Residences)" data-cursor="pointer">
+        <svg class="w-4 h-4 fill-current transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24">
+          <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9h2.79v8.37H6.46v-8.37M7.86 6.88a1.63 1.63 0 1 0 0 3.25 1.63 1.63 0 0 0 0-3.25z"/>
+        </svg>
+      </a>
+      <!-- YouTube -->
+      <a href="404.html" class="w-10 h-10 rounded-full border border-white/20 bg-white/5 hover:border-bronze hover:bg-bronze/10 text-sand-200 hover:text-bronze flex items-center justify-center transition-all duration-300 shadow-md group" title="YouTube (The Solaire Monograph Cinema)" data-cursor="pointer">
+        <svg class="w-4 h-4 fill-current transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24">
+          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+        </svg>
+      </a>
+      <!-- Twitter / X -->
+      <a href="404.html" class="w-10 h-10 rounded-full border border-white/20 bg-white/5 hover:border-bronze hover:bg-bronze/10 text-sand-200 hover:text-bronze flex items-center justify-center transition-all duration-300 shadow-md group" title="Twitter / X (@TheSolaireDubai)" data-cursor="pointer">
+        <svg class="w-3.5 h-3.5 fill-current transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+        </svg>
+      </a>
+      <!-- Facebook -->
+      <a href="404.html" class="w-10 h-10 rounded-full border border-white/20 bg-white/5 hover:border-bronze hover:bg-bronze/10 text-sand-200 hover:text-bronze flex items-center justify-center transition-all duration-300 shadow-md group" title="Facebook (The Solaire Jumeirah Bay)" data-cursor="pointer">
+        <svg class="w-4 h-4 fill-current transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24">
+          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+        </svg>
+      </a>
+    </div>
+
+    <p class="text-[11px] text-sand-500 mt-8">&copy; 2027 The Solaire Residences LLC. RERA Registration No. 89210.</p>
   </footer>
 
   <!-- UNIVERSAL VIP MODAL -->
   <div id="vip-booking-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto hidden">
     <div class="fixed inset-0 bg-graphite-950/85 backdrop-blur-xl close-booking-modal"></div>
-    <div class="relative w-full max-w-2xl bg-[#141312] border border-bronze/30 rounded-3xl shadow-2xl overflow-hidden z-10 text-sand-50">
-      <div class="h-1.5 w-full bg-gradient-to-r from-bronze-dark via-bronze to-amber-300"></div>
-      <div class="p-6 md:p-8 flex items-center justify-between border-b border-white/10">
-        <div><h3 class="font-serif text-2xl font-light text-sand-50">VIP Private Appointment</h3></div>
-        <button class="close-booking-modal p-2 rounded-full bg-white/5 text-sand-300"><i data-lucide="x" class="w-5 h-5"></i></button>
+    <div class="relative w-full max-w-2xl bg-[#141312] border border-bronze/30 rounded-3xl shadow-2xl overflow-hidden z-10 text-sand-50 p-8">
+      <div class="flex justify-between items-center mb-6">
+        <div>
+          <span class="text-[10px] uppercase font-mono tracking-[0.25em] text-bronze">Private Viewing &amp; Sales Gallery</span>
+          <h3 class="font-serif text-2xl text-sand-50 mt-0.5">VIP Private Appointment</h3>
+        </div>
+        <button class="close-booking-modal p-2 rounded-full bg-white/5 hover:bg-white/10 text-sand-300 border border-white/10"><i data-lucide="x" class="w-5 h-5"></i></button>
       </div>
-      <div class="p-6 md:p-8" id="booking-form-view">
+
+      <div id="booking-form-view">
         <form id="vip-booking-form" class="space-y-4">
-          <input type="text" required placeholder="Full Name" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sand-100 text-xs">
-          <input type="email" required placeholder="Direct Email" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sand-100 text-xs">
-          <input type="tel" required placeholder="Phone Number" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sand-100 text-xs">
-          <select id="modal-tier-select" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sand-100 text-xs">
-            <option value="The Sky Penthouse Crown">The Sky Penthouse Crown</option>
-            <option value="The Horizon Residences">The Horizon Residences</option>
-            <option value="Signature Waterfront Suites">Signature Waterfront Suites</option>
+          <input type="text" required placeholder="Full Name" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sand-100 text-xs focus:border-bronze outline-none">
+          <input type="email" required placeholder="Direct Email" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sand-100 text-xs focus:border-bronze outline-none">
+          <input type="tel" required placeholder="Phone Number / WhatsApp" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sand-100 text-xs focus:border-bronze outline-none">
+          <select id="modal-tier-select" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sand-100 text-xs focus:border-bronze outline-none">
+            <option value="The Sky Penthouse Crown">The Sky Penthouse Crown (Level 44-48)</option>
+            <option value="The Celestial Residence">The Celestial Panorama (Level 38)</option>
+            <option value="The Horizon Residences">The Horizon Residences (Level 28-42)</option>
+            <option value="Signature Waterfront Suites">Signature Waterfront Suites (Level 05-16)</option>
+            <option value="Garden Beach Villa">Garden Beach Villa (Ground &amp; Marina)</option>
           </select>
-          <button type="submit" class="w-full py-4 rounded-full bg-bronze text-black font-semibold text-xs uppercase tracking-wider">Confirm VIP Reservation</button>
+          <button type="submit" class="w-full py-4 rounded-full bg-bronze hover:bg-bronze-light text-graphite-950 font-semibold text-xs uppercase tracking-wider transition-all shadow-lg">Confirm VIP Reservation</button>
         </form>
       </div>
+
       <div id="booking-success-view" class="p-8 text-center hidden">
+        <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-300 flex items-center justify-center mx-auto mb-4 border border-emerald-500/40">
+          <i data-lucide="check" class="w-6 h-6"></i>
+        </div>
         <h4 class="font-serif text-2xl text-sand-50">Reservation Confirmed</h4>
-        <p class="text-xs text-sand-300 mt-2">Reference Code: <strong id="modal-ref-code" class="text-bronze">SLR-89210</strong></p>
+        <p class="text-xs text-sand-300 mt-2">A private client advisor will contact you within 2 business hours.</p>
+        <p class="text-xs text-sand-400 mt-2">Reference Code: <strong id="modal-ref-code" class="text-bronze font-mono">SLR-89210</strong></p>
+        <button id="modal-whatsapp-btn" class="mt-6 px-6 py-2.5 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-mono text-xs uppercase tracking-wider transition-all flex items-center space-x-2 mx-auto">
+          <i data-lucide="message-circle" class="w-4 h-4"></i>
+          <span>Open WhatsApp Concierge</span>
+        </button>
       </div>
+    </div>
+  </div>
+
+  <!-- BROCHURE DOWNLOAD MODAL -->
+  <div id="brochure-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto hidden">
+    <div class="fixed inset-0 bg-graphite-950/85 backdrop-blur-xl" onclick="closeBrochureModal()"></div>
+    <div class="relative w-full max-w-md bg-[#141312] border border-bronze/40 rounded-3xl shadow-2xl p-8 z-10 text-center">
+      <div class="w-12 h-12 rounded-full bg-bronze/20 text-bronze flex items-center justify-center mx-auto mb-4 border border-bronze/40">
+        <i data-lucide="file-text" class="w-6 h-6"></i>
+      </div>
+      <span class="text-[9px] uppercase font-mono tracking-widest text-bronze">ARCHITECTURAL MONOGRAPH</span>
+      <h3 id="brochure-modal-title" class="font-serif text-2xl text-sand-50 mt-1">Official Spec Sheet</h3>
+      <p class="text-xs text-sand-300 mt-2 font-light">Enter your email to immediately receive the 48-page architectural monograph &amp; price list (PDF).</p>
+      <form onsubmit="handleBrochureSubmit(event)" class="mt-6 space-y-3">
+        <input type="email" required placeholder="Enter Your Professional Email" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-sand-100 text-xs focus:border-bronze outline-none">
+        <button type="submit" class="w-full py-3.5 rounded-full bg-bronze hover:bg-bronze-light text-graphite-950 font-bold text-xs uppercase tracking-wider transition-all shadow-lg">Download PDF (24.8 MB)</button>
+      </form>
+      <button onclick="closeBrochureModal()" class="mt-4 text-xs font-mono text-sand-400 hover:text-white">Cancel</button>
     </div>
   </div>
 
   <script src="js/main.js"></script>
   <script src="js/three-building.js"></script>
+  <script src="js/auth.js"></script>
   <script>
+    // 1. Initialize 3D Building Twin
     document.addEventListener('DOMContentLoaded', () => {
       if (window.initThreeBuilding) {
         window.initThreeBuilding('residences-3d-canvas');
       }
+      initMortgageCalculator();
+      updateAllCurrencyDisplays();
     });
 
-    function selectTier(id, title, subtitle, price, level, img) {
+    // 2. Interactive Tier Selection & 3D Synchronization
+    function selectTier(id, title, subtitle, priceAed, level, elevation, viewExposure, sqft, sqm, rooms, img, btn) {
       if (window.flyToTier) window.flyToTier(id);
-      document.getElementById('hud-title').textContent = title;
-      document.getElementById('hud-subtitle').textContent = subtitle;
-      document.getElementById('hud-price').textContent = price;
-      document.getElementById('hud-level').textContent = level;
-      document.getElementById('hud-img').src = img;
+
+      const titleEl = document.getElementById('hud-title');
+      const subEl = document.getElementById('hud-subtitle');
+      const priceEl = document.getElementById('hud-price');
+      const levelEl = document.getElementById('hud-level');
+      const elevEl = document.getElementById('hud-elevation');
+      const viewEl = document.getElementById('hud-view');
+      const roomsEl = document.getElementById('hud-rooms');
+      const areaEl = document.getElementById('hud-area-text');
+      const imgEl = document.getElementById('hud-img');
+
+      if (titleEl) titleEl.textContent = title;
+      if (subEl) subEl.textContent = subtitle;
+      if (levelEl) levelEl.textContent = level;
+      if (elevEl) elevEl.textContent = elevation;
+      if (viewEl) viewEl.textContent = viewExposure;
+      if (roomsEl) roomsEl.textContent = rooms;
+      if (imgEl) imgEl.src = img;
+
+      if (priceEl) {
+        priceEl.setAttribute('data-aed', priceAed);
+        if (priceAed === 0) {
+          priceEl.textContent = 'Exclusive Access';
+        } else {
+          priceEl.textContent = formatCurrency(priceAed, currentCurrency);
+        }
+      }
+
+      if (areaEl) {
+        const areaStr = currentAreaUnit === 'sqm' ? `${sqm} m²` : `${sqft.toLocaleString()} sq ft`;
+        areaEl.innerHTML = `<strong class="unit-area text-sand-100" data-sqft="${sqft}" data-sqm="${sqm}">${areaStr}</strong>`;
+      }
+
+      // Update Active Navigation Button Highlight
+      if (btn) {
+        document.querySelectorAll('.tier-nav-btn').forEach((b) => {
+          b.classList.remove('border-bronze', 'bg-gradient-to-r', 'from-bronze/25', 'to-white/5', 'shadow-lg');
+          b.classList.add('border-white/10', 'bg-white/[0.03]');
+        });
+        btn.classList.add('border-bronze', 'bg-gradient-to-r', 'from-bronze/25', 'to-white/5', 'shadow-lg');
+        btn.classList.remove('border-white/10', 'bg-white/[0.03]');
+      }
+
+      // Sync with mortgage calculator price if nonzero
+      if (priceAed > 0) {
+        const calcPrice = document.getElementById('calc-price');
+        if (calcPrice) {
+          calcPrice.value = Math.min(58000000, Math.max(11800000, priceAed));
+          updateMortgage();
+        }
+      }
+    }
+
+    // 3. Atmosphere Lighting Modes
+    function setLighting(mode, btn) {
+      if (window.setBuildingLighting) window.setBuildingLighting(mode);
+      if (btn) {
+        btn.parentElement.querySelectorAll('button').forEach((b) => {
+          b.classList.remove('bg-bronze', 'text-graphite-950', 'font-semibold', 'shadow-[0_0_15px_rgba(197,168,128,0.5)]');
+          b.classList.add('text-sand-300');
+        });
+        btn.classList.add('bg-bronze', 'text-graphite-950', 'font-semibold', 'shadow-[0_0_15px_rgba(197,168,128,0.5)]');
+        btn.classList.remove('text-sand-300');
+      }
+    }
+
+    // 4. Global Currency Converter (AED, USD, EUR, GBP)
+    let currentCurrency = 'AED';
+    const currencyRates = {
+      AED: { rate: 1.0, prefix: 'AED ', suffix: '' },
+      USD: { rate: 0.2723, prefix: '$', suffix: ' USD' },
+      EUR: { rate: 0.2512, prefix: '€', suffix: ' EUR' },
+      GBP: { rate: 0.2145, prefix: '£', suffix: ' GBP' }
+    };
+
+    function formatCurrency(aedAmount, curr) {
+      if (!aedAmount || aedAmount === 0) return 'Exclusive Access';
+      const cfg = currencyRates[curr] || currencyRates.AED;
+      const converted = Math.round(aedAmount * cfg.rate);
+      return `${cfg.prefix}${converted.toLocaleString()}${cfg.suffix}`;
+    }
+
+    function setGlobalCurrency(curr, btn) {
+      currentCurrency = curr;
+      document.querySelectorAll('.curr-btn').forEach(b => {
+        b.classList.remove('bg-bronze', 'text-graphite-950', 'font-bold');
+        b.classList.add('text-sand-300');
+      });
+      if (btn) {
+        btn.classList.add('bg-bronze', 'text-graphite-950', 'font-bold');
+        btn.classList.remove('text-sand-300');
+      }
+      updateAllCurrencyDisplays();
+      if (typeof window.playLuxuryChime === 'function') window.playLuxuryChime(659.25);
+    }
+
+    function updateAllCurrencyDisplays() {
+      document.querySelectorAll('.currency-val').forEach(el => {
+        const aed = parseFloat(el.getAttribute('data-aed'));
+        if (aed && aed > 0) {
+          el.textContent = formatCurrency(aed, currentCurrency);
+        }
+      });
+    }
+
+    // 5. Global Area Unit Converter (SQ FT ⇋ SQ M)
+    let currentAreaUnit = 'sqft';
+    function setAreaUnit(unit, btn) {
+      currentAreaUnit = unit;
+      const btnSqft = document.getElementById('unit-btn-sqft');
+      const btnSqm = document.getElementById('unit-btn-sqm');
+      if (unit === 'sqft') {
+        btnSqft?.classList.add('bg-bronze', 'text-graphite-950', 'font-bold');
+        btnSqft?.classList.remove('text-sand-300');
+        btnSqm?.classList.remove('bg-bronze', 'text-graphite-950', 'font-bold');
+        btnSqm?.classList.add('text-sand-300');
+      } else {
+        btnSqm?.classList.add('bg-bronze', 'text-graphite-950', 'font-bold');
+        btnSqm?.classList.remove('text-sand-300');
+        btnSqft?.classList.remove('bg-bronze', 'text-graphite-950', 'font-bold');
+        btnSqft?.classList.add('text-sand-300');
+      }
+
+      document.querySelectorAll('.unit-area').forEach(el => {
+        const sqft = parseFloat(el.getAttribute('data-sqft'));
+        const sqm = parseFloat(el.getAttribute('data-sqm'));
+        if (unit === 'sqm') {
+          el.textContent = `${sqm.toLocaleString()} m²`;
+        } else {
+          el.textContent = `${sqft.toLocaleString()} sq ft`;
+        }
+      });
+      if (typeof window.playLuxuryChime === 'function') window.playLuxuryChime(587.33);
+    }
+
+    // 6. Residence Collection Filter
+    function filterResidences(category, btn) {
+      document.querySelectorAll('.res-filter-btn').forEach(b => {
+        b.classList.remove('bg-bronze', 'text-graphite-950', 'font-bold');
+        b.classList.add('bg-white/5', 'text-sand-300');
+      });
+      if (btn) {
+        btn.classList.add('bg-bronze', 'text-graphite-950', 'font-bold');
+        btn.classList.remove('bg-white/5', 'text-sand-300');
+      }
+
+      const cards = document.querySelectorAll('.res-card');
+      cards.forEach(card => {
+        const cat = card.getAttribute('data-category');
+        if (category === 'all' || cat === category) {
+          card.style.display = 'flex';
+          card.style.opacity = '1';
+        } else {
+          card.style.display = 'none';
+          card.style.opacity = '0';
+        }
+      });
+      if (typeof window.playLuxuryChime === 'function') window.playLuxuryChime(523.25);
+    }
+
+    // 7. Mortgage & Private Financing Calculator
+    function initMortgageCalculator() {
+      const priceSlider = document.getElementById('calc-price');
+      const dpSlider = document.getElementById('calc-dp');
+      const tenureSelect = document.getElementById('calc-tenure');
+      const rateSelect = document.getElementById('calc-rate');
+
+      if (!priceSlider) return;
+
+      priceSlider.addEventListener('input', updateMortgage);
+      dpSlider.addEventListener('input', updateMortgage);
+      tenureSelect.addEventListener('change', updateMortgage);
+      rateSelect.addEventListener('change', updateMortgage);
+      updateMortgage();
+    }
+
+    function updateMortgage() {
+      const price = parseFloat(document.getElementById('calc-price').value);
+      const dpPercent = parseFloat(document.getElementById('calc-dp').value);
+      const tenureYears = parseFloat(document.getElementById('calc-tenure').value);
+      const annualRate = parseFloat(document.getElementById('calc-rate').value) / 100;
+
+      const dpAmount = price * (dpPercent / 100);
+      const loanAmount = price - dpAmount;
+
+      const monthlyRate = annualRate / 12;
+      const totalMonths = tenureYears * 12;
+
+      // Standard amortization formula: M = P * [r(1+r)^n] / [(1+r)^n - 1]
+      const monthlyPayment = (loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, totalMonths))) / (Math.pow(1 + monthlyRate, totalMonths) - 1);
+      const monthlyUsd = monthlyPayment * 0.2723;
+
+      document.getElementById('calc-price-display').textContent = `AED ${price.toLocaleString()}`;
+      document.getElementById('calc-dp-percent').textContent = dpPercent;
+      document.getElementById('calc-dp-display').textContent = `AED ${Math.round(dpAmount).toLocaleString()}`;
+      document.getElementById('calc-monthly-aed').textContent = `AED ${Math.round(monthlyPayment).toLocaleString()}`;
+      document.getElementById('calc-monthly-usd').textContent = `$${Math.round(monthlyUsd).toLocaleString()} USD / MO`;
+    }
+
+    // 8. Brochure Download Modal
+    function downloadBrochure(title) {
+      const modal = document.getElementById('brochure-modal');
+      const titleEl = document.getElementById('brochure-modal-title');
+      if (titleEl && title) titleEl.textContent = title;
+      if (modal) modal.classList.remove('hidden');
+    }
+
+    function closeBrochureModal() {
+      const modal = document.getElementById('brochure-modal');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    function handleBrochureSubmit(e) {
+      e.preventDefault();
+      alert('Your request has been registered. The official 48-page architectural monograph and current availability schedule will download immediately.');
+      closeBrochureModal();
     }
   </script>
 </body>
 </html>
-

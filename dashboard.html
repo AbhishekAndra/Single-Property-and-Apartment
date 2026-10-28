@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en" class="antialiased selection:bg-amber-700 selection:text-white">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resident Console &amp; Owner Dashboard | STACKLY &bull; THE SOLAIRE DUBAI</title>
+  <!-- Luxury Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo-icon.svg">
+  <link rel="alternate icon" type="image/png" href="assets/images/logo-icon.png">
+  <link rel="apple-touch-icon" href="assets/images/logo-icon.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            sand: { 50: '#FDFCFA', 100: '#F8F6F0', 200: '#F3EFEA', 300: '#E8E2D8', 400: '#D5CDC0', 500: '#B8ADA0' },
+            bronze: { light: '#DFCFB7', DEFAULT: '#C5A880', dark: '#9A784E', deep: '#695133' },
+            graphite: { 50: '#F5F5F4', 100: '#E7E6E4', 300: '#B0AEA9', 500: '#73706A', 700: '#3D3B37', 800: '#242321', 900: '#141413', 950: '#0A0A09' }
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Playfair Display', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+  <!-- GSAP & Lenis -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .dashboard-bg {
+      background-color: #0A0A09;
+      background-image: 
+        radial-gradient(circle at 10% 15%, rgba(197, 168, 128, 0.08), transparent 40%),
+        radial-gradient(circle at 90% 65%, rgba(154, 120, 78, 0.06), transparent 50%);
+    }
+    .active-mood {
+      border-color: #C5A880 !important;
+      background-color: rgba(197, 168, 128, 0.2) !important;
+      color: #F8F6F0 !important;
+    }
+  </style>
+</head>
+<body class="dashboard-bg text-sand-50 font-sans min-h-screen overflow-x-hidden selection:bg-bronze selection:text-black">
+
+  <!-- GLOBAL SCROLL PROGRESS INDICATOR -->
+  <div id="global-scroll-progress"></div>
+
+  <!-- LUXURY EDITORIAL PRELOADER -->
+  <div id="luxury-preloader">
+    <div class="preloader-brand">STACKLY</div>
+    <div class="preloader-status">THE SOLAIRE &bull; RESIDENT CONSOLE &bull; SYNCHRONIZING IN-SUITE TELEMETRY</div>
+    <div class="preloader-counter"><span id="preloader-count">0</span>%</div>
+    <div class="preloader-bar-bg">
+      <div id="preloader-progress" class="preloader-bar-fill"></div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- TOP TELEMETRY RIBBON: PROMINENT LOGGED-IN EMAIL AT THE VERY TOP -->
+  <!-- ========================================================================= -->
+  <div class="w-full bg-[#11100F] border-b border-bronze/30 py-2.5 px-4 sm:px-8 md:px-12 text-xs font-mono text-sand-300 relative z-50 shadow-md">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2.5">
+      
+      <!-- Left: Session Status & Logged-In User Email -->
+      <div class="flex flex-wrap items-center justify-center sm:justify-start gap-2.5">
+        <span class="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-[10px]">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span>SECURE RESIDENT SESSION</span>
+        </span>
+        <span class="text-sand-400 uppercase text-[10px] tracking-wider">LOGGED IN AS:</span>
+        <span id="top-bar-email" class="text-bronze-light font-bold tracking-wider px-3 py-0.5 rounded-full bg-bronze/20 border border-bronze/40 text-[11px] shadow-[0_0_10px_rgba(197,168,128,0.2)]">
+          loading...
+        </span>
+      </div>
+
+      <!-- Right: Real-time Jumeirah Bay Telemetry -->
+      <div class="flex items-center space-x-4 text-[10px] sm:text-[11px] text-sand-400 font-mono">
+        <span class="flex items-center space-x-1">
+          <i data-lucide="key" class="w-3 h-3 text-bronze"></i>
+          <span>KEYCARD: <strong id="top-bar-keycard" class="text-sand-200">#SLR-9842</strong></span>
+        </span>
+        <span class="opacity-30">•</span>
+        <span class="hidden sm:flex items-center space-x-1">
+          <i data-lucide="anchor" class="w-3 h-3 text-emerald-400"></i>
+          <span>BERTH: <strong class="text-emerald-400">#14 READY</strong></span>
+        </span>
+        <span class="hidden md:inline opacity-30">•</span>
+        <span class="hidden md:flex items-center space-x-1">
+          <i data-lucide="sun" class="w-3 h-3 text-amber-400"></i>
+          <span>JUMEIRAH BAY: <strong class="text-sand-200">28°C CALM</strong></span>
+        </span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- MAIN DASHBOARD NAVIGATION HEADER -->
+  <!-- ========================================================================= -->
+  <header class="w-full py-5 px-4 sm:px-8 md:px-12 bg-graphite-950/80 backdrop-blur-xl border-b border-white/10 sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="index.html" class="flex items-center space-x-3.5 tracking-widest text-left group">
+        <img src="assets/images/logo-icon.png" alt="Stackly Emblem" class="w-9 h-9 object-contain drop-shadow-[0_2px_12px_rgba(197,168,128,0.4)] group-hover:scale-105 transition-transform duration-300">
+        <div class="flex flex-col">
+          <span class="font-serif text-xl sm:text-2xl font-light tracking-[0.25em] text-sand-50 group-hover:text-bronze-light transition-colors leading-tight">STACKLY</span>
+          <span class="text-[9px] uppercase tracking-[0.35em] text-bronze font-medium opacity-90 -mt-0.5">RESIDENT CONSOLE &bull; THE SOLAIRE</span>
+        </div>
+      </a>
+
+      <!-- Navigation Tabs -->
+      <nav class="hidden lg:flex items-center space-x-6 text-[11px] uppercase tracking-[0.2em] font-mono">
+        <a href="#section-suite" class="text-bronze font-semibold border-b border-bronze pb-1">My Suite</a>
+        <a href="#section-automation" class="text-sand-300 hover:text-white transition-colors pb-1">In-Suite Controls</a>
+        <a href="#section-concierge" class="text-sand-300 hover:text-white transition-colors pb-1">Butler Services</a>
+        <a href="#section-vault" class="text-sand-300 hover:text-white transition-colors pb-1">Document Vault</a>
+        <a href="#section-calendar" class="text-sand-300 hover:text-white transition-colors pb-1">VIP Events</a>
+      </nav>
+
+      <!-- User Profile Capsule & Actions -->
+      <div class="flex items-center space-x-3">
+        <!-- Prominent User Email Badge in Header -->
+        <div class="hidden sm:flex items-center space-x-2.5 bg-white/[0.04] border border-bronze/30 px-3.5 py-1.5 rounded-full backdrop-blur-md">
+          <div class="w-6 h-6 rounded-full bg-bronze/20 text-bronze border border-bronze/40 flex items-center justify-center font-serif text-xs font-bold" id="user-avatar-initial">
+            R
+          </div>
+          <div class="flex flex-col text-left">
+            <span id="header-user-email" class="font-mono text-xs text-sand-100 font-medium truncate max-w-[160px] md:max-w-[200px]">
+              user@example.com
+            </span>
+            <span id="header-user-tier" class="text-[9px] uppercase font-mono text-bronze-dark -mt-0.5">
+              Penthouse Owner
+            </span>
+          </div>
+        </div>
+
+        <!-- Public Website Link -->
+        <a href="index.html" class="p-2.5 rounded-full border border-white/10 hover:border-bronze text-sand-300 hover:text-white transition-all" title="View Public Website">
+          <i data-lucide="external-link" class="w-4 h-4"></i>
+        </a>
+
+        <!-- Logout Button -->
+        <button onclick="handleLogout()" class="px-4 py-2 rounded-full border border-red-500/30 bg-red-500/10 hover:bg-red-500 hover:text-white text-red-300 text-[11px] uppercase tracking-wider font-mono transition-all flex items-center space-x-1.5" title="Exit Resident Session">
+          <i data-lucide="log-out" class="w-3.5 h-3.5"></i>
+          <span class="hidden sm:inline">Sign Out</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ========================================================================= -->
+  <!-- MAIN DASHBOARD CONTENT -->
+  <!-- ========================================================================= -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-8 md:px-12 py-10 space-y-12">
+
+    <!-- WELCOME HERO BANNER (Featuring Logged-in Email Prominently) -->
+    <div class="relative bg-gradient-to-r from-[#171615] via-[#141312] to-[#1a1816] rounded-3xl p-8 sm:p-12 border border-bronze/30 shadow-2xl overflow-hidden">
+      <!-- Ambient Glow Accents -->
+      <div class="absolute -top-24 -right-24 w-80 h-80 rounded-full bg-bronze/10 filter blur-3xl pointer-events-none"></div>
+
+      <div class="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+        <div>
+          <div class="flex items-center space-x-2 text-[10px] font-mono uppercase tracking-[0.3em] text-bronze mb-2">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5 text-bronze"></i>
+            <span>AUTHENTICATED RESIDENCE OWNER</span>
+          </div>
+
+          <!-- Hero Greeting with User Email -->
+          <h1 class="font-serif text-3xl sm:text-5xl md:text-6xl font-light text-sand-50 tracking-tight leading-[1.05]">
+            Welcome Home, <br>
+            <span id="hero-user-email" class="text-bronze font-normal italic break-all">
+              user@example.com
+            </span>
+          </h1>
+
+          <p class="text-xs sm:text-sm text-sand-400 font-light mt-4 max-w-xl leading-relaxed">
+            Connected to <strong id="hero-unit-name" class="text-sand-200 font-medium">The Sky Penthouse Crown (Suite 4801)</strong>. Control in-suite motorized glass, dispatch St. Regis concierge, and review verified escrow milestones.
+          </p>
+
+          <div class="mt-6 flex flex-wrap items-center gap-3">
+            <span class="px-3.5 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-sand-300 flex items-center space-x-1.5">
+              <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-400"></i>
+              <span>Biometric Keycard SLR-8821 Active</span>
+            </span>
+            <button onclick="promptSwitchAccount()" class="px-3.5 py-1 rounded-full bg-bronze/10 hover:bg-bronze/20 border border-bronze/40 text-xs font-mono text-bronze-light hover:text-white transition-all flex items-center space-x-1.5">
+              <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>
+              <span>Switch User Email Demo</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Quick Residence Vital Card -->
+        <div class="bg-black/40 backdrop-blur-md p-6 rounded-2xl border border-white/10 lg:w-80 flex-shrink-0">
+          <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-4">
+            <span class="text-[10px] font-mono uppercase tracking-wider text-sand-400">Valuation &amp; Equity</span>
+            <span class="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded">+12.4% YoY</span>
+          </div>
+          <p class="text-[10px] uppercase font-mono text-sand-500">Current Market Index</p>
+          <p class="font-serif text-3xl text-sand-50 font-light mt-0.5" id="hero-unit-price">AED 54,200,000</p>
+          <div class="mt-4 pt-3 border-t border-white/10 grid grid-cols-2 gap-2 text-xs font-mono">
+            <div>
+              <p class="text-[9px] text-sand-500 uppercase">Internal Area</p>
+              <p class="text-sand-200 mt-0.5" id="hero-unit-area">8,650 ft²</p>
+            </div>
+            <div>
+              <p class="text-[9px] text-sand-500 uppercase">Handover</p>
+              <p class="text-bronze mt-0.5">Q4 2027</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 1: MY RESIDENCE PORTFOLIO & SPECIFICATIONS -->
+    <!-- ========================================================================= -->
+    <section id="section-suite" class="space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-sand-300/20 pb-4">
+        <div>
+          <span class="text-[10px] font-mono uppercase tracking-[0.3em] text-bronze">CHAPTER 01</span>
+          <h2 class="font-serif text-3xl sm:text-4xl font-light text-sand-50 mt-1">My Residence Portfolio</h2>
+        </div>
+        <div class="flex items-center space-x-3 text-xs font-mono">
+          <a href="residences.html" class="px-4 py-2 rounded-full border border-white/20 hover:border-bronze bg-white/5 hover:bg-white/10 text-sand-200 transition-all flex items-center space-x-2">
+            <i data-lucide="rotate-3d" class="w-3.5 h-3.5 text-bronze"></i>
+            <span>Open 3D Model Explorer</span>
+          </a>
+          <a href="floor-plans.html" class="px-4 py-2 rounded-full border border-white/20 hover:border-bronze bg-white/5 hover:bg-white/10 text-sand-200 transition-all flex items-center space-x-2">
+            <i data-lucide="layout" class="w-3.5 h-3.5 text-bronze"></i>
+            <span>Interactive Blueprints</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Main Suite Showcase Card -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        <!-- Render Preview -->
+        <div class="lg:col-span-7 relative h-[360px] sm:h-[440px] rounded-3xl overflow-hidden border border-sand-300/30 shadow-xl group">
+          <video autoplay loop muted playsinline class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-[0.88]" poster="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=85">
+            <source src="assets/videos/interior-loop.mp4" type="video/mp4">
+          </video>
+          <div class="absolute inset-0 bg-gradient-to-t from-graphite-950 via-graphite-950/20 to-transparent"></div>
+          
+          <div class="absolute top-6 left-6 flex items-center space-x-2">
+            <span class="px-3.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white text-[10px] font-mono uppercase tracking-widest" id="residence-card-badge">
+              Suite 4801 • Penthouse Crown
+            </span>
+          </div>
+
+          <div class="absolute bottom-6 left-6 right-6 text-sand-50">
+            <span class="text-[10px] font-mono text-bronze uppercase tracking-widest">PRIVATE SPECIFICATIONS</span>
+            <h3 class="font-serif text-2xl sm:text-3xl font-light mt-1" id="residence-card-title">The Sky Penthouse Crown Duplex</h3>
+            <p class="text-xs text-sand-300 font-light mt-2 max-w-lg leading-relaxed">
+              Expansive 360-degree panoramic ocean loggia with a 3.4m cantilevered private infinity plunge pool and dedicated biometric direct elevator.
+            </p>
+          </div>
+        </div>
+
+        <!-- Detail Metrics & Construction Milestones -->
+        <div class="lg:col-span-5 bg-white/[0.03] p-8 rounded-3xl border border-white/10 flex flex-col justify-between shadow-xl">
+          <div>
+            <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
+              <span class="text-[10px] font-mono uppercase tracking-widest text-bronze-light">Property Dossier</span>
+              <span class="text-xs font-mono text-emerald-400">Escrow Certified</span>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4 text-xs font-mono">
+              <div class="p-3.5 rounded-2xl bg-white/[0.02] border border-white/5">
+                <p class="text-[10px] uppercase text-sand-500">Internal Area</p>
+                <p class="font-serif text-xl text-sand-50 mt-1 font-light" id="metric-area">8,650 ft²</p>
+                <p class="text-[9px] text-sand-500 mt-0.5">804 m² living</p>
+              </div>
+              <div class="p-3.5 rounded-2xl bg-white/[0.02] border border-white/5">
+                <p class="text-[10px] uppercase text-sand-500">Bedrooms / Baths</p>
+                <p class="font-serif text-xl text-sand-50 mt-1 font-light" id="metric-beds">5 Beds &bull; 6 Baths</p>
+                <p class="text-[9px] text-sand-500 mt-0.5">+ Staff Quarter</p>
+              </div>
+              <div class="p-3.5 rounded-2xl bg-white/[0.02] border border-white/5">
+                <p class="text-[10px] uppercase text-sand-500">Ceiling Clearance</p>
+                <p class="font-serif text-xl text-sand-50 mt-1 font-light">3.80 m</p>
+                <p class="text-[9px] text-sand-500 mt-0.5">Full height glass</p>
+              </div>
+              <div class="p-3.5 rounded-2xl bg-white/[0.02] border border-white/5">
+                <p class="text-[10px] uppercase text-sand-500">Private Parking</p>
+                <p class="font-serif text-xl text-sand-50 mt-1">4 Bays</p>
+                <p class="text-[9px] text-sand-500 mt-0.5">EV Superchargers</p>
+              </div>
+            </div>
+
+            <!-- Milestone Tracker -->
+            <div class="mt-6 pt-6 border-t border-white/10">
+              <p class="text-[10px] uppercase font-mono tracking-widest text-sand-400 mb-3">Construction &amp; Delivery Progress</p>
+              <div class="space-y-2 text-xs font-mono">
+                <div class="flex items-center justify-between text-emerald-400">
+                  <span class="flex items-center space-x-1.5"><i data-lucide="check-circle" class="w-3.5 h-3.5"></i><span>Marine Deep Bedrock Piles</span></span>
+                  <span>100%</span>
+                </div>
+                <div class="flex items-center justify-between text-amber-400">
+                  <span class="flex items-center space-x-1.5"><i data-lucide="clock" class="w-3.5 h-3.5"></i><span>Level 48 Superstructure</span></span>
+                  <span>88%</span>
+                </div>
+                <div class="flex items-center justify-between text-sand-500">
+                  <span class="flex items-center space-x-1.5"><i data-lucide="circle" class="w-3.5 h-3.5"></i><span>Interior Liaigre Fit-Out</span></span>
+                  <span>Q2 2027</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
+            <span class="text-[11px] font-mono text-sand-400">Ownership Deed Hash:</span>
+            <span class="text-[11px] font-mono text-bronze-light">0x8F3a...7C92</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 2: IN-SUITE ENVIRONMENTAL & SMART AUTOMATION -->
+    <!-- ========================================================================= -->
+    <section id="section-automation" class="space-y-6 pt-6">
+      <div class="border-b border-sand-300/20 pb-4">
+        <span class="text-[10px] font-mono uppercase tracking-[0.3em] text-bronze">CHAPTER 02</span>
+        <h2 class="font-serif text-3xl sm:text-4xl font-light text-sand-50 mt-1">In-Suite Smart Automation</h2>
+        <p class="text-xs sm:text-sm text-sand-400 font-light mt-1">Command your residence's atmospheric environment, lighting moods, motorized glass walls, and thermal climate in real time.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Control 1: Lighting Mood Scenes -->
+        <div class="bg-white/[0.03] p-6 rounded-3xl border border-white/10 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-xs font-mono text-bronze mb-3">
+              <span class="uppercase tracking-wider">Lighting Scene</span>
+              <i data-lucide="sun-medium" class="w-4 h-4"></i>
+            </div>
+            <h4 class="font-serif text-xl font-light text-sand-50">Atmosphere Mood</h4>
+            <p class="text-[11px] text-sand-400 mt-1">Synchronized architectural perimeter diffusers.</p>
+
+            <div class="mt-5 space-y-2 font-mono text-xs">
+              <button onclick="setLightingMood(this, '12:00 Midday Sun', '100% Daylight Spectrum')" class="mood-btn active-mood w-full py-2 px-3 rounded-xl border border-white/10 text-left transition-all flex items-center justify-between">
+                <span>Midday Radiance</span>
+                <span class="text-[9px] text-amber-400">12:00</span>
+              </button>
+              <button onclick="setLightingMood(this, 'Golden Sunset', '3000K Warm Honey Tone')" class="mood-btn w-full py-2 px-3 rounded-xl border border-white/10 hover:border-bronze text-left transition-all flex items-center justify-between text-sand-400">
+                <span>Golden Sunset</span>
+                <span class="text-[9px] text-amber-600">18:15</span>
+              </button>
+              <button onclick="setLightingMood(this, 'Twilight Blue', 'Deep Indigo Calm')" class="mood-btn w-full py-2 px-3 rounded-xl border border-white/10 hover:border-bronze text-left transition-all flex items-center justify-between text-sand-400">
+                <span>Twilight Blue</span>
+                <span class="text-[9px] text-indigo-400">21:00</span>
+              </button>
+            </div>
+          </div>
+          <p id="lighting-status-desc" class="text-[10px] font-mono text-emerald-400 mt-4 pt-3 border-t border-white/10">Active: 100% Daylight Spectrum</p>
+        </div>
+
+        <!-- Control 2: Motorized Schuco Glass Wall -->
+        <div class="bg-white/[0.03] p-6 rounded-3xl border border-white/10 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-xs font-mono text-bronze mb-3">
+              <span class="uppercase tracking-wider">Ocean Balcony</span>
+              <i data-lucide="sliders-horizontal" class="w-4 h-4"></i>
+            </div>
+            <h4 class="font-serif text-xl font-light text-sand-50">7.2m Glass Wall</h4>
+            <p class="text-[11px] text-sand-400 mt-1">Motorized frameless sliding facade.</p>
+
+            <div class="mt-6 space-y-3 font-mono">
+              <div class="flex items-center justify-between text-xs">
+                <span class="text-sand-400">Aperture Position</span>
+                <span id="slider-percentage" class="text-bronze font-bold">45% Open</span>
+              </div>
+              <input type="range" id="glass-range-slider" min="0" max="100" value="45" oninput="updateGlassSlider(this.value)" class="w-full h-2 bg-white/10 rounded-lg appearance-none cursor-pointer accent-amber-500">
+              <div class="flex justify-between text-[9px] text-sand-500">
+                <span>0% Sealed</span>
+                <span>50% Breeze</span>
+                <span>100% Open Air</span>
+              </div>
+            </div>
+          </div>
+          <p id="glass-slider-status" class="text-[10px] font-mono text-sand-300 mt-4 pt-3 border-t border-white/10">Schuco Drive: Whisper-Silent Mode</p>
+        </div>
+
+        <!-- Control 3: Thermostat Climate -->
+        <div class="bg-white/[0.03] p-6 rounded-3xl border border-white/10 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-xs font-mono text-bronze mb-3">
+              <span class="uppercase tracking-wider">Climate Control</span>
+              <i data-lucide="thermometer" class="w-4 h-4"></i>
+            </div>
+            <h4 class="font-serif text-xl font-light text-sand-50">Suite Temperature</h4>
+            <p class="text-[11px] text-sand-400 mt-1">Concealed perimeter linear diffusers.</p>
+
+            <div class="mt-4 flex items-center justify-center space-x-6 py-2">
+              <button onclick="adjustTemp(-0.5)" class="w-10 h-10 rounded-full border border-white/20 bg-white/5 hover:bg-white/15 text-sand-200 flex items-center justify-center font-mono text-lg transition-colors">&minus;</button>
+              <div class="text-center font-mono">
+                <span id="suite-temp" class="font-serif text-4xl text-sand-50 font-light">21.5</span>
+                <span class="text-bronze text-sm font-sans">&deg;C</span>
+              </div>
+              <button onclick="adjustTemp(0.5)" class="w-10 h-10 rounded-full border border-white/20 bg-white/5 hover:bg-white/15 text-sand-200 flex items-center justify-center font-mono text-lg transition-colors">&plus;</button>
+            </div>
+          </div>
+          <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-[10px] font-mono text-sand-400">
+            <span>Fan: Auto Whisper</span>
+            <span class="text-emerald-400">RH: 48%</span>
+          </div>
+        </div>
+
+        <!-- Control 4: Scent & Acoustic Masking -->
+        <div class="bg-white/[0.03] p-6 rounded-3xl border border-white/10 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-xs font-mono text-bronze mb-3">
+              <span class="uppercase tracking-wider">Aroma &amp; Acoustics</span>
+              <i data-lucide="wind" class="w-4 h-4"></i>
+            </div>
+            <h4 class="font-serif text-xl font-light text-sand-50">Sensory Curation</h4>
+            <p class="text-[11px] text-sand-400 mt-1">HVAC micro-nebulized diffusion.</p>
+
+            <div class="mt-4 space-y-3 font-mono text-xs">
+              <div class="p-2.5 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between">
+                <div>
+                  <p class="text-[11px] text-sand-200">Santal &amp; Sea Salt</p>
+                  <p class="text-[9px] text-bronze-light">Bespoke Liaigre Blend</p>
+                </div>
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              </div>
+              <div class="p-2.5 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between">
+                <div>
+                  <p class="text-[11px] text-sand-200">Acoustic Baffles</p>
+                  <p class="text-[9px] text-sand-500">STC 62 Deep Quiet</p>
+                </div>
+                <span class="text-[10px] text-emerald-400">Active</span>
+              </div>
+            </div>
+          </div>
+          <p class="text-[10px] font-mono text-sand-400 mt-4 pt-3 border-t border-white/10">Ambient Sound: Ocean Waves</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 3: ST. REGIS ON-DEMAND BUTLER & CONCIERGE -->
+    <!-- ========================================================================= -->
+    <section id="section-concierge" class="space-y-6 pt-6">
+      <div class="border-b border-sand-300/20 pb-4">
+        <span class="text-[10px] font-mono uppercase tracking-[0.3em] text-bronze">CHAPTER 03</span>
+        <h2 class="font-serif text-3xl sm:text-4xl font-light text-sand-50 mt-1">St. Regis 24/7 Butler Dispatches</h2>
+        <p class="text-xs sm:text-sm text-sand-400 font-light mt-1">Immediate one-touch concierge requests linked directly to your private estate manager.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Chauffeur Service -->
+        <div class="bg-white/[0.03] p-6 rounded-3xl border border-white/10 hover:border-bronze/40 transition-all flex flex-col justify-between group">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-bronze/10 text-bronze flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+              <i data-lucide="car" class="w-6 h-6"></i>
+            </div>
+            <h4 class="font-serif text-xl font-light text-sand-50">Rolls-Royce Chauffeur</h4>
+            <p class="text-xs text-sand-400 mt-2 font-light leading-relaxed">
+              Door-to-door luxury transfer to Dubai International (DXB), DIFC, or Al Maktoum Private Jet Terminal.
+            </p>
+          </div>
+          <button onclick="requestConciergeService('Rolls-Royce Phantom Chauffeur', 'Driver Ahmed has been notified. Estimated pickup readiness in 15 minutes at Port Cochère.')" class="mt-6 w-full py-2.5 rounded-full bg-white/5 hover:bg-bronze hover:text-black border border-white/15 text-xs font-mono tracking-wider transition-all">
+            Dispatch Chauffeur
+          </button>
+        </div>
+
+        <!-- Sommelier Tasting Room -->
+        <div class="bg-white/[0.03] p-6 rounded-3xl border border-white/10 hover:border-bronze/40 transition-all flex flex-col justify-between group">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-bronze/10 text-bronze flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+              <i data-lucide="wine" class="w-6 h-6"></i>
+            </div>
+            <h4 class="font-serif text-xl font-light text-sand-50">Sommelier Cellar Vault</h4>
+            <p class="text-xs text-sand-400 mt-2 font-light leading-relaxed">
+              Book the private climate-controlled tasting room for vintage Bordeaux tastings or private cellar inventory curation.
+            </p>
+          </div>
+          <button onclick="requestConciergeService('Private Sommelier Cellar Vault', 'Tasting Room #2 has been reserved for this evening at 19:30 with Head Sommelier Jean-Luc.')" class="mt-6 w-full py-2.5 rounded-full bg-white/5 hover:bg-bronze hover:text-black border border-white/15 text-xs font-mono tracking-wider transition-all">
+            Reserve Cellar Room
+          </button>
+        </div>
+
+        <!-- Infinity Lap Pool Cabana -->
+        <div class="bg-white/[0.03] p-6 rounded-3xl border border-white/10 hover:border-bronze/40 transition-all flex flex-col justify-between group">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-bronze/10 text-bronze flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+              <i data-lucide="waves" class="w-6 h-6"></i>
+            </div>
+            <h4 class="font-serif text-xl font-light text-sand-50">Celestial Sky Pool</h4>
+            <p class="text-xs text-sand-400 mt-2 font-light leading-relaxed">
+              Reserve a private sunset lounger pavilion suspended 75 meters above the Arabian Gulf on Level 18.
+            </p>
+          </div>
+          <button onclick="requestConciergeService('Celestial Sky Pool Cabana #04', 'Cabana #04 is prepared with chilled vintage champagne and plush oversized towels.')" class="mt-6 w-full py-2.5 rounded-full bg-white/5 hover:bg-bronze hover:text-black border border-white/15 text-xs font-mono tracking-wider transition-all">
+            Reserve Cabana
+          </button>
+        </div>
+
+        <!-- Direct WhatsApp Butler Hotline -->
+        <div class="bg-white/[0.03] p-6 rounded-3xl border border-white/10 hover:border-emerald-500/40 transition-all flex flex-col justify-between group">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+              <i data-lucide="message-square" class="w-6 h-6"></i>
+            </div>
+            <h4 class="font-serif text-xl font-light text-sand-50">WhatsApp Concierge</h4>
+            <p class="text-xs text-sand-400 mt-2 font-light leading-relaxed">
+              Direct live encrypted channel with the Chief Concierge for in-residence dining, private yacht charters, or tailoring.
+            </p>
+          </div>
+          <button onclick="openWhatsAppConcierge()" class="mt-6 w-full py-2.5 rounded-full bg-emerald-500/10 hover:bg-emerald-500 hover:text-black border border-emerald-500/30 text-emerald-300 text-xs font-mono tracking-wider transition-all flex items-center justify-center space-x-1.5">
+            <span>Connect WhatsApp</span>
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 4: ENCRYPTED DOCUMENT VAULT & TITLE DOSSIER -->
+    <!-- ========================================================================= -->
+    <section id="section-vault" class="space-y-6 pt-6">
+      <div class="border-b border-sand-300/20 pb-4">
+        <span class="text-[10px] font-mono uppercase tracking-[0.3em] text-bronze">CHAPTER 04</span>
+        <h2 class="font-serif text-3xl sm:text-4xl font-light text-sand-50 mt-1">Encrypted Document Vault</h2>
+        <p class="text-xs sm:text-sm text-sand-400 font-light mt-1">Download certified architectural blueprints, audited escrow guarantees, and smart contract ownership tokens.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 font-mono text-xs">
+        <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-between hover:bg-white/[0.06] transition-all">
+          <div class="flex items-center space-x-3.5">
+            <div class="p-2.5 rounded-xl bg-bronze/10 text-bronze"><i data-lucide="file-text" class="w-5 h-5"></i></div>
+            <div>
+              <p class="text-sand-100 font-medium">Foster &amp; Partners Architectural Blueprint.pdf</p>
+              <p class="text-[10px] text-sand-500">14.2 MB &bull; High-Resolution Vector Schematics</p>
+            </div>
+          </div>
+          <button onclick="downloadVaultDoc('Foster & Partners Blueprint Dossier')" class="p-2 rounded-xl bg-white/5 hover:bg-bronze hover:text-black border border-white/10 text-sand-300 transition-all" title="Download Document">
+            <i data-lucide="download" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-between hover:bg-white/[0.06] transition-all">
+          <div class="flex items-center space-x-3.5">
+            <div class="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400"><i data-lucide="shield-check" class="w-5 h-5"></i></div>
+            <div>
+              <p class="text-sand-100 font-medium">Jumeirah Bay Escrow Bank Guarantee.pdf</p>
+              <p class="text-[10px] text-sand-500">6.8 MB &bull; RERA Approved Account Statement</p>
+            </div>
+          </div>
+          <button onclick="downloadVaultDoc('Escrow Bank Guarantee Certificate')" class="p-2 rounded-xl bg-white/5 hover:bg-bronze hover:text-black border border-white/10 text-sand-300 transition-all" title="Download Document">
+            <i data-lucide="download" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-between hover:bg-white/[0.06] transition-all">
+          <div class="flex items-center space-x-3.5">
+            <div class="p-2.5 rounded-xl bg-bronze/10 text-bronze"><i data-lucide="file-check" class="w-5 h-5"></i></div>
+            <div>
+              <p class="text-sand-100 font-medium">Sale &amp; Purchase Agreement (SPA Template).pdf</p>
+              <p class="text-[10px] text-sand-500">9.1 MB &bull; Certified by Dubai Land Department</p>
+            </div>
+          </div>
+          <button onclick="downloadVaultDoc('Sale & Purchase Agreement (SPA)')" class="p-2 rounded-xl bg-white/5 hover:bg-bronze hover:text-black border border-white/10 text-sand-300 transition-all" title="Download Document">
+            <i data-lucide="download" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-between hover:bg-white/[0.06] transition-all">
+          <div class="flex items-center space-x-3.5">
+            <div class="p-2.5 rounded-xl bg-purple-500/10 text-purple-400"><i data-lucide="hash" class="w-5 h-5"></i></div>
+            <div>
+              <p class="text-sand-100 font-medium">Smart Contract Digital Ownership Token</p>
+              <p class="text-[10px] text-sand-500">SHA-256 Hash: 0x8F3a27B...98412</p>
+            </div>
+          </div>
+          <button onclick="downloadVaultDoc('Digital Smart Ownership Ledger')" class="p-2 rounded-xl bg-white/5 hover:bg-bronze hover:text-black border border-white/10 text-sand-300 transition-all" title="Verify On-Chain">
+            <i data-lucide="external-link" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 5: VIP SOCIAL & PRIVATE RESIDENT CALENDAR -->
+    <!-- ========================================================================= -->
+    <section id="section-calendar" class="space-y-6 pt-6 pb-12">
+      <div class="border-b border-sand-300/20 pb-4">
+        <span class="text-[10px] font-mono uppercase tracking-[0.3em] text-bronze">CHAPTER 05</span>
+        <h2 class="font-serif text-3xl sm:text-4xl font-light text-sand-50 mt-1">Exclusive Resident Calendar</h2>
+        <p class="text-xs sm:text-sm text-sand-400 font-light mt-1">Private galas, sommelier tastings, and regatta breakfasts reserved strictly for Solaire owners.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="p-6 rounded-3xl bg-white/[0.03] border border-white/10 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-[10px] font-mono text-bronze mb-2">
+              <span>NOV 12, 2026 &bull; 19:30</span>
+              <span class="bg-bronze/15 px-2 py-0.5 rounded text-bronze-light">INVITATION</span>
+            </div>
+            <h4 class="font-serif text-xl font-light text-sand-50">Krug &amp; Astronomy Gala</h4>
+            <p class="text-xs text-sand-400 font-light mt-2 leading-relaxed">
+              Private rooftop observatory stargazing and champagne pairing on the Level 48 Helipad.
+            </p>
+          </div>
+          <button onclick="toggleRsvp(this)" class="mt-6 w-full py-2.5 rounded-full bg-bronze/10 hover:bg-bronze hover:text-black border border-bronze/30 text-xs font-mono text-bronze-light transition-all">
+            RSVP Attending (2 Seats)
+          </button>
+        </div>
+
+        <div class="p-6 rounded-3xl bg-white/[0.03] border border-white/10 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-[10px] font-mono text-bronze mb-2">
+              <span>DEC 04, 2026 &bull; 08:30</span>
+              <span class="bg-bronze/15 px-2 py-0.5 rounded text-bronze-light">INVITATION</span>
+            </div>
+            <h4 class="font-serif text-xl font-light text-sand-50">Jumeirah Bay Regatta</h4>
+            <p class="text-xs text-sand-400 font-light mt-2 leading-relaxed">
+              Annual nautical parade breakfast at private berth slipway #14 with bespoke Mediterranean catering.
+            </p>
+          </div>
+          <button onclick="toggleRsvp(this)" class="mt-6 w-full py-2.5 rounded-full bg-bronze/10 hover:bg-bronze hover:text-black border border-bronze/30 text-xs font-mono text-bronze-light transition-all">
+            RSVP Attending (2 Seats)
+          </button>
+        </div>
+
+        <div class="p-6 rounded-3xl bg-white/[0.03] border border-white/10 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-[10px] font-mono text-bronze mb-2">
+              <span>JAN 18, 2027 &bull; 20:00</span>
+              <span class="bg-bronze/15 px-2 py-0.5 rounded text-bronze-light">INVITATION</span>
+            </div>
+            <h4 class="font-serif text-xl font-light text-sand-50">Michelin Private Supper</h4>
+            <p class="text-xs text-sand-400 font-light mt-2 leading-relaxed">
+              Chef Arnaud Donckele in-residence culinary masterclass inside the Grand Horizon Salon.
+            </p>
+          </div>
+          <button onclick="toggleRsvp(this)" class="mt-6 w-full py-2.5 rounded-full bg-bronze/10 hover:bg-bronze hover:text-black border border-bronze/30 text-xs font-mono text-bronze-light transition-all">
+            RSVP Attending (2 Seats)
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================= -->
+  <!-- ACTION TOAST NOTIFICATION -->
+  <!-- ========================================================================= -->
+  <div id="dashboard-toast" class="fixed bottom-8 right-8 z-50 bg-[#141312] text-sand-50 px-6 py-4 rounded-2xl shadow-2xl border border-bronze flex items-center space-x-4 max-w-md hidden transition-all duration-300">
+    <div class="w-3 h-3 rounded-full bg-emerald-400 animate-ping"></div>
+    <div>
+      <p id="toast-title" class="text-xs font-semibold uppercase tracking-wider text-bronze-light">Service Confirmed</p>
+      <p id="toast-desc" class="text-xs text-sand-300 mt-0.5">Your request has been dispatched to St. Regis Butler Desk.</p>
+    </div>
+  </div>
+
+  <!-- LUXURY FOOTER -->
+  <footer class="w-full py-8 px-6 md:px-12 border-t border-white/10 text-center text-xs font-mono text-sand-500 bg-graphite-950">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center space-x-3">
+        <img src="assets/images/logo-icon.png" alt="Stackly Emblem" class="w-6 h-6 object-contain">
+        <p>STACKLY RESIDENCES &bull; THE SOLAIRE DUBAI &bull; JUMEIRAH BAY ISLAND</p>
+      </div>
+
+      <!-- Social Channels (Links to 404) -->
+      <div class="flex items-center space-x-2">
+        <a href="404.html" class="w-8 h-8 rounded-full border border-white/20 bg-white/5 hover:border-bronze hover:bg-bronze/10 text-sand-200 hover:text-bronze flex items-center justify-center transition-all group" title="Instagram">
+          <svg class="w-3.5 h-3.5 fill-none stroke-current" viewBox="0 0 24 24" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+        </a>
+        <a href="404.html" class="w-8 h-8 rounded-full border border-white/20 bg-white/5 hover:border-bronze hover:bg-bronze/10 text-sand-200 hover:text-bronze flex items-center justify-center transition-all group" title="LinkedIn">
+          <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+            <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9h2.79v8.37H6.46v-8.37M7.86 6.88a1.63 1.63 0 1 0 0 3.25 1.63 1.63 0 0 0 0-3.25z"/>
+          </svg>
+        </a>
+        <a href="404.html" class="w-8 h-8 rounded-full border border-white/20 bg-white/5 hover:border-bronze hover:bg-bronze/10 text-sand-200 hover:text-bronze flex items-center justify-center transition-all group" title="YouTube">
+          <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+        </a>
+        <a href="404.html" class="w-8 h-8 rounded-full border border-white/20 bg-white/5 hover:border-bronze hover:bg-bronze/10 text-sand-200 hover:text-bronze flex items-center justify-center transition-all group" title="Twitter / X">
+          <svg class="w-3 h-3 fill-current" viewBox="0 0 24 24">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </a>
+        <a href="404.html" class="w-8 h-8 rounded-full border border-white/20 bg-white/5 hover:border-bronze hover:bg-bronze/10 text-sand-200 hover:text-bronze flex items-center justify-center transition-all group" title="Facebook">
+          <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="flex items-center space-x-6">
+        <a href="index.html" class="hover:text-bronze transition-colors">Overview</a>
+        <a href="residences.html" class="hover:text-bronze transition-colors">Residences</a>
+        <a href="interiors.html" class="hover:text-bronze transition-colors">Interiors</a>
+        <a href="floor-plans.html" class="hover:text-bronze transition-colors">Floor Plans</a>
+        <a href="contact.html" class="hover:text-bronze transition-colors">Sales Gallery</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="js/main.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    // Initialize Dashboard User Data
+    document.addEventListener('DOMContentLoaded', () => {
+      let user = SolaireAuth.getLoggedInUser();
+      
+      // If not logged in, provide an elegant default VIP persona
+      if (!user) {
+        user = SolaireAuth.DEFAULT_GUEST;
+        // Optionally save as active session
+        SolaireAuth.login(user.email, 'guest-pass', user.name, user.tier);
+      }
+
+      // INJECT LOGGED-IN EMAIL PROMINENTLY AT THE VERY TOP
+      const topEmail = document.getElementById('top-bar-email');
+      if (topEmail) topEmail.textContent = user.email;
+
+      // Inject in Main Header Capsule
+      const headerEmail = document.getElementById('header-user-email');
+      if (headerEmail) headerEmail.textContent = user.email;
+
+      const headerTier = document.getElementById('header-user-tier');
+      if (headerTier) headerTier.textContent = user.tier || 'Penthouse Owner';
+
+      // Inject in Hero Greeting
+      const heroEmail = document.getElementById('hero-user-email');
+      if (heroEmail) heroEmail.textContent = user.email;
+
+      const heroUnit = document.getElementById('hero-unit-name');
+      if (heroUnit) heroUnit.textContent = `${user.tier} (${user.unit})`;
+
+      // Inject initial into avatar circle
+      const avatarInit = document.getElementById('user-avatar-initial');
+      if (avatarInit) {
+        avatarInit.textContent = (user.name || user.email || 'V').charAt(0).toUpperCase();
+      }
+
+      // Adjust metrics depending on chosen tier
+      if (user.tier.includes('Celestial')) {
+        document.getElementById('hero-unit-price').textContent = 'AED 21,500,000';
+        document.getElementById('hero-unit-area').textContent = '4,120 ft²';
+        document.getElementById('metric-area').textContent = '4,120 ft²';
+        document.getElementById('metric-beds').textContent = '3 Beds • 4 Baths';
+        document.getElementById('residence-card-badge').textContent = 'Suite 3004 • Celestial Suite';
+        document.getElementById('residence-card-title').textContent = 'The Celestial Sky Suite';
+      } else if (user.tier.includes('Haven')) {
+        document.getElementById('hero-unit-price').textContent = 'AED 14,500,000';
+        document.getElementById('hero-unit-area').textContent = '2,380 ft²';
+        document.getElementById('metric-area').textContent = '2,380 ft²';
+        document.getElementById('metric-beds').textContent = '2 Beds • 3 Baths';
+        document.getElementById('residence-card-badge').textContent = 'Residence 1602 • Grand Haven';
+        document.getElementById('residence-card-title').textContent = 'The Grand Haven Residence';
+      } else if (user.tier.includes('Atelier')) {
+        document.getElementById('hero-unit-price').textContent = 'AED 8,900,000';
+        document.getElementById('hero-unit-area').textContent = '1,420 ft²';
+        document.getElementById('metric-area').textContent = '1,420 ft²';
+        document.getElementById('metric-beds').textContent = '1 Bed • 1.5 Baths';
+        document.getElementById('residence-card-badge').textContent = 'Atelier 0601 • Sky Villa';
+        document.getElementById('residence-card-title').textContent = 'The Atelier Residence';
+      }
+    });
+
+    // Logout Handler
+    function handleLogout() {
+      if (confirm('Confirm sign out of The Solaire Resident Console?')) {
+        SolaireAuth.logout();
+        window.location.href = 'login.html';
+      }
+    }
+
+    // Prompt Quick Switch Account
+    function promptSwitchAccount() {
+      const newEmail = prompt('Enter any email address to test instant login & persona switching:', 'investor@familyoffice.ae');
+      if (newEmail && newEmail.trim()) {
+        SolaireAuth.login(newEmail.trim(), 'demo-pass');
+        window.location.reload();
+      }
+    }
+
+    // Smart Lighting Mood Trigger
+    function setLightingMood(button, moodName, desc) {
+      document.querySelectorAll('.mood-btn').forEach(btn => {
+        btn.classList.remove('active-mood', 'text-sand-50');
+        btn.classList.add('text-sand-400');
+      });
+      button.classList.add('active-mood', 'text-sand-50');
+      button.classList.remove('text-sand-400');
+
+      document.getElementById('lighting-status-desc').textContent = `Active: ${desc}`;
+      showToast('Lighting Scene Engaged', `Atmospheric ambiance transitioned to ${moodName}.`);
+    }
+
+    // Motorized Glass Slider
+    function updateGlassSlider(val) {
+      document.getElementById('slider-percentage').textContent = `${val}% Open`;
+      document.getElementById('glass-slider-status').textContent = val > 0 
+        ? `Schuco Motor: ${val}% Ocean Aperture Active` 
+        : 'Schuco Motor: Completely Sealed (Acoustic STC 62)';
+    }
+
+    // Temperature Adjuster
+    let currentTemp = 21.5;
+    function adjustTemp(delta) {
+      currentTemp = Math.round((currentTemp + delta) * 10) / 10;
+      document.getElementById('suite-temp').textContent = currentTemp.toFixed(1);
+      showToast('Climate Thermostat Adjusted', `Target temperature set to ${currentTemp.toFixed(1)}°C.`);
+    }
+
+    // Concierge Service Dispatch
+    function requestConciergeService(serviceTitle, message) {
+      showToast(serviceTitle, message);
+    }
+
+    // WhatsApp Concierge Link with User's Email Pre-filled
+    function openWhatsAppConcierge() {
+      const user = SolaireAuth.getLoggedInUser() || SolaireAuth.DEFAULT_GUEST;
+      const text = encodeURIComponent(`Hello St. Regis Concierge at The Solaire,\n\nI am contacting you from my Resident Console.\nResident Email: ${user.email}\nResidence: ${user.tier} (${user.unit})\n\nPlease assist me with a private request.`);
+      window.open(`https://wa.me/971501234567?text=${text}`, '_blank');
+    }
+
+    // Document Vault Download Trigger
+    function downloadVaultDoc(docName) {
+      showToast('Document Vault Download', `Preparing encrypted transfer of ${docName}... (PDF ready)`);
+    }
+
+    // RSVP Toggle
+    function toggleRsvp(btn) {
+      if (btn.classList.contains('confirmed')) {
+        btn.classList.remove('confirmed', 'bg-emerald-500', 'text-black');
+        btn.classList.add('bg-bronze/10', 'text-bronze-light');
+        btn.textContent = 'RSVP Attending (2 Seats)';
+        showToast('RSVP Cancelled', 'Your reservation has been released.');
+      } else {
+        btn.classList.add('confirmed', 'bg-emerald-500', 'text-black');
+        btn.classList.remove('bg-bronze/10', 'text-bronze-light');
+        btn.textContent = 'Confirmed Guest ✓ (2 Seats)';
+        showToast('RSVP Confirmed', 'You are on the VIP guest list. Private limousine passes issued.');
+      }
+    }
+
+    // Toast Helper
+    let toastTimeout;
+    function showToast(title, desc) {
+      const toast = document.getElementById('dashboard-toast');
+      const toastTitle = document.getElementById('toast-title');
+      const toastDesc = document.getElementById('toast-desc');
+
+      if (!toast || !toastTitle || !toastDesc) return;
+
+      toastTitle.textContent = title;
+      toastDesc.textContent = desc;
+
+      toast.classList.remove('hidden');
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 4500);
+    }
+  </script>
+</body>
+</html>
+

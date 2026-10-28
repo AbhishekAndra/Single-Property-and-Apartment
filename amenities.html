@@ -3,7 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Amenities & Lifestyle | THE SOLAIRE DUBAI</title>
+  <title>Amenities &amp; Lifestyle | STACKLY &bull; THE SOLAIRE DUBAI</title>
+  <!-- Luxury Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo-icon.svg">
+  <link rel="alternate icon" type="image/png" href="assets/images/logo-icon.png">
+  <link rel="apple-touch-icon" href="assets/images/logo-icon.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -23,18 +27,40 @@
       }
     }
   </script>
+  <!-- GSAP & ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <!-- Lenis Momentum Scrolling -->
   <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+  <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="bg-sand-100 text-graphite-900 font-sans overflow-x-hidden">
 
-  <!-- HEADER -->
-  <header class="fixed top-0 left-0 right-0 z-50 py-5 bg-graphite-950/90 backdrop-blur-xl border-b border-white/10">
+  <!-- GLOBAL SCROLL PROGRESS INDICATOR -->
+  <div id="global-scroll-progress"></div>
+
+  <!-- LUXURY EDITORIAL PRELOADER -->
+  <div id="luxury-preloader">
+    <img src="assets/images/logo-icon.png" alt="Stackly Emblem" class="w-14 h-14 object-contain mb-4 animate-pulse drop-shadow-[0_0_20px_rgba(197,168,128,0.5)]">
+    <div class="preloader-brand">STACKLY</div>
+    <div class="preloader-status">THE SOLAIRE &bull; THE LIFESTYLE COMPENDIUM &bull; AMENITIES</div>
+    <div class="preloader-counter"><span id="preloader-count">0</span>%</div>
+    <div class="preloader-bar-bg">
+      <div id="preloader-progress" class="preloader-bar-fill"></div>
+    </div>
+  </div>
+
+  <!-- FLOATING LUXURY HEADER -->
+  <header class="fixed top-0 left-0 right-0 z-50 py-5 bg-graphite-950/90 backdrop-blur-xl border-b border-white/10 transition-all duration-300">
     <div class="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between">
-      <a href="index.html" class="flex flex-col tracking-widest text-left group">
-        <span class="font-serif text-xl md:text-2xl font-light tracking-[0.25em] text-sand-50 group-hover:text-bronze-light transition-colors">THE SOLAIRE</span>
-        <span class="text-[9px] uppercase tracking-[0.35em] text-bronze font-medium -mt-1 opacity-90">DUBAI WATERFRONT</span>
+      <a href="index.html" class="flex items-center space-x-3.5 tracking-widest text-left group">
+        <img src="assets/images/logo-icon.png" alt="Stackly Emblem" class="w-9 h-9 object-contain drop-shadow-[0_2px_12px_rgba(197,168,128,0.4)] group-hover:scale-105 transition-transform duration-300">
+        <div class="flex flex-col">
+          <span class="font-serif text-xl md:text-2xl font-light tracking-[0.25em] text-sand-50 group-hover:text-bronze-light transition-colors leading-tight">STACKLY</span>
+          <span class="text-[9px] uppercase tracking-[0.35em] text-bronze font-medium opacity-90 -mt-0.5">THE SOLAIRE &bull; DUBAI</span>
+        </div>
       </a>
 
       <nav class="hidden lg:flex items-center space-x-7">
@@ -47,14 +73,22 @@
         <a href="contact.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1">Contact</a>
       </nav>
 
-      <div class="hidden sm:flex items-center space-x-4">
-        <button class="ambient-sound-toggle p-2.5 rounded-full border border-white/15 text-sand-300 hover:text-white hover:border-bronze transition-all backdrop-blur-sm">
+      <div class="hidden sm:flex items-center space-x-3">
+        <!-- Live Meridian Telemetry -->
+        <div class="live-dubai-clock hidden xl:inline-flex items-center space-x-2 text-[9px] font-mono uppercase tracking-[0.22em] text-bronze-light bg-black/60 px-3.5 py-1.5 rounded-full border border-white/10 shadow-lg">
+          DUBAI (GMT+4) • 12:45 PM • 28°C SUNNY
+        </div>
+        <button class="ambient-sound-toggle p-2.5 rounded-full border border-white/15 text-sand-300 hover:text-white hover:border-bronze transition-all backdrop-blur-sm" data-magnetic>
           <i data-lucide="volume-x" class="w-4 h-4 opacity-60"></i>
         </button>
-        <button data-open-booking="The Sky Penthouse Crown" class="px-5 py-2.5 rounded-full border border-bronze/60 bg-bronze/10 hover:bg-bronze text-white text-[11px] uppercase tracking-[0.2em] font-medium transition-all shadow-[0_0_15px_rgba(197,168,128,0.2)] hover:text-graphite-950 flex items-center space-x-2">
+        <button data-open-booking="Lifestyle &amp; Amenities Tour" data-magnetic class="px-4 py-2.5 rounded-full border border-bronze/60 bg-bronze/10 hover:bg-bronze text-white text-[11px] uppercase tracking-[0.2em] font-medium transition-all shadow-[0_0_15px_rgba(197,168,128,0.2)] hover:text-graphite-950 flex items-center space-x-2">
           <i data-lucide="calendar" class="w-3.5 h-3.5 text-bronze-light"></i>
           <span>Schedule Tour</span>
         </button>
+        <a href="login.html" class="portal-auth-btn px-4 py-2.5 rounded-full border border-white/20 bg-white/5 hover:border-bronze hover:text-bronze text-sand-200 text-[11px] uppercase tracking-[0.18em] font-medium transition-all flex items-center space-x-2" data-magnetic>
+          <i data-lucide="key" class="w-3.5 h-3.5 text-bronze"></i>
+          <span class="portal-user-text">Resident Portal</span>
+        </a>
       </div>
 
       <button id="mobile-menu-toggle" class="lg:hidden p-2 text-sand-100 hover:text-bronze">
@@ -66,18 +100,26 @@
   <!-- MOBILE DRAWER -->
   <div id="mobile-drawer" class="fixed inset-0 z-40 bg-graphite-950/95 backdrop-blur-2xl transition-all duration-500 lg:hidden flex flex-col justify-between p-8 pt-28 opacity-0 pointer-events-none -translate-y-4">
     <div class="flex flex-col space-y-5">
-      <a href="index.html" class="font-serif text-3xl text-sand-100">Overview</a>
-      <a href="residences.html" class="font-serif text-3xl text-sand-100">Residences</a>
-      <a href="interiors.html" class="font-serif text-3xl text-sand-100">Interiors</a>
-      <a href="floor-plans.html" class="font-serif text-3xl text-sand-100">Floor Plans</a>
+      <p class="text-[10px] tracking-[0.3em] uppercase text-bronze font-semibold">Directory</p>
+      <a href="index.html" class="font-serif text-3xl text-sand-100 hover:text-bronze">Overview</a>
+      <a href="residences.html" class="font-serif text-3xl text-sand-100 hover:text-bronze">Residences</a>
+      <a href="interiors.html" class="font-serif text-3xl text-sand-100 hover:text-bronze">Interiors</a>
+      <a href="floor-plans.html" class="font-serif text-3xl text-sand-100 hover:text-bronze">Floor Plans</a>
       <a href="amenities.html" class="font-serif text-3xl text-bronze">Amenities</a>
-      <a href="architecture.html" class="font-serif text-3xl text-sand-100">Architecture</a>
-      <a href="contact.html" class="font-serif text-3xl text-sand-100">Contact</a>
+      <a href="architecture.html" class="font-serif text-3xl text-sand-100 hover:text-bronze">Architecture</a>
+      <a href="contact.html" class="font-serif text-3xl text-sand-100 hover:text-bronze">Contact</a>
+      <div class="pt-4 border-t border-white/10 flex flex-col space-y-2">
+        <a href="login.html" class="portal-auth-btn font-serif text-2xl text-bronze flex items-center space-x-2">
+          <i data-lucide="key" class="w-5 h-5"></i>
+          <span class="portal-user-text">Resident Portal / Login</span>
+        </a>
+        <a href="signup.html" class="text-xs uppercase font-mono tracking-widest text-sand-400">Apply for Resident Key &rarr;</a>
+      </div>
     </div>
   </div>
 
-  <main class="pt-32">
-    <!-- EDITORIAL HEADER (Matches frame 14: Room to move / Time to exhale) -->
+  <main class="pt-28 md:pt-32">
+    <!-- EDITORIAL HEADER -->
     <div class="max-w-7xl mx-auto px-6 md:px-12 py-12">
       <div class="flex flex-col md:flex-row items-baseline justify-between border-b border-sand-300 pb-12">
         <div>
@@ -95,38 +137,41 @@
     </div>
 
     <!-- KINETIC AMENITIES COLLAGE -->
-    <section class="max-w-7xl mx-auto px-6 md:px-12 py-12">
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start mb-24">
-        <!-- 50m Infinity Pool (7 cols) -->
-        <div class="md:col-span-7 group relative h-[500px] md:h-[620px] rounded-3xl overflow-hidden border border-sand-300 cursor-pointer shadow-lg hover:-translate-y-1.5 transition-all duration-700" data-cursor="explore" data-cursor-text="VIEW" onclick="openLightbox('Celestial Infinity Pool', '50-meter cantilevered heated lap pool suspended 75 meters above the sea.', 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1200&q=80')">
-          <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1200&q=80" alt="Infinity Pool" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+    <section class="max-w-7xl mx-auto px-6 md:px-12 py-10">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start mb-16">
+        <!-- 50m Infinity Pool (7 cols) with 1080p Drone Video -->
+        <div class="md:col-span-7 group relative h-[500px] md:h-[620px] rounded-3xl overflow-hidden border border-sand-300 cursor-pointer shadow-lg hover:-translate-y-1.5 transition-all duration-700" data-cursor="explore" data-cursor-text="VIEW" onclick="openLightbox('Celestial Infinity Pool', '50-meter cantilevered heated lap pool suspended 75 meters above the sea with glass-bottom viewports and sunset lounge pavilions.', 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1200&q=80')">
+          <video autoplay loop muted playsinline class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 filter brightness-[0.88]" poster="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1200&q=80">
+            <source src="assets/videos/amenity-pool-loop.mp4" type="video/mp4">
+            <source src="assets/videos/amenity-pool.mp4" type="video/mp4">
+          </video>
           <div class="absolute inset-0 bg-gradient-to-t from-graphite-950/85 via-graphite-950/20 to-transparent"></div>
-          <div class="absolute top-6 left-6"><span class="px-3.5 py-1.5 rounded-full bg-white/90 text-graphite-950 text-[10px] uppercase font-mono tracking-widest font-semibold">Level 18</span></div>
+          <div class="absolute top-6 left-6"><span class="px-3.5 py-1.5 rounded-full bg-white/90 text-graphite-950 text-[10px] uppercase font-mono tracking-widest font-semibold shadow">Level 18</span></div>
           <div class="absolute bottom-8 left-8 right-8 text-sand-50">
             <p class="text-[10px] uppercase font-mono tracking-widest text-bronze-light mb-1">AQUATIC SANCTUARY</p>
             <h3 class="font-serif text-3xl md:text-4xl font-light">Celestial Infinity Pool</h3>
-            <p class="text-sand-300 text-sm mt-2 font-light max-w-lg leading-relaxed">50-meter cantilevered heated lap pool suspended 75 meters above the sea with glass-bottom viewports.</p>
+            <p class="text-sand-300 text-sm mt-2 font-light max-w-lg leading-relaxed">50-meter cantilevered heated lap pool suspended 75 meters above the sea with glass-bottom viewports and sunset lounge pavilions.</p>
           </div>
         </div>
 
         <!-- Stacked Thermal Suite & Lounge (5 cols) -->
         <div class="md:col-span-5 flex flex-col space-y-8">
-          <div class="group relative h-[290px] rounded-3xl overflow-hidden border border-sand-300 cursor-pointer shadow-md hover:-translate-y-1 transition-all" data-cursor="explore" data-cursor-text="VIEW" onclick="openLightbox('Thermal & Hydrotherapy Suite', 'Nordic dry cedar sauna, salt meditation cave, and ice plunge pools.', 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1000&q=80')">
-            <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1000&q=80" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+          <div class="group relative h-[290px] rounded-3xl overflow-hidden border border-sand-300 cursor-pointer shadow-md hover:-translate-y-1 transition-all" data-cursor="explore" data-cursor-text="VIEW" onclick="openLightbox('Thermal &amp; Hydrotherapy Suite', 'Nordic dry cedar sauna, Himalayan salt meditation cave, and vitality ice plunge pools curated by ESPA.', 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1000&q=80')">
+            <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1000&q=80" alt="Thermal Spa" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
             <div class="absolute inset-0 bg-gradient-to-t from-graphite-950/80 via-transparent to-transparent"></div>
-            <div class="absolute top-5 left-5"><span class="px-3 py-1 rounded-full bg-white/90 text-graphite-950 text-[10px] uppercase font-mono font-semibold">Private Spa</span></div>
+            <div class="absolute top-5 left-5"><span class="px-3 py-1 rounded-full bg-white/90 text-graphite-950 text-[10px] uppercase font-mono font-semibold shadow">Private Spa</span></div>
             <div class="absolute bottom-6 left-6 right-6 text-sand-50">
-              <h4 class="font-serif text-2xl font-light">Thermal & Hydrotherapy Suite</h4>
+              <h4 class="font-serif text-2xl font-light">Thermal &amp; Hydrotherapy Suite</h4>
               <p class="text-xs text-sand-300 mt-1 font-light">Nordic dry cedar sauna, salt meditation cave, and ice plunge pools.</p>
             </div>
           </div>
 
-          <div class="group relative h-[290px] rounded-3xl overflow-hidden border border-sand-300 cursor-pointer shadow-md hover:-translate-y-1 transition-all" data-cursor="explore" data-cursor-text="VIEW" onclick="openLightbox('The Solaire Club & Cellar', 'Climate-controlled private sommelier vaults with tasting room and fireside library.', 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1000&q=80')">
-            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1000&q=80" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+          <div class="group relative h-[290px] rounded-3xl overflow-hidden border border-sand-300 cursor-pointer shadow-md hover:-translate-y-1 transition-all" data-cursor="explore" data-cursor-text="VIEW" onclick="openLightbox('The Solaire Club &amp; Sommelier Vaults', 'Climate-controlled private sommelier vaults with tasting room and fireside library.', 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1000&q=80')">
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1000&q=80" alt="Club" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
             <div class="absolute inset-0 bg-gradient-to-t from-graphite-950/80 via-transparent to-transparent"></div>
-            <div class="absolute top-5 left-5"><span class="px-3 py-1 rounded-full bg-white/90 text-graphite-950 text-[10px] uppercase font-mono font-semibold">Members Only</span></div>
+            <div class="absolute top-5 left-5"><span class="px-3 py-1 rounded-full bg-white/90 text-graphite-950 text-[10px] uppercase font-mono font-semibold shadow">Members Only</span></div>
             <div class="absolute bottom-6 left-6 right-6 text-sand-50">
-              <h4 class="font-serif text-2xl font-light">The Solaire Club & Cellar</h4>
+              <h4 class="font-serif text-2xl font-light">The Solaire Club &amp; Cellar</h4>
               <p class="text-xs text-sand-300 mt-1 font-light">Climate-controlled private sommelier vaults with tasting room and fireside library.</p>
             </div>
           </div>
@@ -136,22 +181,22 @@
       <!-- Marina & Butler Row -->
       <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-stretch pb-24">
         <div class="md:col-span-6 group relative h-[380px] rounded-3xl overflow-hidden border border-sand-300 shadow-md">
-          <img src="https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover">
+          <img src="https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?auto=format&fit=crop&w=1200&q=80" alt="Yacht Berth" class="w-full h-full object-cover">
           <div class="absolute inset-0 bg-gradient-to-t from-graphite-950/85 via-transparent to-transparent"></div>
           <div class="absolute bottom-6 left-6 right-6 text-sand-50">
             <span class="text-[10px] uppercase font-mono text-bronze-light">NAUTICAL ACCESS</span>
             <h4 class="font-serif text-3xl font-light mt-1">Private Yacht Berths</h4>
-            <p class="text-xs text-sand-300 mt-1 font-light">Direct private harbor access accommodating vessels up to 45 meters.</p>
+            <p class="text-xs text-sand-300 mt-1 font-light">Direct private harbor access accommodating deep-draft luxury vessels up to 45 meters.</p>
           </div>
         </div>
 
         <div class="md:col-span-6 group relative h-[380px] rounded-3xl overflow-hidden border border-sand-300 shadow-md">
-          <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1000&q=80" class="w-full h-full object-cover">
+          <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1000&q=80" alt="Butler Service" class="w-full h-full object-cover">
           <div class="absolute inset-0 bg-gradient-to-t from-graphite-950/85 via-transparent to-transparent"></div>
           <div class="absolute bottom-6 left-6 right-6 text-sand-50">
-            <span class="text-[10px] uppercase font-mono text-bronze-light">BESPOKE SERVICE</span>
+            <span class="text-[10px] uppercase font-mono text-bronze-light">BESPOKE CONCIERGE</span>
             <h4 class="font-serif text-3xl font-light mt-1">24/7 St. Regis Butler Service</h4>
-            <p class="text-xs text-sand-300 mt-1 font-light">Dedicated estate management, private aircraft chartering, and in-residence dining.</p>
+            <p class="text-xs text-sand-300 mt-1 font-light">Dedicated estate management, private aircraft chartering, and in-residence Michelin dining.</p>
           </div>
         </div>
       </div>
@@ -161,39 +206,106 @@
   <!-- LIGHTBOX MODAL -->
   <div id="lightbox-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-6 hidden cursor-zoom-out" onclick="closeLightbox()">
     <div class="max-w-4xl max-h-[85vh] bg-graphite-950 rounded-3xl overflow-hidden border border-white/20 shadow-2xl flex flex-col" onclick="event.stopPropagation()">
-      <img id="lightbox-img" src="" class="w-full max-h-[60vh] object-cover">
+      <img id="lightbox-img" src="" alt="Lightbox Spec" class="w-full max-h-[60vh] object-cover">
       <div class="p-8 text-sand-50 flex items-center justify-between">
         <div>
           <h3 id="lightbox-title" class="font-serif text-3xl font-light"></h3>
           <p id="lightbox-desc" class="text-xs text-sand-300 mt-1 max-w-xl font-light"></p>
         </div>
-        <button data-open-booking="Amenity Tour" class="px-6 py-3 rounded-full bg-bronze text-graphite-950 text-xs font-semibold uppercase tracking-wider">Inquire</button>
+        <button data-open-booking="Amenity Tour" data-magnetic class="px-6 py-3 rounded-full bg-bronze hover:bg-bronze-light text-graphite-950 text-xs font-semibold uppercase tracking-wider transition-colors">Inquire</button>
       </div>
     </div>
   </div>
 
-  <!-- FOOTER -->
+  <!-- LUXURY FOOTER -->
   <footer class="relative bg-graphite-950 text-sand-50 pt-20 pb-12 border-t border-white/10 text-center">
-    <p class="font-serif text-2xl font-light tracking-widest text-sand-50">THE SOLAIRE RESIDENCES</p>
-    <p class="text-xs uppercase font-mono tracking-widest text-bronze mt-1">Jumeirah Bay Island, Dubai</p>
-    <p class="text-[11px] text-sand-500 mt-8">© 2027 The Solaire Residences LLC.</p>
+    <div class="max-w-7xl mx-auto px-6 md:px-12 flex flex-col items-center">
+      <img src="assets/images/logo-icon.png" alt="Stackly Emblem" class="w-10 h-10 object-contain mb-3 drop-shadow-[0_2px_10px_rgba(197,168,128,0.4)]">
+      <p class="font-serif text-2xl font-light tracking-[0.25em] text-sand-50">STACKLY RESIDENCES</p>
+      <p class="text-xs uppercase font-mono tracking-widest text-bronze mt-1">THE SOLAIRE &bull; Jumeirah Bay Island, Dubai</p>
+      <div class="mt-8 flex justify-center space-x-8 text-xs font-mono uppercase tracking-widest text-sand-400">
+        <a href="index.html" class="hover:text-bronze transition-colors">Overview</a>
+        <a href="residences.html" class="hover:text-bronze transition-colors">Residences</a>
+        <a href="interiors.html" class="hover:text-bronze transition-colors">Interiors</a>
+        <a href="floor-plans.html" class="hover:text-bronze transition-colors">Floor Plans</a>
+        <a href="architecture.html" class="hover:text-bronze transition-colors">Architecture</a>
+        <a href="contact.html" class="hover:text-bronze transition-colors">Contact</a>
+      </div>
+
+      <!-- Social Media Channels (Links to 404) -->
+      <div class="mt-8 flex items-center justify-center space-x-3">
+        <!-- Instagram -->
+        <a href="404.html" class="w-10 h-10 rounded-full border border-white/20 bg-white/5 hover:border-bronze hover:bg-bronze/10 text-sand-200 hover:text-bronze flex items-center justify-center transition-all duration-300 shadow-md group" title="Instagram (@thesolaire.dubai)" data-cursor="pointer">
+          <svg class="w-4 h-4 fill-none stroke-current transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+        </a>
+        <!-- LinkedIn -->
+        <a href="404.html" class="w-10 h-10 rounded-full border border-white/20 bg-white/5 hover:border-bronze hover:bg-bronze/10 text-sand-200 hover:text-bronze flex items-center justify-center transition-all duration-300 shadow-md group" title="LinkedIn (The Solaire Residences)" data-cursor="pointer">
+          <svg class="w-4 h-4 fill-current transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24">
+            <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9h2.79v8.37H6.46v-8.37M7.86 6.88a1.63 1.63 0 1 0 0 3.25 1.63 1.63 0 0 0 0-3.25z"/>
+          </svg>
+        </a>
+        <!-- YouTube -->
+        <a href="404.html" class="w-10 h-10 rounded-full border border-white/20 bg-white/5 hover:border-bronze hover:bg-bronze/10 text-sand-200 hover:text-bronze flex items-center justify-center transition-all duration-300 shadow-md group" title="YouTube (The Solaire Monograph Cinema)" data-cursor="pointer">
+          <svg class="w-4 h-4 fill-current transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+        </a>
+        <!-- Twitter / X -->
+        <a href="404.html" class="w-10 h-10 rounded-full border border-white/20 bg-white/5 hover:border-bronze hover:bg-bronze/10 text-sand-200 hover:text-bronze flex items-center justify-center transition-all duration-300 shadow-md group" title="Twitter / X (@TheSolaireDubai)" data-cursor="pointer">
+          <svg class="w-3.5 h-3.5 fill-current transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </a>
+        <!-- Facebook -->
+        <a href="404.html" class="w-10 h-10 rounded-full border border-white/20 bg-white/5 hover:border-bronze hover:bg-bronze/10 text-sand-200 hover:text-bronze flex items-center justify-center transition-all duration-300 shadow-md group" title="Facebook (The Solaire Jumeirah Bay)" data-cursor="pointer">
+          <svg class="w-4 h-4 fill-current transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+        </a>
+      </div>
+
+      <p class="text-[11px] text-sand-500 mt-8">© 2027 The Solaire Residences LLC. All architectural specifications and finishes subject to contract.</p>
+    </div>
   </footer>
 
   <!-- UNIVERSAL VIP MODAL -->
   <div id="vip-booking-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto hidden">
     <div class="fixed inset-0 bg-graphite-950/85 backdrop-blur-xl close-booking-modal"></div>
     <div class="relative w-full max-w-2xl bg-[#141312] border border-bronze/30 rounded-3xl shadow-2xl overflow-hidden z-10 text-sand-50 p-8">
-      <div class="flex justify-between items-center mb-6"><h3 class="font-serif text-2xl">VIP Private Appointment</h3><button class="close-booking-modal p-2 rounded-full bg-white/5"><i data-lucide="x" class="w-5 h-5"></i></button></div>
+      <div class="flex justify-between items-center mb-6">
+        <div>
+          <span class="text-[10px] uppercase font-mono tracking-widest text-bronze">PRIVATE ADVISORY</span>
+          <h3 id="booking-modal-title" class="font-serif text-2xl">VIP Private Appointment</h3>
+        </div>
+        <button class="close-booking-modal p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
       <form id="vip-booking-form" class="space-y-4">
-        <input type="text" required placeholder="Full Name" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sand-100 text-xs">
-        <input type="email" required placeholder="Direct Email" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sand-100 text-xs">
-        <input type="tel" required placeholder="Phone Number" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sand-100 text-xs">
-        <button type="submit" class="w-full py-4 rounded-full bg-bronze text-black font-semibold text-xs uppercase tracking-wider">Confirm VIP Reservation</button>
+        <input type="text" required placeholder="Full Name" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sand-100 text-xs focus:border-bronze outline-none">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <input type="email" required placeholder="Direct Email" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sand-100 text-xs focus:border-bronze outline-none">
+          <input type="tel" required placeholder="Phone Number" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sand-100 text-xs focus:border-bronze outline-none">
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <input type="date" required class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sand-100 text-xs focus:border-bronze outline-none">
+          <select class="w-full px-4 py-3 rounded-xl bg-[#1d1c1a] border border-white/10 text-sand-100 text-xs focus:border-bronze outline-none">
+            <option>10:00 AM (Morning Natural Light)</option>
+            <option>02:00 PM (Afternoon Advisory)</option>
+            <option>05:30 PM (Golden Sunset Viewing)</option>
+          </select>
+        </div>
+        <button type="submit" data-magnetic class="w-full py-4 rounded-full bg-bronze hover:bg-bronze-light text-graphite-950 font-semibold text-xs uppercase tracking-wider transition-all shadow-lg">Confirm VIP Reservation</button>
       </form>
     </div>
   </div>
 
   <script src="js/main.js"></script>
+  <script src="js/auth.js"></script>
   <script>
     function openLightbox(title, desc, imgUrl) {
       document.getElementById('lightbox-title').textContent = title;
@@ -207,4 +319,3 @@
   </script>
 </body>
 </html>
-

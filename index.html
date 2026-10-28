@@ -3,7 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>THE SOLAIRE | Ultra-Luxury Waterfront Residences, Dubai</title>
+  <title>STACKLY | The Solaire — Ultra-Luxury Waterfront Residences, Dubai</title>
+  <!-- Luxury Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo-icon.svg">
+  <link rel="alternate icon" type="image/png" href="assets/images/logo-icon.png">
+  <link rel="apple-touch-icon" href="assets/images/logo-icon.png">
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -32,37 +36,67 @@
   <script src="https://unpkg.com/lucide@latest"></script>
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="bg-sand-100 text-graphite-900 font-sans overflow-x-hidden">
+<body class="bg-sand-100 text-graphite-900 font-sans overflow-x-hidden overflow-hidden">
+
+  <!-- GLOBAL SCROLL PROGRESS INDICATOR -->
+  <div id="global-scroll-progress"></div>
+
+  <!-- LUXURY EDITORIAL PRELOADER -->
+  <div id="luxury-preloader">
+    <div class="flex flex-col items-center text-center px-6">
+      <img src="assets/images/logo-icon.png" alt="Stackly Emblem" class="w-14 h-14 object-contain mb-4 animate-pulse drop-shadow-[0_0_20px_rgba(197,168,128,0.5)]">
+      <span class="text-[10px] uppercase font-mono tracking-[0.4em] text-bronze mb-2">FOSTER & PARTNERS ARCHITECTURAL MONOGRAPH</span>
+      <h2 class="font-serif text-5xl sm:text-7xl font-light text-sand-50 tracking-widest">STACKLY</h2>
+      <p class="text-[9px] uppercase tracking-[0.35em] text-sand-400 font-mono mt-1">THE SOLAIRE &bull; JUMEIRAH BAY ISLAND &bull; DUBAI</p>
+      <div class="preloader-line">
+        <div id="preloader-progress" class="preloader-progress"></div>
+      </div>
+      <div class="mt-4 font-mono text-xs text-sand-400">
+        <span id="preloader-count">0</span>%
+      </div>
+    </div>
+  </div>
 
   <!-- NAVIGATION HEADER -->
-  <header class="fixed top-0 left-0 right-0 z-50 py-5 bg-gradient-to-b from-graphite-950/80 via-graphite-950/30 to-transparent transition-all duration-500" id="main-header">
+  <header class="fixed top-0 left-0 right-0 z-50 py-5 bg-gradient-to-b from-graphite-950/85 via-graphite-950/30 to-transparent transition-all duration-500" id="main-header">
     <div class="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between">
-      <a href="index.html" class="flex flex-col tracking-widest text-left group">
-        <span class="font-serif text-xl md:text-2xl font-light tracking-[0.25em] text-sand-50 group-hover:text-bronze-light transition-colors">THE SOLAIRE</span>
-        <span class="text-[9px] uppercase tracking-[0.35em] text-bronze font-medium -mt-1 opacity-90">DUBAI WATERFRONT</span>
+      <a href="index.html" class="flex items-center space-x-3.5 tracking-widest text-left group" data-cursor="pointer">
+        <img src="assets/images/logo-icon.png" alt="Stackly Emblem" class="w-9 h-9 object-contain drop-shadow-[0_2px_12px_rgba(197,168,128,0.4)] group-hover:scale-105 transition-transform duration-300">
+        <div class="flex flex-col">
+          <span class="font-serif text-xl md:text-2xl font-light tracking-[0.25em] text-sand-50 group-hover:text-bronze-light transition-colors leading-tight">STACKLY</span>
+          <span class="text-[9px] uppercase tracking-[0.35em] text-bronze font-medium opacity-90 -mt-0.5">THE SOLAIRE &bull; DUBAI</span>
+        </div>
       </a>
 
       <!-- Desktop Nav -->
       <nav class="hidden lg:flex items-center space-x-7">
-        <a href="index.html" class="text-[11px] uppercase tracking-[0.25em] text-bronze font-semibold py-1 border-b border-bronze">Overview</a>
-        <a href="residences.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1">Residences</a>
-        <a href="interiors.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1">Interiors</a>
-        <a href="floor-plans.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1">Floor Plans</a>
-        <a href="amenities.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1">Amenities</a>
-        <a href="architecture.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1">Architecture</a>
-        <a href="contact.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1">Contact</a>
+        <a href="index.html" class="text-[11px] uppercase tracking-[0.25em] text-bronze font-semibold py-1 border-b border-bronze" data-cursor="pointer">Overview</a>
+        <a href="residences.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1" data-cursor="pointer">Residences</a>
+        <a href="interiors.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1" data-cursor="pointer">Interiors</a>
+        <a href="floor-plans.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1" data-cursor="pointer">Floor Plans</a>
+        <a href="amenities.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1" data-cursor="pointer">Amenities</a>
+        <a href="architecture.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1" data-cursor="pointer">Architecture</a>
+        <a href="contact.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1" data-cursor="pointer">Contact</a>
       </nav>
 
       <!-- Action CTAs -->
-      <div class="hidden sm:flex items-center space-x-4">
-        <button class="ambient-sound-toggle p-2.5 rounded-full border border-white/15 text-sand-300 hover:text-white hover:border-bronze transition-all backdrop-blur-sm" title="Toggle coastal ambient sound">
+      <div class="hidden sm:flex items-center space-x-3">
+        <!-- Live Meridian Telemetry -->
+        <div class="live-dubai-clock hidden xl:inline-flex items-center space-x-2 text-[9px] font-mono uppercase tracking-[0.22em] text-bronze-light bg-black/60 px-3.5 py-1.5 rounded-full border border-white/10 shadow-lg">
+          DUBAI (GMT+4) • 12:45 PM • 28°C SUNNY
+        </div>
+        <button class="ambient-sound-toggle p-2.5 rounded-full border border-white/15 text-sand-300 hover:text-white hover:border-bronze transition-all backdrop-blur-sm" title="Toggle coastal ambient sound" data-cursor="pointer">
           <i data-lucide="volume-x" class="w-4 h-4 opacity-60"></i>
           <span class="text-[9px] uppercase tracking-wider opacity-60 hidden md:inline ml-1">Sound</span>
         </button>
-        <button data-open-booking="The Sky Penthouse Crown" class="px-5 py-2.5 rounded-full border border-bronze/60 bg-bronze/10 hover:bg-bronze text-white text-[11px] uppercase tracking-[0.2em] font-medium transition-all shadow-[0_0_15px_rgba(197,168,128,0.2)] hover:text-graphite-950 flex items-center space-x-2">
+        <button data-magnetic data-open-booking="The Sky Penthouse Crown" class="px-4 py-2.5 rounded-full border border-bronze/60 bg-bronze/10 hover:bg-bronze text-white text-[11px] uppercase tracking-[0.2em] font-medium transition-all shadow-[0_0_15px_rgba(197,168,128,0.2)] hover:text-graphite-950 flex items-center space-x-2" data-cursor="pointer">
           <i data-lucide="calendar" class="w-3.5 h-3.5 text-bronze-light"></i>
           <span>Schedule Tour</span>
         </button>
+        <a href="login.html" class="portal-auth-btn px-4 py-2.5 rounded-full border border-white/20 bg-white/5 hover:border-bronze hover:text-bronze text-sand-200 text-[11px] uppercase tracking-[0.18em] font-medium transition-all flex items-center space-x-2" data-magnetic data-cursor="pointer">
+          <i data-lucide="key" class="w-3.5 h-3.5 text-bronze"></i>
+          <span class="portal-user-text">Resident Portal</span>
+        </a>
       </div>
 
       <!-- Mobile Trigger -->
@@ -85,15 +119,55 @@
       <a href="contact.html" class="font-serif text-3xl text-sand-100 hover:text-bronze">Contact</a>
     </div>
     <div class="pt-8 border-t border-white/10 flex flex-col space-y-4">
+      <a href="login.html" class="portal-auth-btn w-full py-3.5 rounded-full border border-bronze/50 bg-bronze/10 text-sand-50 uppercase tracking-[0.2em] font-semibold text-xs text-center flex items-center justify-center space-x-2">
+        <i data-lucide="key" class="w-4 h-4 text-bronze"></i>
+        <span class="portal-user-text">Resident Portal / Login</span>
+      </a>
       <button data-open-booking="" class="w-full py-4 rounded-full bg-bronze text-graphite-950 uppercase tracking-[0.2em] font-semibold text-xs shadow-lg">Request VIP Viewing</button>
+
+      <!-- Mobile Social Channels -->
+      <div class="flex items-center justify-center space-x-3 pt-2">
+        <a href="404.html" class="w-9 h-9 rounded-full border border-white/20 bg-white/5 hover:border-bronze hover:bg-bronze/10 text-sand-200 hover:text-bronze flex items-center justify-center transition-all group" title="Instagram">
+          <svg class="w-3.5 h-3.5 fill-none stroke-current" viewBox="0 0 24 24" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+        </a>
+        <a href="404.html" class="w-9 h-9 rounded-full border border-white/20 bg-white/5 hover:border-bronze hover:bg-bronze/10 text-sand-200 hover:text-bronze flex items-center justify-center transition-all group" title="LinkedIn">
+          <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+            <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9h2.79v8.37H6.46v-8.37M7.86 6.88a1.63 1.63 0 1 0 0 3.25 1.63 1.63 0 0 0 0-3.25z"/>
+          </svg>
+        </a>
+        <a href="404.html" class="w-9 h-9 rounded-full border border-white/20 bg-white/5 hover:border-bronze hover:bg-bronze/10 text-sand-200 hover:text-bronze flex items-center justify-center transition-all group" title="YouTube">
+          <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+        </a>
+        <a href="404.html" class="w-9 h-9 rounded-full border border-white/20 bg-white/5 hover:border-bronze hover:bg-bronze/10 text-sand-200 hover:text-bronze flex items-center justify-center transition-all group" title="Twitter / X">
+          <svg class="w-3 h-3 fill-current" viewBox="0 0 24 24">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </a>
+        <a href="404.html" class="w-9 h-9 rounded-full border border-white/20 bg-white/5 hover:border-bronze hover:bg-bronze/10 text-sand-200 hover:text-bronze flex items-center justify-center transition-all group" title="Facebook">
+          <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+        </a>
+      </div>
     </div>
   </div>
 
   <!-- SECTION 1: HERO & MACRO-TO-MICRO PINNED DESCENT -->
   <section id="hero-pinned-section" class="relative w-full h-screen overflow-hidden bg-graphite-950 text-sand-50 select-none">
     <div class="absolute inset-0 w-full h-full overflow-hidden">
-      <!-- Macro Aerial Drone Shot -->
-      <div id="hero-macro-bg" class="absolute inset-0 w-full h-full bg-cover bg-center transition-transform origin-center" style="background-image: url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=2400&q=90'); filter: brightness(0.78) contrast(1.15);"></div>
+      <!-- Macro Aerial Drone 1080p Video Stream -->
+      <div id="hero-macro-bg" class="absolute inset-0 w-full h-full overflow-hidden transition-transform origin-center">
+        <video autoplay loop muted playsinline class="w-full h-full object-cover filter brightness-[0.78] contrast-[1.15]" poster="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=2400&q=90">
+          <source src="assets/videos/dubai-skyline-loop.mp4" type="video/mp4">
+          <source src="assets/videos/dubai-skyline.webm" type="video/webm">
+        </video>
+      </div>
       <!-- Atmospheric Mist -->
       <div id="hero-mist" class="absolute inset-0 pointer-events-none mix-blend-screen opacity-70" style="background-image: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.4) 0%, rgba(210,195,175,0.2) 40%, transparent 80%);"></div>
       <!-- Tower Approach Closer Overlay -->
@@ -130,7 +204,7 @@
       </div>
     </div>
 
-    <!-- Hero Title -->
+    <!-- Hero Title Box (Pinned until scale finishes) -->
     <div id="hero-title-box" class="relative z-20 h-full max-w-6xl mx-auto px-6 flex flex-col items-center justify-center text-center pt-16">
       <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full border border-bronze/40 bg-graphite-950/60 backdrop-blur-md mb-6 shadow-2xl">
         <i data-lucide="sparkles" class="w-3 h-3 text-bronze animate-pulse"></i>
@@ -143,8 +217,12 @@
         Ninety-two bespoke sky residences sculpted against the Arabian Gulf horizon. Private cantilevered pools, 360° panoramic vistas, and effortless waterfront serenity.
       </p>
       <div class="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
-        <a href="residences.html" class="px-8 py-4 rounded-full bg-bronze hover:bg-bronze-light text-graphite-950 font-semibold text-xs uppercase tracking-[0.25em] transition-all shadow-[0_10px_30px_rgba(197,168,128,0.3)]">Explore Residences</a>
-        <button data-open-booking="" class="px-8 py-4 rounded-full border border-sand-50/30 hover:border-bronze bg-white/5 hover:bg-white/10 text-sand-100 font-medium text-xs uppercase tracking-[0.25em] backdrop-blur-md transition-all">Schedule VIP Viewing</button>
+        <a href="residences.html" data-magnetic class="px-8 py-4 rounded-full bg-bronze hover:bg-bronze-light text-graphite-950 font-semibold text-xs uppercase tracking-[0.25em] transition-all shadow-[0_10px_30px_rgba(197,168,128,0.3)]" data-cursor="pointer">Explore Residences</a>
+        <button onclick="window.openCinematicTrailer('assets/videos/dubai-skyline.mp4')" data-magnetic class="px-7 py-4 rounded-full border border-bronze/60 bg-bronze/10 hover:bg-bronze hover:text-graphite-950 text-sand-100 font-medium text-xs uppercase tracking-[0.22em] backdrop-blur-md transition-all flex items-center space-x-2.5 shadow-[0_0_20px_rgba(197,168,128,0.2)]" data-cursor="pointer">
+          <i data-lucide="play" class="w-3.5 h-3.5 text-bronze fill-bronze"></i>
+          <span>Watch Film (4K)</span>
+        </button>
+        <button data-magnetic data-open-booking="" class="px-8 py-4 rounded-full border border-sand-50/30 hover:border-bronze bg-white/5 hover:bg-white/10 text-sand-100 font-medium text-xs uppercase tracking-[0.25em] backdrop-blur-md transition-all" data-cursor="pointer">Schedule VIP Viewing</button>
       </div>
     </div>
 
@@ -166,24 +244,372 @@
   </section>
 
   <!-- SECTION 2: 3D BUILDING EXPLORATION TEASER -->
-  <section class="py-24 bg-graphite-950 text-sand-50 border-t border-white/10">
-    <div class="max-w-7xl mx-auto px-6 md:px-12">
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 border-b border-white/10 pb-8">
+  <section class="py-28 md:py-36 bg-graphite-950 text-sand-50 border-t border-white/10 relative overflow-hidden scroll-mt-20" id="explore-3d-section">
+    <!-- Background Ambient Glow Flares -->
+    <div class="absolute top-1/4 -left-40 w-96 h-96 rounded-full bg-amber-500/10 filter blur-[100px] pointer-events-none"></div>
+    <div class="absolute bottom-10 -right-40 w-96 h-96 rounded-full bg-cyan-500/10 filter blur-[120px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 border-b border-white/10 pb-8">
         <div>
-          <span class="text-[10px] uppercase font-mono tracking-[0.3em] text-bronze">INTERACTIVE ARCHITECTURAL CANVAS</span>
-          <h2 class="font-serif text-4xl sm:text-6xl font-light text-sand-50 mt-1">EXPLORE <span class="italic text-gold-gradient font-normal">RESIDENCES</span></h2>
-          <p class="text-sand-400 text-sm md:text-base mt-2 max-w-lg font-light">Interactive 360° perspective view. Drag and spin the tower model to inspect cantilevered floor tiers and sky terraces.</p>
+          <div class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-bronze/10 border border-bronze/30 text-[10px] uppercase font-mono tracking-[0.25em] text-bronze-light mb-3">
+            <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse shadow-[0_0_8px_#ffd700]"></span>
+            <span>REAL-TIME 3D ARCHITECTURAL TWIN</span>
+          </div>
+          <h2 class="font-serif text-4xl sm:text-6xl font-light text-sand-50 mt-1">
+            EXPLORE <span class="italic text-gold-gradient font-normal">RESIDENCES</span>
+          </h2>
+          <p class="text-sand-300 text-sm md:text-base mt-2 max-w-xl font-light leading-relaxed">
+            Orbit the 185-meter tower in real-time WebGL. Tap glowing hotspots to inspect cantilevered sky villas, private pools, and architectural floor elevations.
+          </p>
         </div>
-        <a href="residences.html" class="mt-4 md:mt-0 px-6 py-3 rounded-full border border-bronze/40 text-bronze-light hover:bg-bronze hover:text-graphite-950 text-xs uppercase font-mono tracking-wider transition-all flex items-center space-x-2">
-          <span>Full 3D Experience</span>
-          <i data-lucide="arrow-right" class="w-4 h-4"></i>
-        </a>
+        
+        <div class="mt-6 md:mt-0 flex flex-wrap items-center gap-3">
+          <!-- Atmosphere Mood Lighting Switcher -->
+          <div class="flex items-center space-x-1.5 bg-black/60 backdrop-blur-xl border border-bronze/30 p-1.5 rounded-full shadow-lg">
+            <button onclick="window.setBuildingLighting('day')" data-lighting-toggle="day" class="px-3.5 py-1.5 rounded-full text-xs font-mono text-sand-300 hover:text-white transition-all flex items-center space-x-1.5" data-cursor="pointer">
+              <span>☀️</span>
+              <span>DAY</span>
+            </button>
+            <button onclick="window.setBuildingLighting('sunset')" data-lighting-toggle="sunset" class="px-3.5 py-1.5 rounded-full text-xs font-mono bg-bronze text-graphite-950 font-semibold shadow-[0_0_15px_rgba(197,168,128,0.5)] transition-all flex items-center space-x-1.5" data-cursor="pointer">
+              <span>🌅</span>
+              <span>SUNSET</span>
+            </button>
+            <button onclick="window.setBuildingLighting('night')" data-lighting-toggle="night" class="px-3.5 py-1.5 rounded-full text-xs font-mono text-sand-300 hover:text-white transition-all flex items-center space-x-1.5" data-cursor="pointer">
+              <span>🌌</span>
+              <span>TWILIGHT</span>
+            </button>
+          </div>
+          
+          <a href="residences.html" data-magnetic class="px-6 py-3 rounded-full border border-bronze/60 bg-bronze/10 text-white hover:bg-bronze hover:text-graphite-950 text-xs uppercase font-mono tracking-wider transition-all flex items-center space-x-2 shadow-[0_0_20px_rgba(197,168,128,0.2)]" data-cursor="pointer">
+            <span>Full 3D Suite</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+        </div>
       </div>
 
-      <div class="relative h-[540px] md:h-[620px] rounded-3xl overflow-hidden border border-white/15 bg-graphite-900/60 shadow-2xl" id="home-3d-container" data-cursor="drag" data-cursor-text="ROTATE">
-        <div class="absolute top-4 left-4 z-10 pointer-events-none bg-black/50 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10 text-[10px] font-mono text-sand-300 flex items-center space-x-2">
-          <span class="w-1.5 h-1.5 rounded-full bg-bronze animate-pulse"></span>
-          <span>CLICK & DRAG TO ORBIT TOWER (360°)</span>
+      <!-- MAIN 3D CANVAS BOX WITH VIVID ATMOSPHERIC BACKDROP & HUD -->
+      <div class="relative h-[650px] md:h-[750px] rounded-3xl overflow-hidden border border-bronze/40 shadow-[0_25px_80px_rgba(0,0,0,0.95)] transition-all" id="home-3d-container" data-cursor="drag" data-cursor-text="ROTATE" style="background: radial-gradient(circle at 50% 28%, rgba(245, 158, 11, 0.38) 0%, rgba(197, 168, 128, 0.26) 30%, rgba(14, 165, 233, 0.16) 54%, rgba(15, 23, 42, 0.92) 80%, #07080A 100%);">
+        
+        <!-- Top Left: Drag & Angle Telemetry HUD -->
+        <div class="absolute top-5 left-5 z-20 pointer-events-none flex flex-col space-y-2">
+          <div class="bg-black/60 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 text-white text-[11px] font-mono flex items-center space-x-2.5 shadow-xl">
+            <span class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse shadow-[0_0_10px_#ffd700]"></span>
+            <span class="tracking-wider">CLICK &amp; DRAG TO ORBIT TOWER (360°)</span>
+            <span class="text-white/30">•</span>
+            <span id="tower-orbit-angle" class="text-amber-300 font-bold tracking-widest">45° ORBIT</span>
+          </div>
+          <div class="hidden sm:inline-flex items-center space-x-2 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full border border-white/10 text-[9px] font-mono text-sand-400">
+            <i data-lucide="compass" class="w-3 h-3 text-bronze animate-spin" style="animation-duration: 20s;"></i>
+            <span>JUMEIRAH BAY WATERFRONT MERIDIAN</span>
+          </div>
+        </div>
+
+        <!-- Top Right: Elevation & Height Badge & Interactive Controls -->
+        <div class="absolute top-5 right-5 z-20 flex items-center space-x-2">
+          <div class="hidden sm:flex items-center space-x-1 bg-black/60 backdrop-blur-md p-1 rounded-full border border-white/15 shadow-xl">
+            <button onclick="window.zoomBuilding('in')" class="w-7 h-7 rounded-full bg-white/5 hover:bg-bronze hover:text-graphite-950 text-sand-200 text-xs font-mono font-bold flex items-center justify-center transition-all" title="Zoom In" data-cursor="pointer">+</button>
+            <button onclick="window.zoomBuilding('out')" class="w-7 h-7 rounded-full bg-white/5 hover:bg-bronze hover:text-graphite-950 text-sand-200 text-xs font-mono font-bold flex items-center justify-center transition-all" title="Zoom Out" data-cursor="pointer">-</button>
+            <button id="tower-spin-toggle" onclick="window.toggleBuildingAutoSpin()" class="px-2.5 py-1 rounded-full bg-white/5 hover:bg-bronze hover:text-graphite-950 text-[9px] font-mono tracking-wider text-amber-300 font-semibold transition-all" data-cursor="pointer">PAUSE ORBIT</button>
+          </div>
+          <div class="pointer-events-none hidden md:flex items-center space-x-2 bg-black/60 backdrop-blur-md px-4 py-2 rounded-full border border-white/15 text-sand-200 text-xs font-mono shadow-xl">
+            <span class="text-[10px] text-bronze uppercase">ELEVATION:</span>
+            <span class="font-bold text-white">185M / 48 LEVELS</span>
+          </div>
+        </div>
+
+        <!-- Bottom Left: Interactive Tier Quick-Focus Bar -->
+        <div class="absolute bottom-5 left-5 z-20 flex flex-wrap items-center gap-2 max-w-[85%] sm:max-w-none">
+          <span class="text-[9px] font-mono uppercase tracking-widest text-sand-400 bg-black/70 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10 hidden md:inline-flex items-center space-x-1">
+            <i data-lucide="navigation" class="w-3 h-3 text-bronze"></i>
+            <span>FLY TO TIER:</span>
+          </span>
+          <button onclick="window.flyToTier('penthouse')" class="px-3.5 py-1.5 rounded-full bg-black/70 hover:bg-bronze hover:text-graphite-950 backdrop-blur-md border border-bronze/40 text-[11px] font-mono text-sand-200 transition-all shadow-lg flex items-center space-x-1.5">
+            <span>👑</span>
+            <span>L48 Penthouse</span>
+          </button>
+          <button onclick="window.flyToTier('horizon')" class="px-3.5 py-1.5 rounded-full bg-black/70 hover:bg-bronze hover:text-graphite-950 backdrop-blur-md border border-white/15 text-[11px] font-mono text-sand-200 transition-all shadow-lg flex items-center space-x-1.5">
+            <span>✨</span>
+            <span>L30 Celestial</span>
+          </button>
+          <button onclick="window.flyToTier('amenities')" class="px-3.5 py-1.5 rounded-full bg-black/70 hover:bg-cyan-500 hover:text-black backdrop-blur-md border border-cyan-500/40 text-[11px] font-mono text-cyan-300 transition-all shadow-lg flex items-center space-x-1.5">
+            <span>🌊</span>
+            <span>L18 Sky Pool</span>
+          </button>
+          <button onclick="window.flyToTier('signature')" class="px-3.5 py-1.5 rounded-full bg-black/70 hover:bg-bronze hover:text-graphite-950 backdrop-blur-md border border-white/15 text-[11px] font-mono text-sand-200 transition-all shadow-lg flex items-center space-x-1.5">
+            <span>⛵</span>
+            <span>L06 Waterfront</span>
+          </button>
+        </div>
+
+        <!-- Bottom Right: Architecture Telemetry -->
+        <div class="absolute bottom-5 right-5 z-20 pointer-events-none hidden lg:flex flex-col items-end text-right">
+          <div class="bg-black/60 backdrop-blur-md px-3.5 py-2 rounded-2xl border border-white/15 text-[10px] font-mono space-y-0.5 shadow-xl">
+            <p class="text-bronze-light font-bold">FOSTER &amp; PARTNERS DESIGN</p>
+            <p class="text-sand-400">Cantilevered Slabs &bull; STC 62 Triple Glazing</p>
+          </div>
+        </div>
+
+        <!-- Center Bottom Drag Navigation Helper Hint -->
+        <div class="absolute bottom-16 inset-x-0 z-10 pointer-events-none flex justify-center opacity-70">
+          <div class="bg-black/40 backdrop-blur-sm px-4 py-1 rounded-full border border-white/10 text-[9px] font-mono tracking-widest text-amber-200/80 uppercase">
+            &larr; Drag horizontally to spin 360&deg; &rarr;
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: GLOBAL PRESS & CRITICAL ACCLAIM -->
+  <section class="py-16 bg-graphite-900 border-y border-white/10 text-sand-50 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 md:px-12">
+      <div class="flex items-center justify-between border-b border-white/10 pb-6 mb-10">
+        <div class="flex items-center space-x-3">
+          <span class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse shadow-[0_0_8px_#ffd700]"></span>
+          <span class="text-[10px] font-mono uppercase tracking-[0.35em] text-bronze">INTERNATIONAL CRITICAL ACCLAIM</span>
+        </div>
+        <span class="text-[10px] font-mono text-sand-400 uppercase tracking-widest hidden sm:inline">GLOBAL MONOGRAPH REVIEW • 2026/2027</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-bronze/40 transition-all flex flex-col justify-between">
+          <p class="font-serif text-lg font-light italic text-sand-100 leading-snug">"The most architecturally consequential waterfront residence sculpted against the gulf since One Hyde Park."</p>
+          <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
+            <span class="font-mono text-xs uppercase tracking-widest text-bronze font-bold">ROBB REPORT</span>
+            <span class="text-[10px] font-mono text-sand-400">Pinnacle Award</span>
+          </div>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-bronze/40 transition-all flex flex-col justify-between">
+          <p class="font-serif text-lg font-light italic text-sand-100 leading-snug">"Foster & Partners creates a masterwork where monolithic travertine dissolves into cantilevered horizon glass."</p>
+          <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
+            <span class="font-mono text-xs uppercase tracking-widest text-bronze font-bold">ARCHITECTURAL DIGEST</span>
+            <span class="text-[10px] font-mono text-sand-400">Design Laureate</span>
+          </div>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-bronze/40 transition-all flex flex-col justify-between">
+          <p class="font-serif text-lg font-light italic text-sand-100 leading-snug">"A singular trophy asset setting a rarefied benchmark for ultra-prime private sovereign estates globally."</p>
+          <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
+            <span class="font-mono text-xs uppercase tracking-widest text-bronze font-bold">FINANCIAL TIMES</span>
+            <span class="text-[10px] font-mono text-sand-400">Wealth Report</span>
+          </div>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-bronze/40 transition-all flex flex-col justify-between">
+          <p class="font-serif text-lg font-light italic text-sand-100 leading-snug">"Monastic silence, private mega-yacht moorings, and effortless bespoke St. Regis residential service."</p>
+          <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
+            <span class="font-mono text-xs uppercase tracking-widest text-bronze font-bold">VOGUE LIVING</span>
+            <span class="text-[10px] font-mono text-sand-400">Sanctuary Issue</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: JUMEIRAH BAY MASTERPLAN & NAUTICAL PROXIMITY -->
+  <section class="py-24 md:py-32 bg-graphite-950 text-sand-50 relative overflow-hidden border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 border-b border-white/10 pb-8">
+        <div>
+          <span class="text-[10px] uppercase font-mono tracking-[0.35em] text-bronze">THE NAUTICAL MASTERPLAN</span>
+          <h2 class="font-serif text-4xl sm:text-6xl font-light text-sand-50 mt-2">
+            Jumeirah Bay <span class="italic text-gold-gradient font-normal">Archipelago</span>
+          </h2>
+          <p class="text-sand-300 text-sm md:text-base mt-3 max-w-xl font-light leading-relaxed">
+            A seahorse-shaped private island reserved for global visionaries. Five minutes from mainland Dubai, surrounded entirely by the azure waters of the Arabian Gulf.
+          </p>
+        </div>
+        <div class="mt-6 md:mt-0">
+          <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full border border-white/15 bg-white/5 font-mono text-xs text-sand-200">
+            <i data-lucide="compass" class="w-4 h-4 text-bronze"></i>
+            <span>COORDINATES: 25°12'09.4"N 55°14'26.8"E</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <!-- Interactive Map Visual -->
+        <div class="lg:col-span-7 relative h-[480px] md:h-[540px] rounded-3xl overflow-hidden border border-bronze/30 shadow-2xl group">
+          <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1600&q=85" alt="Jumeirah Bay Island Masterplan" class="w-full h-full object-cover filter brightness-[0.72] contrast-[1.15] group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-graphite-950 via-graphite-950/20 to-graphite-950/60"></div>
+
+          <!-- Radar Pulsing Origin Marker on Jumeirah Bay -->
+          <div class="absolute top-[42%] left-[48%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
+            <div class="relative w-8 h-8 rounded-full bg-bronze/40 border-2 border-bronze flex items-center justify-center shadow-[0_0_25px_#C5A880]">
+              <span class="w-3 h-3 rounded-full bg-amber-300 animate-ping"></span>
+            </div>
+            <div class="mt-2 bg-black/80 backdrop-blur-md px-3 py-1 rounded-full border border-bronze/60 text-[10px] font-mono text-bronze font-bold shadow-xl">
+              THE SOLAIRE (SLIP #14)
+            </div>
+          </div>
+
+          <!-- Connecting Distance Lines HUD -->
+          <div class="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-black/70 backdrop-blur-xl border border-white/15 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center space-x-3">
+              <i data-lucide="anchor" class="w-5 h-5 text-bronze"></i>
+              <div>
+                <p class="text-[10px] font-mono uppercase tracking-wider text-bronze">Private Marina Slipway</p>
+                <p class="text-xs text-sand-100 font-light">Direct 45m Superyacht Berth • Zero Bridge Clearance</p>
+              </div>
+            </div>
+            <div class="flex items-center space-x-3">
+              <i data-lucide="plane" class="w-5 h-5 text-bronze"></i>
+              <div>
+                <p class="text-[10px] font-mono uppercase tracking-wider text-bronze">Level 48 Helipad</p>
+                <p class="text-xs text-sand-100 font-light">Abu Dhabi 22 min • DXB Terminal 3 6 min</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Proximity Cards & Travel Times -->
+        <div class="lg:col-span-5 flex flex-col space-y-3.5">
+          <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-bronze/40 transition-all flex items-center justify-between">
+            <div class="flex items-center space-x-3.5">
+              <div class="w-10 h-10 rounded-full bg-bronze/10 border border-bronze/30 flex items-center justify-center text-bronze">
+                <i data-lucide="building-2" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h4 class="font-serif text-lg font-light text-sand-50">Downtown Dubai & Burj Khalifa</h4>
+                <p class="text-[11px] text-sand-400 font-light">World-class dining, fashion avenue & opera</p>
+              </div>
+            </div>
+            <div class="text-right font-mono">
+              <span class="text-bronze-light font-bold text-sm">12 MIN</span>
+              <p class="text-[9px] text-sand-400">8.4 KM</p>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-bronze/40 transition-all flex items-center justify-between">
+            <div class="flex items-center space-x-3.5">
+              <div class="w-10 h-10 rounded-full bg-bronze/10 border border-bronze/30 flex items-center justify-center text-bronze">
+                <i data-lucide="briefcase" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h4 class="font-serif text-lg font-light text-sand-50">DIFC Financial District</h4>
+                <p class="text-[11px] text-sand-400 font-light">Global financial hub & Michelin restaurants</p>
+              </div>
+            </div>
+            <div class="text-right font-mono">
+              <span class="text-bronze-light font-bold text-sm">14 MIN</span>
+              <p class="text-[9px] text-sand-400">9.2 KM</p>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-bronze/40 transition-all flex items-center justify-between">
+            <div class="flex items-center space-x-3.5">
+              <div class="w-10 h-10 rounded-full bg-bronze/10 border border-bronze/30 flex items-center justify-center text-bronze">
+                <i data-lucide="ship" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h4 class="font-serif text-lg font-light text-sand-50">Bulgari Yacht Club & Marina</h4>
+                <p class="text-[11px] text-sand-400 font-light">Exclusive yacht club & private membership lounge</p>
+              </div>
+            </div>
+            <div class="text-right font-mono">
+              <span class="text-bronze-light font-bold text-sm">3 MIN</span>
+              <p class="text-[9px] text-sand-400">0.8 KM</p>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-bronze/40 transition-all flex items-center justify-between">
+            <div class="flex items-center space-x-3.5">
+              <div class="w-10 h-10 rounded-full bg-bronze/10 border border-bronze/30 flex items-center justify-center text-bronze">
+                <i data-lucide="plane-takeoff" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h4 class="font-serif text-lg font-light text-sand-50">Dubai International Airport (DXB)</h4>
+                <p class="text-[11px] text-sand-400 font-light">VIP Royal Terminal & private aviation lounge</p>
+              </div>
+            </div>
+            <div class="text-right font-mono">
+              <span class="text-bronze-light font-bold text-sm">18 MIN</span>
+              <p class="text-[9px] text-sand-400">15.6 KM</p>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-gradient-to-r from-bronze/20 to-transparent border border-bronze/40 flex items-center justify-between">
+            <div>
+              <p class="text-[9px] font-mono uppercase tracking-widest text-bronze">Complimentary Chauffeur</p>
+              <h5 class="font-serif text-base text-sand-50 mt-0.5">Rolls-Royce Spectre Fleet Available 24/7</h5>
+            </div>
+            <button data-open-booking="" class="px-4 py-2 rounded-full bg-bronze text-graphite-950 font-mono text-[10px] uppercase font-bold tracking-wider hover:bg-bronze-light transition-all">Book Transfer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: COLLABORATIVE MASTERS MONOGRAPH -->
+  <section class="py-24 md:py-32 bg-sand-100 text-graphite-900 border-b border-sand-300">
+    <div class="max-w-7xl mx-auto px-6 md:px-12">
+      <div class="max-w-2xl mb-16">
+        <span class="text-[10px] uppercase font-mono tracking-[0.35em] text-bronze-dark">THE ARCHITECTURAL PEDIGREE</span>
+        <h2 class="font-serif text-4xl sm:text-6xl font-light text-graphite-950 tracking-tight mt-2">
+          Conceived by the world's greatest <span class="italic font-normal">masters.</span>
+        </h2>
+        <p class="text-graphite-600 text-sm md:text-base mt-4 font-light leading-relaxed">
+          Four internationally celebrated design ateliers united to sculpt a singular residential sanctuary with zero compromise.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="p-8 rounded-3xl bg-sand-200/60 border border-sand-300/80 hover:bg-white transition-all duration-300 shadow-sm hover:shadow-xl flex flex-col justify-between">
+          <div>
+            <span class="text-[9px] font-mono uppercase tracking-widest text-bronze-dark">Architecture & Masterplan</span>
+            <h3 class="font-serif text-2xl font-light text-graphite-950 mt-2">Foster + Partners</h3>
+            <p class="text-xs text-graphite-500 font-mono mt-0.5">London, United Kingdom</p>
+            <p class="text-xs text-graphite-600 font-light mt-4 leading-relaxed">
+              Pritzker Architecture Prize Laureates. Aerodynamic cantilevered floor plates, bioclimatic solar shading louvers, and bespoke triple-laminated acoustic curtain walling.
+            </p>
+          </div>
+          <div class="pt-6 mt-6 border-t border-sand-300 text-[10px] font-mono text-bronze-dark uppercase tracking-widest">
+            Structural Integrity
+          </div>
+        </div>
+
+        <div class="p-8 rounded-3xl bg-sand-200/60 border border-sand-300/80 hover:bg-white transition-all duration-300 shadow-sm hover:shadow-xl flex flex-col justify-between">
+          <div>
+            <span class="text-[9px] font-mono uppercase tracking-widest text-bronze-dark">Interior Architecture</span>
+            <h3 class="font-serif text-2xl font-light text-graphite-950 mt-2">Studio Liaigre</h3>
+            <p class="text-xs text-graphite-500 font-mono mt-0.5">Paris, France</p>
+            <p class="text-xs text-graphite-600 font-light mt-4 leading-relaxed">
+              Quiet French refinement. Honed Roman travertine, brushed bronze joinery, fluted fumed oak cabinetry, and minimalist monastic harmony sculpted for contemplative living.
+            </p>
+          </div>
+          <div class="pt-6 mt-6 border-t border-sand-300 text-[10px] font-mono text-bronze-dark uppercase tracking-widest">
+            Tactile Haute Curation
+          </div>
+        </div>
+
+        <div class="p-8 rounded-3xl bg-sand-200/60 border border-sand-300/80 hover:bg-white transition-all duration-300 shadow-sm hover:shadow-xl flex flex-col justify-between">
+          <div>
+            <span class="text-[9px] font-mono uppercase tracking-widest text-bronze-dark">Aquatics & Water Architecture</span>
+            <h3 class="font-serif text-2xl font-light text-graphite-950 mt-2">WET Design</h3>
+            <p class="text-xs text-graphite-500 font-mono mt-0.5">Los Angeles, California</p>
+            <p class="text-xs text-graphite-600 font-light mt-4 leading-relaxed">
+              Creators of the world's most iconic kinetic water features. Engineered the Level 18 cantilevered glass-bottom sky pool and acoustic saltwater cascade arrival fountains.
+            </p>
+          </div>
+          <div class="pt-6 mt-6 border-t border-sand-300 text-[10px] font-mono text-bronze-dark uppercase tracking-widest">
+            Hydraulic Artistry
+          </div>
+        </div>
+
+        <div class="p-8 rounded-3xl bg-sand-200/60 border border-sand-300/80 hover:bg-white transition-all duration-300 shadow-sm hover:shadow-xl flex flex-col justify-between">
+          <div>
+            <span class="text-[9px] font-mono uppercase tracking-widest text-bronze-dark">Hospitality & Butler Service</span>
+            <h3 class="font-serif text-2xl font-light text-graphite-950 mt-2">The St. Regis</h3>
+            <p class="text-xs text-graphite-500 font-mono mt-0.5">New York • Dubai</p>
+            <p class="text-xs text-graphite-600 font-light mt-4 leading-relaxed">
+              Over a century of bespoke anticipatory service. 24/7 dedicated private butlers, Rolls-Royce chauffeur dispatches, private chef bookings, and global VIP reciprocal access.
+            </p>
+          </div>
+          <div class="pt-6 mt-6 border-t border-sand-300 text-[10px] font-mono text-bronze-dark uppercase tracking-widest">
+            Anticipatory Excellence
+          </div>
         </div>
       </div>
     </div>
@@ -193,13 +619,13 @@
   <section class="py-24 md:py-36 bg-sand-100 text-graphite-900 border-t border-sand-300">
     <div class="max-w-7xl mx-auto px-6 md:px-12">
       <div class="max-w-2xl mb-16">
-        <p className="text-[10px] uppercase font-mono tracking-[0.35em] text-bronze-dark mb-2">THE DEDICATED CHAPTERS</p>
+        <p class="text-[10px] uppercase font-mono tracking-[0.35em] text-bronze-dark mb-2">THE DEDICATED CHAPTERS</p>
         <h2 class="font-serif text-4xl sm:text-6xl font-light text-graphite-950 tracking-tight">Explore the sanctuary in <span class="italic font-normal">depth.</span></h2>
         <p class="text-graphite-600 text-sm md:text-base mt-4 font-light leading-relaxed">Navigate dedicated sub-pages showcasing residences, interior spaces, blueprints, lifestyle amenities, and structural engineering.</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <a href="residences.html" class="group p-8 rounded-3xl bg-sand-200/50 hover:bg-white border border-sand-300 transition-all duration-500 shadow-sm hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between min-h-[340px]">
+        <a href="residences.html" class="group p-8 rounded-3xl bg-sand-200/50 hover:bg-white border border-sand-300 transition-all duration-500 shadow-sm hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between min-h-[340px]" data-cursor="pointer">
           <div>
             <span class="text-[10px] font-mono uppercase tracking-widest text-bronze-dark">Chapter 01</span>
             <h3 class="font-serif text-3xl font-light text-graphite-950 mt-2 group-hover:text-bronze-dark transition-colors">The Residences</h3>
@@ -210,7 +636,7 @@
           </div>
         </a>
 
-        <a href="interiors.html" class="group p-8 rounded-3xl bg-sand-200/50 hover:bg-white border border-sand-300 transition-all duration-500 shadow-sm hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between min-h-[340px]">
+        <a href="interiors.html" class="group p-8 rounded-3xl bg-sand-200/50 hover:bg-white border border-sand-300 transition-all duration-500 shadow-sm hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between min-h-[340px]" data-cursor="pointer">
           <div>
             <span class="text-[10px] font-mono uppercase tracking-widest text-bronze-dark">Chapter 02</span>
             <h3 class="font-serif text-3xl font-light text-graphite-950 mt-2 group-hover:text-bronze-dark transition-colors">Interior Walkthrough</h3>
@@ -221,7 +647,7 @@
           </div>
         </a>
 
-        <a href="floor-plans.html" class="group p-8 rounded-3xl bg-sand-200/50 hover:bg-white border border-sand-300 transition-all duration-500 shadow-sm hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between min-h-[340px]">
+        <a href="floor-plans.html" class="group p-8 rounded-3xl bg-sand-200/50 hover:bg-white border border-sand-300 transition-all duration-500 shadow-sm hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between min-h-[340px]" data-cursor="pointer">
           <div>
             <span class="text-[10px] font-mono uppercase tracking-widest text-bronze-dark">Chapter 03</span>
             <h3 class="font-serif text-3xl font-light text-graphite-950 mt-2 group-hover:text-bronze-dark transition-colors">Floor Plans & Specs</h3>
@@ -232,7 +658,7 @@
           </div>
         </a>
 
-        <a href="amenities.html" class="group p-8 rounded-3xl bg-sand-200/50 hover:bg-white border border-sand-300 transition-all duration-500 shadow-sm hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between min-h-[340px]">
+        <a href="amenities.html" class="group p-8 rounded-3xl bg-sand-200/50 hover:bg-white border border-sand-300 transition-all duration-500 shadow-sm hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between min-h-[340px]" data-cursor="pointer">
           <div>
             <span class="text-[10px] font-mono uppercase tracking-widest text-bronze-dark">Chapter 04</span>
             <h3 class="font-serif text-3xl font-light text-graphite-950 mt-2 group-hover:text-bronze-dark transition-colors">Amenities & Lifestyle</h3>
@@ -243,7 +669,7 @@
           </div>
         </a>
 
-        <a href="architecture.html" class="group p-8 rounded-3xl bg-sand-200/50 hover:bg-white border border-sand-300 transition-all duration-500 shadow-sm hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between min-h-[340px]">
+        <a href="architecture.html" class="group p-8 rounded-3xl bg-sand-200/50 hover:bg-white border border-sand-300 transition-all duration-500 shadow-sm hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between min-h-[340px]" data-cursor="pointer">
           <div>
             <span class="text-[10px] font-mono uppercase tracking-widest text-bronze-dark">Chapter 05</span>
             <h3 class="font-serif text-3xl font-light text-graphite-950 mt-2 group-hover:text-bronze-dark transition-colors">Architecture & Design</h3>
@@ -254,7 +680,7 @@
           </div>
         </a>
 
-        <a href="contact.html" class="group p-8 rounded-3xl bg-graphite-950 text-sand-50 border border-bronze/30 transition-all duration-500 shadow-xl hover:-translate-y-1 flex flex-col justify-between min-h-[340px]">
+        <a href="contact.html" class="group p-8 rounded-3xl bg-graphite-950 text-sand-50 border border-bronze/30 transition-all duration-500 shadow-xl hover:-translate-y-1 flex flex-col justify-between min-h-[340px]" data-cursor="pointer">
           <div>
             <span class="text-[10px] font-mono uppercase tracking-widest text-bronze">VIP Invitation</span>
             <h3 class="font-serif text-3xl font-light text-sand-50 mt-2 group-hover:text-bronze-light transition-colors">Private Sales Gallery</h3>
@@ -277,15 +703,57 @@
           <h2 class="font-serif text-4xl sm:text-6xl font-light text-sand-50 mt-3 leading-tight">An enduring legacy sculpted in stone & sky.</h2>
         </div>
         <div class="mt-8 md:mt-0 flex gap-4">
-          <button data-open-booking="" class="px-8 py-4 rounded-full bg-bronze hover:bg-bronze-light text-graphite-950 font-semibold text-xs uppercase tracking-[0.25em] transition-all shadow-xl">Inquire Privately</button>
+          <button data-magnetic data-open-booking="" class="px-8 py-4 rounded-full bg-bronze hover:bg-bronze-light text-graphite-950 font-semibold text-xs uppercase tracking-[0.25em] transition-all shadow-xl" data-cursor="pointer">Inquire Privately</button>
         </div>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
         <div>
-          <h3 class="font-serif text-2xl font-light tracking-widest text-sand-50">THE SOLAIRE</h3>
-          <p class="text-xs uppercase font-mono tracking-widest text-bronze mt-1">Jumeirah Bay Island, Dubai</p>
+          <div class="flex items-center space-x-3 mb-3">
+            <img src="assets/images/logo-icon.png" alt="Stackly Emblem" class="w-8 h-8 object-contain drop-shadow-[0_2px_8px_rgba(197,168,128,0.4)]">
+            <h3 class="font-serif text-2xl font-light tracking-widest text-sand-50">STACKLY</h3>
+          </div>
+          <p class="text-xs uppercase font-mono tracking-widest text-bronze mt-1">THE SOLAIRE &bull; Jumeirah Bay Island, Dubai</p>
           <p class="text-xs text-sand-400 font-light mt-4 leading-relaxed">Coordinates: 25°12'09.4"N 55°14'26.8"E<br>Direct Yacht Slip #14-22<br>Private Helipad Access Level 48</p>
+          
+          <!-- Sovereign Social Media Channels -->
+          <div class="mt-6">
+            <span class="text-[10px] uppercase font-mono tracking-[0.25em] text-bronze block mb-3">Official Channels</span>
+            <div class="flex items-center space-x-2.5">
+              <!-- Instagram -->
+              <a href="404.html" class="w-9 h-9 rounded-full border border-white/20 bg-white/5 hover:border-bronze hover:bg-bronze/10 text-sand-200 hover:text-bronze flex items-center justify-center transition-all duration-300 shadow-md group" title="Instagram (@thesolaire.dubai)" data-cursor="pointer">
+                <svg class="w-4 h-4 fill-none stroke-current transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+              </a>
+              <!-- LinkedIn -->
+              <a href="404.html" class="w-9 h-9 rounded-full border border-white/20 bg-white/5 hover:border-bronze hover:bg-bronze/10 text-sand-200 hover:text-bronze flex items-center justify-center transition-all duration-300 shadow-md group" title="LinkedIn (The Solaire Residences)" data-cursor="pointer">
+                <svg class="w-4 h-4 fill-current transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24">
+                  <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9h2.79v8.37H6.46v-8.37M7.86 6.88a1.63 1.63 0 1 0 0 3.25 1.63 1.63 0 0 0 0-3.25z"/>
+                </svg>
+              </a>
+              <!-- YouTube -->
+              <a href="404.html" class="w-9 h-9 rounded-full border border-white/20 bg-white/5 hover:border-bronze hover:bg-bronze/10 text-sand-200 hover:text-bronze flex items-center justify-center transition-all duration-300 shadow-md group" title="YouTube (The Solaire Monograph Cinema)" data-cursor="pointer">
+                <svg class="w-4 h-4 fill-current transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24">
+                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+              </a>
+              <!-- Twitter / X -->
+              <a href="404.html" class="w-9 h-9 rounded-full border border-white/20 bg-white/5 hover:border-bronze hover:bg-bronze/10 text-sand-200 hover:text-bronze flex items-center justify-center transition-all duration-300 shadow-md group" title="Twitter / X (@TheSolaireDubai)" data-cursor="pointer">
+                <svg class="w-3.5 h-3.5 fill-current transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+              </a>
+              <!-- Facebook -->
+              <a href="404.html" class="w-9 h-9 rounded-full border border-white/20 bg-white/5 hover:border-bronze hover:bg-bronze/10 text-sand-200 hover:text-bronze flex items-center justify-center transition-all duration-300 shadow-md group" title="Facebook (The Solaire Jumeirah Bay)" data-cursor="pointer">
+                <svg class="w-4 h-4 fill-current transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
         </div>
         <div>
           <h4 class="text-[10px] uppercase font-mono tracking-[0.25em] text-sand-400 mb-4">Dedicated Sub-Pages</h4>
@@ -321,13 +789,35 @@
       <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between text-[11px] text-sand-500 font-light gap-4">
         <p>© 2027 The Solaire Residences LLC. All architectural designs and trademarks reserved.</p>
         <div class="flex items-center space-x-6 text-[10px] uppercase font-mono tracking-wider">
-          <span>DREC Escrow Account #98234-A</span>
-          <span>Privacy & GDPR</span>
-          <span>Terms of Living</span>
+          <a href="404.html" class="hover:text-bronze transition-colors">DREC Escrow #98234-A</a>
+          <a href="404.html" class="hover:text-bronze transition-colors">Privacy & GDPR</a>
+          <a href="404.html" class="hover:text-bronze transition-colors">Terms of Living</a>
         </div>
       </div>
     </div>
   </footer>
+
+  <!-- CINEMATIC 4K TRAILER THEATER MODAL -->
+  <div id="cinematic-trailer-modal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-2xl flex items-center justify-center p-4 sm:p-8 opacity-0 pointer-events-none transition-all duration-500">
+    <div class="relative w-full max-w-6xl aspect-video rounded-3xl overflow-hidden border border-bronze/40 shadow-[0_25px_80px_rgba(0,0,0,0.95)] bg-graphite-950">
+      <!-- Close Button -->
+      <button onclick="window.closeCinematicTrailer()" class="close-trailer-btn absolute top-5 right-5 z-20 w-11 h-11 rounded-full bg-black/70 hover:bg-bronze hover:text-graphite-950 text-white flex items-center justify-center transition-all border border-white/20 backdrop-blur-md" title="Close Theater" data-cursor="pointer">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <!-- Video Player -->
+      <video id="cinematic-trailer-video" class="w-full h-full object-cover" controls playsinline preload="auto">
+        <source src="assets/videos/dubai-skyline.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+
+      <!-- Bottom Film Credit Overlay -->
+      <div class="absolute bottom-4 left-6 z-10 pointer-events-none hidden sm:flex items-center space-x-3 bg-black/60 backdrop-blur-md px-4 py-2 rounded-full border border-white/15">
+        <span class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse"></span>
+        <span class="text-[10px] font-mono tracking-widest uppercase text-sand-200">THE SOLAIRE • 4K ARCHITECTURAL MONOGRAPH • JUMEIRAH BAY</span>
+      </div>
+    </div>
+  </div>
 
   <!-- UNIVERSAL VIP MODAL -->
   <div id="vip-booking-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto hidden">
@@ -398,8 +888,8 @@
             <input type="checkbox" checked class="w-4 h-4 text-bronze">
           </div>
           <div class="flex flex-col sm:flex-row gap-3 pt-2">
-            <button type="submit" class="flex-1 py-4 rounded-full bg-bronze hover:bg-bronze-light text-graphite-950 font-semibold text-xs uppercase tracking-[0.2em] shadow-lg transition-all">Confirm Private Reservation</button>
-            <button type="button" id="modal-whatsapp-btn" class="px-6 py-4 rounded-full border border-emerald-500/40 bg-emerald-500/10 text-emerald-300 font-semibold text-xs uppercase tracking-[0.15em] flex items-center justify-center space-x-2">
+            <button type="submit" class="flex-1 py-4 rounded-full bg-bronze hover:bg-bronze-light text-graphite-950 font-semibold text-xs uppercase tracking-[0.2em] shadow-lg transition-all" data-cursor="pointer">Confirm Private Reservation</button>
+            <button type="button" id="modal-whatsapp-btn" class="px-6 py-4 rounded-full border border-emerald-500/40 bg-emerald-500/10 text-emerald-300 font-semibold text-xs uppercase tracking-[0.15em] flex items-center justify-center space-x-2" data-cursor="pointer">
               <i data-lucide="message-square" class="w-4 h-4 text-emerald-400"></i><span>WhatsApp</span>
             </button>
           </div>
@@ -413,15 +903,16 @@
           <h4 class="font-serif text-3xl font-light text-sand-50 mt-2">We look forward to welcoming you.</h4>
           <p class="text-sand-300 text-sm max-w-md mx-auto mt-2 font-light">Your private viewing code is <strong id="modal-ref-code" class="text-bronze-light font-mono">SLR-849201</strong>.</p>
         </div>
-        <button class="close-booking-modal px-8 py-3.5 rounded-full border border-white/20 text-sand-200 text-xs uppercase tracking-wider">Close Window</button>
+        <button class="close-booking-modal px-8 py-3.5 rounded-full border border-white/20 text-sand-200 text-xs uppercase tracking-wider" data-cursor="pointer">Close Window</button>
       </div>
     </div>
   </div>
 
   <script src="js/main.js"></script>
   <script src="js/three-building.js"></script>
+  <script src="js/auth.js"></script>
   <script>
-    // Hero Pinned Scroll Animation
+    // Pinned Macro-to-Micro Cinematic Scroll Sequence
     document.addEventListener('DOMContentLoaded', () => {
       if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
         gsap.registerPlugin(ScrollTrigger);
@@ -439,27 +930,35 @@
           scrollTrigger: {
             trigger: '#hero-pinned-section',
             start: 'top top',
-            end: '+=200%',
+            end: '+=250%',
             pin: true,
-            scrub: 1,
+            scrub: 1.2,
             anticipatePin: 1,
             onUpdate: (self) => {
               const p = self.progress;
+              // Smooth telemetry readout calculation
               const currentAlt = Math.round(1250 - p * (1250 - 48));
               if (altVal) altVal.textContent = currentAlt.toLocaleString();
               if (altBar) altBar.style.width = `${Math.min(100, p * 100)}%`;
               if (altLabel) {
-                altLabel.textContent = currentAlt > 600 ? 'Macro Masterplan View' : currentAlt > 150 ? 'Tower Mid-Level Scan' : 'Ground Level Arrival';
+                altLabel.textContent = currentAlt > 650 ? 'Macro Masterplan View' : currentAlt > 185 ? 'Tower Mid-Level Scan' : 'Ground Level Arrival';
               }
             }
           }
         });
 
-        tl.to(titleBox, { opacity: 0, y: -60, scale: 0.95, duration: 0.4 }, 0);
-        tl.to(macroBg, { scale: 2.2, y: '8%', duration: 1, ease: 'none' }, 0);
-        tl.to(mist, { opacity: 0, scale: 1.8, filter: 'blur(20px)', duration: 0.6 }, 0.1);
-        tl.to(approachBg, { opacity: 1, scale: 1, duration: 0.6 }, 0.4);
-        tl.to(metricsBox, { opacity: 1, pointerEvents: 'auto', duration: 0.3 }, 0.6);
+        // Phase 1: Drone Zoom Begins, Mist disperses
+        tl.to(macroBg, { scale: 2.8, y: '10%', duration: 1.2, ease: 'power1.inOut' }, 0);
+        tl.to(mist, { opacity: 0, scale: 2.2, filter: 'blur(30px)', duration: 0.8, ease: 'power1.out' }, 0.1);
+
+        // Phase 2: Close-up Tower facade dissolves in smoothly
+        tl.to(approachBg, { opacity: 1, scale: 1.05, duration: 0.8, ease: 'power2.out' }, 0.4);
+
+        // Phase 3: Only after camera descent scale finishes, gently fade title up and out
+        tl.to(titleBox, { opacity: 0, y: -50, scale: 0.94, duration: 0.5, ease: 'power2.in' }, 0.55);
+
+        // Phase 4: Micro Approach HUD floats in
+        tl.to(metricsBox, { opacity: 1, y: 0, pointerEvents: 'auto', duration: 0.4, ease: 'power2.out' }, 0.7);
       }
 
       // Initialize 3D Building preview
