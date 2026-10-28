@@ -34,10 +34,28 @@
   <script src="https://unpkg.com/lucide@latest"></script>
   <link rel="stylesheet" href="css/style.css">
   <style>
-    .portal-bg-gradient {
-      background: radial-gradient(circle at 50% 25%, rgba(197, 168, 128, 0.15), transparent 60%),
-                  radial-gradient(circle at 85% 75%, rgba(154, 120, 78, 0.08), transparent 50%),
-                  #0A0A09;
+    .glass-portal-card {
+      position: relative;
+      background: rgba(14, 13, 12, 0.82);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      border: 1px solid rgba(197, 168, 128, 0.28);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9), 0 0 40px rgba(197, 168, 128, 0.08);
+      transition: border-color 0.4s ease, box-shadow 0.4s ease;
+    }
+    .glass-portal-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: radial-gradient(700px circle at var(--spotlight-x, 50%) var(--spotlight-y, 50%), rgba(197, 168, 128, 0.12), transparent 45%);
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .glass-portal-card:hover::before {
+      opacity: 1;
     }
     .biometric-scanner {
       position: relative;
@@ -66,7 +84,52 @@
     }
   </style>
 </head>
-<body class="portal-bg-gradient text-sand-50 font-sans min-h-screen flex flex-col justify-between overflow-x-hidden selection:bg-bronze selection:text-black">
+<body class="bg-graphite-950 text-sand-50 font-sans min-h-screen flex flex-col justify-between overflow-x-hidden relative selection:bg-bronze selection:text-black">
+
+  <!-- CINEMATIC INTERACTIVE MULTI-SCENE VIDEO SWIPER -->
+  <div id="bg-swiper" class="fixed inset-0 w-full h-full pointer-events-none z-0 overflow-hidden select-none">
+    <!-- Slide 0: Dubai Skyline -->
+    <div class="bg-slide absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out opacity-100 z-[1]" data-index="0" data-title="Dubai Skyline Horizon" data-loc="Jumeirah Bay Island • 25°12'N 55°15'E">
+      <video class="w-full h-full object-cover filter brightness-[0.72] contrast-[1.08] saturate-[1.14] scale-105" autoplay muted loop playsinline poster="assets/images/bg-slide-skyline.jpg">
+        <source src="assets/videos/dubai-skyline-loop.mp4" type="video/mp4">
+      </video>
+    </div>
+    <!-- Slide 1: Sunset Infinity Pool -->
+    <div class="bg-slide absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out opacity-0 z-0" data-index="1" data-title="Sunset Infinity Pool" data-loc="Level 42 Sky Deck • Private Oasis">
+      <video class="w-full h-full object-cover filter brightness-[0.72] contrast-[1.08] saturate-[1.14] scale-105" muted loop playsinline poster="assets/images/bg-slide-pool.jpg">
+        <source src="assets/videos/amenity-pool-loop.mp4" type="video/mp4">
+      </video>
+    </div>
+    <!-- Slide 2: Yacht Marina Waterway -->
+    <div class="bg-slide absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out opacity-0 z-0" data-index="2" data-title="Private Yacht Marina" data-loc="Arabian Gulf Coastline • Deep-Water Berth">
+      <video class="w-full h-full object-cover filter brightness-[0.72] contrast-[1.08] saturate-[1.14] scale-105" muted loop playsinline poster="assets/images/bg-slide-sea.jpg">
+        <source src="assets/videos/uncharted-sea-loop.mp4" type="video/mp4">
+      </video>
+    </div>
+    <!-- Slide 3: Sky Penthouse Salon -->
+    <div class="bg-slide absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out opacity-0 z-0" data-index="3" data-title="Sky Penthouse Salon" data-loc="Residence 4801 • Double-Height Crown Suite">
+      <video class="w-full h-full object-cover filter brightness-[0.72] contrast-[1.08] saturate-[1.14] scale-105" muted loop playsinline poster="assets/images/bg-slide-interior.jpg">
+        <source src="assets/videos/interior-loop-silent.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <!-- Multi-stop luxury vignette with calibrated brightness: crystal-clear scenery while ensuring card readability -->
+    <div class="absolute inset-0 bg-gradient-to-t from-graphite-950/90 via-graphite-950/45 to-graphite-950/70 pointer-events-none"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(10,10,9,0.32)_0%,rgba(10,10,9,0.65)_65%,rgba(10,10,9,0.92)_100%)] pointer-events-none"></div>
+    <!-- Ambient micro-grid mesh overlay for architectural depth -->
+    <div class="absolute inset-0 opacity-[0.035] bg-[linear-gradient(to_right,#C5A880_1px,transparent_1px),linear-gradient(to_bottom,#C5A880_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none"></div>
+  </div>
+
+  <!-- FLOATING SIDE SCENE NAVIGATION CHEVRONS -->
+  <button id="side-scene-prev" type="button" aria-label="Previous Background Scene" class="hidden md:flex fixed left-5 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-graphite-950/70 border border-white/15 backdrop-blur-md text-sand-300 hover:text-white hover:border-bronze hover:bg-bronze/20 hover:scale-110 active:scale-95 transition-all duration-300 shadow-[0_8px_25px_rgba(0,0,0,0.6)] items-center justify-center group">
+    <i data-lucide="chevron-left" class="w-5 h-5 group-hover:-translate-x-0.5 transition-transform"></i>
+  </button>
+  <button id="side-scene-next" type="button" aria-label="Next Background Scene" class="hidden md:flex fixed right-5 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-graphite-950/70 border border-white/15 backdrop-blur-md text-sand-300 hover:text-white hover:border-bronze hover:bg-bronze/20 hover:scale-110 active:scale-95 transition-all duration-300 shadow-[0_8px_25px_rgba(0,0,0,0.6)] items-center justify-center group">
+    <i data-lucide="chevron-right" class="w-5 h-5 group-hover:translate-x-0.5 transition-transform"></i>
+  </button>
+
+  <!-- INTERACTIVE GOLDEN STARDUST CANVAS -->
+  <canvas id="ambient-stardust" class="fixed inset-0 w-full h-full pointer-events-none z-[1]"></canvas>
 
   <!-- LUXURY EDITORIAL PRELOADER -->
   <div id="luxury-preloader">
@@ -79,24 +142,27 @@
   </div>
 
   <!-- MINIMAL LUXURY HEADER -->
-  <header class="w-full z-40 py-6 px-6 md:px-12 flex items-center justify-between border-b border-white/10 backdrop-blur-md">
-    <a href="index.html" class="flex items-center space-x-3.5 tracking-widest text-left group">
-      <img src="assets/images/logo-icon.png" alt="Stackly Emblem" class="w-9 h-9 object-contain drop-shadow-[0_2px_12px_rgba(197,168,128,0.4)] group-hover:scale-105 transition-transform duration-300">
-      <div class="flex flex-col">
-        <span class="font-serif text-xl md:text-2xl font-light tracking-[0.25em] text-sand-50 group-hover:text-bronze-light transition-colors leading-tight">STACKLY</span>
-        <span class="text-[9px] uppercase tracking-[0.35em] text-bronze font-medium opacity-90 -mt-0.5">THE SOLAIRE &bull; DUBAI</span>
-      </div>
-    </a>
+  <header class="w-full z-40 py-4 px-4 sm:px-8 md:px-12 border-b border-white/10 backdrop-blur-md">
+    <div class="w-full max-w-[1560px] mx-auto flex items-center justify-between gap-4">
+      <a href="index.html" class="flex items-center space-x-3 shrink-0 group">
+        <img src="assets/images/logo-icon.png" alt="Stackly Emblem" class="w-8 h-8 sm:w-9 sm:h-9 object-contain drop-shadow-[0_2px_12px_rgba(197,168,128,0.4)] group-hover:scale-105 transition-transform duration-300">
+        <div class="flex flex-col text-left">
+          <span class="font-serif text-lg sm:text-xl lg:text-2xl font-light tracking-[0.22em] text-sand-50 group-hover:text-bronze-light transition-colors leading-tight">STACKLY</span>
+          <span class="text-[8px] sm:text-[9px] uppercase tracking-[0.3em] text-bronze font-medium opacity-90 -mt-0.5">THE SOLAIRE &bull; DUBAI</span>
+        </div>
+      </a>
 
-    <div class="flex items-center space-x-4">
-      <a href="index.html" class="text-xs uppercase font-mono tracking-widest text-sand-400 hover:text-white transition-colors flex items-center space-x-1.5">
-        <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
-        <span>Public Monograph</span>
-      </a>
-      <div class="h-4 w-px bg-white/20"></div>
-      <a href="signup.html" class="px-4 py-2 rounded-full border border-bronze/50 bg-bronze/10 hover:bg-bronze hover:text-graphite-950 text-sand-100 text-[11px] uppercase tracking-[0.18em] transition-all font-medium">
-        Apply for Key
-      </a>
+      <div class="flex items-center space-x-3 sm:space-x-4 shrink-0">
+        <a href="index.html" class="text-xs uppercase font-mono tracking-widest text-sand-400 hover:text-white transition-colors flex items-center space-x-1.5">
+          <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+          <span class="hidden sm:inline">Public Monograph</span>
+          <span class="sm:hidden">Back</span>
+        </a>
+        <div class="h-4 w-px bg-white/20"></div>
+        <a href="signup.html" class="px-3.5 sm:px-4 py-2 rounded-full border border-bronze/50 bg-bronze/10 hover:bg-bronze hover:text-graphite-950 text-sand-100 text-[10px] sm:text-[11px] uppercase tracking-[0.18em] transition-all font-medium">
+          Apply for Key
+        </a>
+      </div>
     </div>
   </header>
 
@@ -105,15 +171,15 @@
     <div class="w-full max-w-xl">
 
       <!-- PORTAL GLASS CARD -->
-      <div class="relative bg-[#141312]/80 backdrop-blur-2xl rounded-3xl border border-bronze/30 shadow-[0_25px_60px_rgba(0,0,0,0.85)] p-8 sm:p-12 overflow-hidden">
+      <div class="relative glass-portal-card rounded-3xl p-8 sm:p-12 overflow-hidden z-10">
         
         <!-- Decorative Ambient Glow -->
         <div class="absolute -top-24 -right-24 w-60 h-60 rounded-full bg-bronze/10 filter blur-3xl pointer-events-none"></div>
         <div class="absolute -bottom-24 -left-24 w-60 h-60 rounded-full bg-bronze/10 filter blur-3xl pointer-events-none"></div>
 
         <!-- Header Titles -->
-        <div class="text-center mb-8">
-          <img src="assets/images/logo-icon.png" alt="The Solaire Emblem" class="w-12 h-12 object-contain mx-auto mb-4 drop-shadow-[0_4px_16px_rgba(197,168,128,0.4)]">
+        <div class="text-center mb-8 relative z-10">
+          <img src="assets/images/logo-icon.png" alt="Stackly Emblem" class="w-12 h-12 object-contain mx-auto mb-4 drop-shadow-[0_4px_16px_rgba(197,168,128,0.4)]">
           <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-bronze/10 border border-bronze/30 text-bronze-light text-[10px] font-mono uppercase tracking-[0.25em] mb-3">
             <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
             <span>ENCRYPTED RESIDENT GATEWAY</span>
@@ -184,15 +250,15 @@
             </div>
           </div>
 
-          <!-- Remember & Forgot -->
+          <!-- Remember & Forgot Password -->
           <div class="flex items-center justify-between text-xs pt-1">
             <label class="flex items-center space-x-2 text-sand-400 cursor-pointer select-none">
               <input type="checkbox" checked class="w-3.5 h-3.5 rounded bg-white/5 border-white/20 text-bronze accent-amber-600">
               <span class="text-[11px]">Remember encrypted session</span>
             </label>
-            <button type="button" onclick="showSecurityNotice()" class="text-[11px] text-bronze hover:underline font-mono">
-              Keycard Help?
-            </button>
+            <a href="404.html" class="text-[11px] text-bronze hover:text-bronze-light hover:underline font-mono transition-colors" title="Recover forgotten password">
+              Forgot Password?
+            </a>
           </div>
 
           <!-- Handshake Status Banner (Hidden until submit) -->
@@ -211,12 +277,12 @@
             </button>
           </div>
 
-          <!-- Biometric Simulation Sensor Button -->
+          <!-- Biometric Simulation Sensor Button (Links to 404) -->
           <div class="pt-3 border-t border-white/10">
-            <button type="button" onclick="simulateBiometricAuth()" class="biometric-scanner w-full py-3 rounded-2xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/15 text-sand-300 hover:text-sand-50 text-xs font-mono flex items-center justify-center space-x-3 transition-all" id="biometric-btn">
+            <a href="404.html" class="biometric-scanner w-full py-3 rounded-2xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/15 hover:border-bronze/40 text-sand-300 hover:text-sand-50 text-xs font-mono flex items-center justify-center space-x-3 transition-all" id="biometric-btn" data-cursor="pointer">
               <i data-lucide="fingerprint" class="w-5 h-5 text-bronze"></i>
               <span>One-Click Biometric Touch / Face ID</span>
-            </button>
+            </a>
           </div>
         </form>
 
@@ -228,12 +294,96 @@
           </p>
         </div>
       </div>
+
+      <!-- INTERACTIVE BACKGROUND SCENERY CONTROLS -->
+      <div class="mt-5 w-full z-20 relative">
+        <div class="p-3.5 sm:p-4 rounded-2xl bg-graphite-950/80 border border-white/10 backdrop-blur-xl shadow-[0_15px_35px_rgba(0,0,0,0.6)]">
+          <!-- Top Telemetry Row -->
+          <div class="flex items-center justify-between gap-3 text-[11px] font-mono mb-2.5">
+            <div class="flex items-center space-x-2 min-w-0">
+              <span class="relative flex h-2 w-2 shrink-0">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              </span>
+              <span class="text-sand-400 uppercase tracking-widest text-[9px] shrink-0">LIVE SCENERY</span>
+              <span class="text-white/20">&bull;</span>
+              <span id="scene-label" class="text-bronze-light font-medium truncate uppercase tracking-wider">DUBAI SKYLINE HORIZON</span>
+            </div>
+            <div class="flex items-center space-x-2 text-[10px] shrink-0">
+              <span id="scene-loc" class="hidden sm:inline text-sand-500 font-mono">Jumeirah Bay Island</span>
+              <div class="flex items-center space-x-1 pl-2 border-l border-white/10">
+                <button id="scene-prev" type="button" aria-label="Previous Scene" class="w-6 h-6 rounded-lg bg-white/5 hover:bg-bronze/20 text-sand-300 hover:text-white flex items-center justify-center transition-colors">
+                  <i data-lucide="chevron-left" class="w-3.5 h-3.5"></i>
+                </button>
+                <button id="scene-next" type="button" aria-label="Next Scene" class="w-6 h-6 rounded-lg bg-white/5 hover:bg-bronze/20 text-sand-300 hover:text-white flex items-center justify-center transition-colors">
+                  <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Auto-Cycle Progress Line -->
+          <div class="w-full h-0.5 bg-white/10 rounded-full overflow-hidden mb-2.5">
+            <div id="scene-progress" class="h-full bg-gradient-to-r from-bronze to-bronze-light w-0 transition-all duration-100 ease-linear"></div>
+          </div>
+
+          <!-- Scene Quick Switch Pills -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-1.5 sm:gap-2">
+            <button type="button" class="scene-pill px-2.5 py-1.5 rounded-xl border text-[11px] font-mono tracking-wider transition-all duration-300 flex items-center justify-center space-x-1.5 bg-bronze/20 border-bronze text-bronze-light shadow-[0_0_12px_rgba(197,168,128,0.25)]" data-index="0">
+              <span class="opacity-60 text-[9px]">01</span>
+              <span class="truncate">Skyline</span>
+            </button>
+            <button type="button" class="scene-pill px-2.5 py-1.5 rounded-xl border text-[11px] font-mono tracking-wider transition-all duration-300 flex items-center justify-center space-x-1.5 bg-white/5 border-white/10 text-sand-400 hover:text-white hover:bg-white/10" data-index="1">
+              <span class="opacity-60 text-[9px]">02</span>
+              <span class="truncate">Infinity Pool</span>
+            </button>
+            <button type="button" class="scene-pill px-2.5 py-1.5 rounded-xl border text-[11px] font-mono tracking-wider transition-all duration-300 flex items-center justify-center space-x-1.5 bg-white/5 border-white/10 text-sand-400 hover:text-white hover:bg-white/10" data-index="2">
+              <span class="opacity-60 text-[9px]">03</span>
+              <span class="truncate">Marina Berth</span>
+            </button>
+            <button type="button" class="scene-pill px-2.5 py-1.5 rounded-xl border text-[11px] font-mono tracking-wider transition-all duration-300 flex items-center justify-center space-x-1.5 bg-white/5 border-white/10 text-sand-400 hover:text-white hover:bg-white/10" data-index="3">
+              <span class="opacity-60 text-[9px]">04</span>
+              <span class="truncate">Penthouse</span>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </main>
 
   <!-- LUXURY FOOTER STRIP -->
-  <footer class="w-full py-6 px-6 md:px-12 border-t border-white/10 text-center text-xs font-mono text-sand-500 flex flex-col sm:flex-row items-center justify-between gap-4">
+  <footer class="w-full py-6 px-6 md:px-12 border-t border-white/10 text-center text-xs font-mono text-sand-500 flex flex-col md:flex-row items-center justify-between gap-4">
     <p>STACKLY RESIDENCES &bull; THE SOLAIRE DUBAI &bull; JUMEIRAH BAY ISLAND</p>
+    
+    <!-- Social Media Icons (Direct to 404 Experience) -->
+    <div class="flex items-center space-x-2.5">
+      <a href="404.html" class="w-7 h-7 rounded-full border border-white/20 bg-white/5 hover:border-bronze hover:bg-bronze/10 text-sand-300 hover:text-bronze flex items-center justify-center transition-all duration-300" title="Instagram">
+        <svg class="w-3.5 h-3.5 fill-none stroke-current" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+        </svg>
+      </a>
+      <a href="404.html" class="w-7 h-7 rounded-full border border-white/20 bg-white/5 hover:border-bronze hover:bg-bronze/10 text-sand-300 hover:text-bronze flex items-center justify-center transition-all duration-300" title="LinkedIn">
+        <svg class="w-3.5 h-3.5 fill-none stroke-current" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+          <rect x="2" y="9" width="4" height="12"></rect>
+          <circle cx="4" cy="4" r="2"></circle>
+        </svg>
+      </a>
+      <a href="404.html" class="w-7 h-7 rounded-full border border-white/20 bg-white/5 hover:border-bronze hover:bg-bronze/10 text-sand-300 hover:text-bronze flex items-center justify-center transition-all duration-300" title="X (Twitter)">
+        <svg class="w-3.5 h-3.5 fill-currentColor" viewBox="0 0 24 24">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 24.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+        </svg>
+      </a>
+      <a href="404.html" class="w-7 h-7 rounded-full border border-white/20 bg-white/5 hover:border-bronze hover:bg-bronze/10 text-sand-300 hover:text-bronze flex items-center justify-center transition-all duration-300" title="YouTube">
+        <svg class="w-3.5 h-3.5 fill-none stroke-current" viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.42a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+          <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"></polygon>
+        </svg>
+      </a>
+    </div>
+
     <div class="flex items-center space-x-4">
       <span class="flex items-center space-x-1"><i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-400"></i><span>256-Bit SHA Encrypted</span></span>
       <span>&bull;</span>
@@ -337,6 +487,228 @@
     function showSecurityNotice() {
       alert('THE SOLAIRE RESIDENT CONCIERGE\n\nIf you have forgotten your credentials or require an updated private biometric NFC keycard, please contact the 24/7 St. Regis Butler Desk on +971 4 800 SOLAIRE or use the direct WhatsApp concierge.');
     }
+
+    // Interactive Background Multi-Scene Video Swiper
+    function initBgSwiper() {
+      const slides = document.querySelectorAll('#bg-swiper .bg-slide');
+      const pills = document.querySelectorAll('.scene-pill');
+      const label = document.getElementById('scene-label');
+      const locLabel = document.getElementById('scene-loc');
+      const progressBar = document.getElementById('scene-progress');
+      const prevBtn = document.getElementById('scene-prev');
+      const nextBtn = document.getElementById('scene-next');
+      const sidePrevBtn = document.getElementById('side-scene-prev');
+      const sideNextBtn = document.getElementById('side-scene-next');
+
+      if (!slides.length) return;
+      let currentIndex = 0;
+      let timer = null;
+      const DURATION = 9000;
+      let startTime = Date.now();
+      let animFrame = null;
+
+      function goToSlide(index) {
+        if (index < 0) index = slides.length - 1;
+        if (index >= slides.length) index = 0;
+        currentIndex = index;
+
+        slides.forEach((slide, i) => {
+          const video = slide.querySelector('video');
+          if (i === currentIndex) {
+            slide.classList.remove('opacity-0', 'z-0');
+            slide.classList.add('opacity-100', 'z-[1]');
+            if (video) {
+              video.currentTime = 0;
+              const p = video.play();
+              if (p) p.catch(() => {});
+            }
+          } else {
+            slide.classList.remove('opacity-100', 'z-[1]');
+            slide.classList.add('opacity-0', 'z-0');
+            if (video) {
+              video.pause();
+            }
+          }
+        });
+
+        pills.forEach((pill, i) => {
+          if (i === currentIndex) {
+            pill.className = 'scene-pill px-2.5 py-1.5 rounded-xl border text-[11px] font-mono tracking-wider transition-all duration-300 flex items-center justify-center space-x-1.5 bg-bronze/20 border-bronze text-bronze-light shadow-[0_0_12px_rgba(197,168,128,0.25)]';
+          } else {
+            pill.className = 'scene-pill px-2.5 py-1.5 rounded-xl border text-[11px] font-mono tracking-wider transition-all duration-300 flex items-center justify-center space-x-1.5 bg-white/5 border-white/10 text-sand-400 hover:text-white hover:bg-white/10';
+          }
+        });
+
+        const activeSlide = slides[currentIndex];
+        if (label && activeSlide.dataset.title) label.textContent = activeSlide.dataset.title;
+        if (locLabel && activeSlide.dataset.loc) locLabel.textContent = activeSlide.dataset.loc;
+
+        resetTimer();
+      }
+
+      function resetTimer() {
+        if (timer) clearInterval(timer);
+        startTime = Date.now();
+        if (progressBar) progressBar.style.width = '0%';
+        timer = setInterval(() => {
+          goToSlide(currentIndex + 1);
+        }, DURATION);
+      }
+
+      function updateProgress() {
+        if (progressBar) {
+          const elapsed = (Date.now() - startTime) % DURATION;
+          const pct = Math.min(100, (elapsed / DURATION) * 100);
+          progressBar.style.width = pct + '%';
+        }
+        animFrame = requestAnimationFrame(updateProgress);
+      }
+      animFrame = requestAnimationFrame(updateProgress);
+
+      pills.forEach((pill, i) => {
+        pill.addEventListener('click', () => goToSlide(i));
+      });
+
+      if (prevBtn) prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
+      if (nextBtn) nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
+      if (sidePrevBtn) sidePrevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
+      if (sideNextBtn) sideNextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
+
+      window.addEventListener('keydown', (e) => {
+        if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT' || e.target.tagName === 'TEXTAREA')) return;
+        if (e.key === 'ArrowRight') goToSlide(currentIndex + 1);
+        if (e.key === 'ArrowLeft') goToSlide(currentIndex - 1);
+      });
+
+      // Video Autoplay Enforcer on first slide
+      const firstVid = slides[0].querySelector('video');
+      if (firstVid) {
+        firstVid.muted = true;
+        firstVid.playsInline = true;
+        const playPromise = firstVid.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {
+            const unlock = () => {
+              firstVid.play().catch(() => {});
+              ['click', 'touchstart', 'scroll'].forEach(evt => window.removeEventListener(evt, unlock));
+            };
+            ['click', 'touchstart', 'scroll'].forEach(evt => window.addEventListener(evt, unlock, { once: true }));
+          });
+        }
+      }
+
+      resetTimer();
+      if (window.lucide) window.lucide.createIcons();
+    }
+    initBgSwiper();
+
+    // Card Spotlight Glow
+    const glassCard = document.querySelector('.glass-portal-card');
+    if (glassCard) {
+      glassCard.addEventListener('mousemove', (e) => {
+        const rect = glassCard.getBoundingClientRect();
+        glassCard.style.setProperty('--spotlight-x', `${e.clientX - rect.left}px`);
+        glassCard.style.setProperty('--spotlight-y', `${e.clientY - rect.top}px`);
+      });
+    }
+
+    // Ambient Golden Stardust Particles
+    (function initAmbientStardust() {
+      const canvas = document.getElementById('ambient-stardust');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let w, h;
+      let particles = [];
+      const COUNT = 45;
+      const mouse = { x: -1000, y: -1000, targetX: -1000, targetY: -1000 };
+
+      function resize() {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+      }
+      window.addEventListener('resize', resize);
+      resize();
+
+      window.addEventListener('mousemove', (e) => {
+        mouse.targetX = e.clientX;
+        mouse.targetY = e.clientY;
+      });
+
+      class Stardust {
+        constructor() {
+          this.reset(true);
+        }
+        reset(initial) {
+          this.x = Math.random() * w;
+          this.y = initial ? Math.random() * h : h + 15;
+          this.vx = (Math.random() - 0.5) * 0.35;
+          this.vy = -(Math.random() * 0.35 + 0.15);
+          this.radius = Math.random() * 1.6 + 0.6;
+          this.baseAlpha = Math.random() * 0.45 + 0.25;
+          this.alpha = this.baseAlpha;
+          this.pulse = Math.random() * Math.PI * 2;
+          this.pulseSpeed = Math.random() * 0.02 + 0.01;
+        }
+        update() {
+          this.x += this.vx;
+          this.y += this.vy;
+          this.pulse += this.pulseSpeed;
+          this.alpha = this.baseAlpha + Math.sin(this.pulse) * 0.18;
+
+          const dx = mouse.x - this.x;
+          const dy = mouse.y - this.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 130) {
+            const force = (130 - dist) / 130;
+            this.x -= (dx / dist) * force * 0.8;
+            this.y -= (dy / dist) * force * 0.8;
+          }
+
+          if (this.y < -15 || this.x < -15 || this.x > w + 15) {
+            this.reset(false);
+          }
+        }
+        draw() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(197, 168, 128, ${Math.max(0, this.alpha)})`;
+          ctx.shadowBlur = 8;
+          ctx.shadowColor = 'rgba(197, 168, 128, 0.4)';
+          ctx.fill();
+        }
+      }
+
+      for (let i = 0; i < COUNT; i++) particles.push(new Stardust());
+
+      function animate() {
+        ctx.clearRect(0, 0, w, h);
+        mouse.x += (mouse.targetX - mouse.x) * 0.08;
+        mouse.y += (mouse.targetY - mouse.y) * 0.08;
+
+        for (let i = 0; i < particles.length; i++) {
+          for (let j = i + 1; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 85) {
+              ctx.beginPath();
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.strokeStyle = `rgba(197, 168, 128, ${0.14 * (1 - dist / 85)})`;
+              ctx.lineWidth = 0.6;
+              ctx.stroke();
+            }
+          }
+        }
+
+        particles.forEach(p => {
+          p.update();
+          p.draw();
+        });
+        requestAnimationFrame(animate);
+      }
+      animate();
+    })();
   </script>
 </body>
 </html>

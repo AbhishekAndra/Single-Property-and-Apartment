@@ -53,45 +53,51 @@
   </div>
 
   <!-- FLOATING LUXURY HEADER -->
-  <header class="fixed top-0 left-0 right-0 z-50 py-5 bg-graphite-950/90 backdrop-blur-xl border-b border-white/10 transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between">
-      <a href="index.html" class="flex items-center space-x-3.5 tracking-widest text-left group">
-        <img src="assets/images/logo-icon.png" alt="Stackly Emblem" class="w-9 h-9 object-contain drop-shadow-[0_2px_12px_rgba(197,168,128,0.4)] group-hover:scale-105 transition-transform duration-300">
-        <div class="flex flex-col">
-          <span class="font-serif text-xl md:text-2xl font-light tracking-[0.25em] text-sand-50 group-hover:text-bronze-light transition-colors leading-tight">STACKLY</span>
-          <span class="text-[9px] uppercase tracking-[0.35em] text-bronze font-medium opacity-90 -mt-0.5">THE SOLAIRE &bull; DUBAI</span>
+  <header class="fixed top-0 left-0 right-0 z-50 py-3.5 sm:py-4 bg-graphite-950/90 backdrop-blur-xl border-b border-white/10 transition-all duration-300" id="main-header">
+    <div class="w-full max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 flex items-center justify-between gap-4 xl:gap-8">
+      
+      <!-- Brand Logo -->
+      <a href="index.html" class="flex items-center space-x-3 shrink-0 group" data-cursor="pointer">
+        <img src="assets/images/logo-icon.png" alt="Stackly Emblem" class="w-8 h-8 sm:w-9 sm:h-9 object-contain drop-shadow-[0_2px_12px_rgba(197,168,128,0.4)] group-hover:scale-105 transition-transform duration-300">
+        <div class="flex flex-col text-left">
+          <span class="font-serif text-lg sm:text-xl lg:text-2xl font-light tracking-[0.22em] text-sand-50 group-hover:text-bronze-light transition-colors leading-tight">STACKLY</span>
+          <span class="text-[8px] sm:text-[9px] uppercase tracking-[0.3em] text-bronze font-medium opacity-90 -mt-0.5">THE SOLAIRE &bull; DUBAI</span>
         </div>
       </a>
 
-      <nav class="hidden lg:flex items-center space-x-7">
-        <a href="index.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1">Overview</a>
-        <a href="residences.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1">Residences</a>
-        <a href="interiors.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1">Interiors</a>
-        <a href="floor-plans.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1">Floor Plans</a>
-        <a href="amenities.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1">Amenities</a>
-        <a href="architecture.html" class="text-[11px] uppercase tracking-[0.25em] text-bronze font-semibold py-1 border-b border-bronze">Architecture</a>
-        <a href="contact.html" class="text-[11px] uppercase tracking-[0.25em] text-sand-300 hover:text-white transition-colors py-1">Contact</a>
+      <!-- Desktop Nav -->
+      <nav class="hidden lg:flex items-center gap-3 xl:gap-6 2xl:gap-7 shrink-0">
+        <a href="index.html" class="text-[10.5px] xl:text-[11px] uppercase tracking-[0.18em] xl:tracking-[0.22em] text-sand-300 hover:text-white transition-colors py-1 whitespace-nowrap" data-cursor="pointer">Overview</a>
+        <a href="residences.html" class="text-[10.5px] xl:text-[11px] uppercase tracking-[0.18em] xl:tracking-[0.22em] text-sand-300 hover:text-white transition-colors py-1 whitespace-nowrap" data-cursor="pointer">Residences</a>
+        <a href="interiors.html" class="text-[10.5px] xl:text-[11px] uppercase tracking-[0.18em] xl:tracking-[0.22em] text-sand-300 hover:text-white transition-colors py-1 whitespace-nowrap" data-cursor="pointer">Interiors</a>
+        <a href="floor-plans.html" class="text-[10.5px] xl:text-[11px] uppercase tracking-[0.18em] xl:tracking-[0.22em] text-sand-300 hover:text-white transition-colors py-1 whitespace-nowrap" data-cursor="pointer">Floor Plans</a>
+        <a href="amenities.html" class="text-[10.5px] xl:text-[11px] uppercase tracking-[0.18em] xl:tracking-[0.22em] text-sand-300 hover:text-white transition-colors py-1 whitespace-nowrap" data-cursor="pointer">Amenities</a>
+        <a href="architecture.html" class="text-[10.5px] xl:text-[11px] uppercase tracking-[0.18em] xl:tracking-[0.22em] text-bronze font-semibold py-1 border-b border-bronze whitespace-nowrap" data-cursor="pointer">Architecture</a>
+        <a href="contact.html" class="text-[10.5px] xl:text-[11px] uppercase tracking-[0.18em] xl:tracking-[0.22em] text-sand-300 hover:text-white transition-colors py-1 whitespace-nowrap" data-cursor="pointer">Contact</a>
       </nav>
 
-      <div class="hidden sm:flex items-center space-x-3">
-        <!-- Live Meridian Telemetry -->
-        <div class="live-dubai-clock hidden xl:inline-flex items-center space-x-2 text-[9px] font-mono uppercase tracking-[0.22em] text-bronze-light bg-black/60 px-3.5 py-1.5 rounded-full border border-white/10 shadow-lg">
+      <!-- Action Controls (No sound button!) -->
+      <div class="hidden sm:flex items-center space-x-2.5 xl:space-x-3 shrink-0">
+        <!-- Live Meridian Telemetry (2xl only) -->
+        <div class="live-dubai-clock hidden 2xl:inline-flex items-center space-x-2 text-[9px] font-mono uppercase tracking-[0.22em] text-bronze-light bg-black/60 px-3.5 py-1.5 rounded-full border border-white/10 shadow-lg">
           DUBAI (GMT+4) • 12:45 PM • 28°C SUNNY
         </div>
-        <button class="ambient-sound-toggle p-2.5 rounded-full border border-white/15 text-sand-300 hover:text-white hover:border-bronze transition-all backdrop-blur-sm" data-magnetic>
-          <i data-lucide="volume-x" class="w-4 h-4 opacity-60"></i>
+
+        <!-- Schedule Tour -->
+        <button data-open-booking="Architectural Engineering Briefing" data-magnetic class="px-3.5 xl:px-4 py-2 rounded-full border border-bronze/60 bg-bronze/10 hover:bg-bronze text-sand-50 hover:text-graphite-950 text-[10px] xl:text-[11px] uppercase tracking-[0.18em] xl:tracking-[0.22em] font-medium transition-all shadow-[0_0_15px_rgba(197,168,128,0.15)] flex items-center space-x-1.5 xl:space-x-2 shrink-0 group" data-cursor="pointer">
+          <i data-lucide="calendar" class="w-3.5 h-3.5 text-bronze group-hover:text-graphite-950 transition-colors"></i>
+          <span><span class="hidden xl:inline">Schedule </span>Tour</span>
         </button>
-        <button data-open-booking="Architectural Engineering Briefing" data-magnetic class="px-4 py-2.5 rounded-full border border-bronze/60 bg-bronze/10 hover:bg-bronze text-white text-[11px] uppercase tracking-[0.2em] font-medium transition-all shadow-[0_0_15px_rgba(197,168,128,0.2)] hover:text-graphite-950 flex items-center space-x-2">
-          <i data-lucide="calendar" class="w-3.5 h-3.5 text-bronze-light"></i>
-          <span>Schedule Tour</span>
-        </button>
-        <a href="login.html" class="portal-auth-btn px-4 py-2.5 rounded-full border border-white/20 bg-white/5 hover:border-bronze hover:text-bronze text-sand-200 text-[11px] uppercase tracking-[0.18em] font-medium transition-all flex items-center space-x-2" data-magnetic>
+
+        <!-- Resident Portal -->
+        <a href="login.html" class="portal-auth-btn px-3.5 xl:px-4 py-2 rounded-full border border-white/20 bg-white/5 hover:border-bronze hover:text-bronze text-sand-200 text-[10px] xl:text-[11px] uppercase tracking-[0.16em] xl:tracking-[0.2em] font-medium transition-all flex items-center space-x-1.5 xl:space-x-2 shrink-0" data-magnetic data-cursor="pointer">
           <i data-lucide="key" class="w-3.5 h-3.5 text-bronze"></i>
-          <span class="portal-user-text">Resident Portal</span>
+          <span class="portal-user-text"><span class="hidden xl:inline">Resident </span>Portal</span>
         </a>
       </div>
 
-      <button id="mobile-menu-toggle" class="lg:hidden p-2 text-sand-100 hover:text-bronze">
+      <!-- Mobile Trigger -->
+      <button id="mobile-menu-toggle" class="lg:hidden p-2 text-sand-100 hover:text-bronze" aria-label="Toggle Navigation Menu">
         <i data-lucide="menu" class="w-6 h-6"></i>
       </button>
     </div>
